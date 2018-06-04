@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ZJAttributedText_Example' do
+  pod 'ZJAttributedText', :path => '../'
+
+  target 'ZJAttributedText_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end
