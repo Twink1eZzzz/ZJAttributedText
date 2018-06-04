@@ -5,7 +5,5 @@ target 'ZJAttributedText_Example' do
 
   target 'ZJAttributedText_Tests' do
     inherit! :search_paths
-
-    pod 'FBSnapshotTestCase'
   end
 end

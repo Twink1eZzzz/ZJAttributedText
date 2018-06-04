@@ -1,0 +1,6 @@
+framework module ZJAttributedText {
+  umbrella header "ZJAttributedText-umbrella.h"
+
+  export *
+  module * { export * }
+}
