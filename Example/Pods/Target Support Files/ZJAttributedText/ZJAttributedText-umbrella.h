@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "ZJElement.h"
+#import "ZJParagraph.h"
 
 FOUNDATION_EXPORT double ZJAttributedTextVersionNumber;
 FOUNDATION_EXPORT const unsigned char ZJAttributedTextVersionString[];

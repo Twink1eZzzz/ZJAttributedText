@@ -3,20 +3,20 @@
   "version": "0.1.0",
   "summary": "A short description of ZJAttributedText.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/281925019@qq.com/ZJAttributedText",
+  "homepage": "https://github.com/syik/ZJAttributedText",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "281925019@qq.com": "zhangjun@douyu.tv"
+    "Jsoul1227@hotmail.com": "Jsoul1227@hotmail.com"
   },
   "source": {
-    "git": "https://github.com/281925019@qq.com/ZJAttributedText.git",
+    "git": "https://github.com/syik/ZJAttributedText.git",
     "tag": "0.1.0"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "ZJAttributedText/Classes/**/*"
+  "source_files": "ZJAttributedText/**/*"
 }
