@@ -10,8 +10,14 @@
 #endif
 #endif
 
-#import "ZJElement.h"
-#import "ZJParagraph.h"
+#import "ZJTextFactory.h"
+#import "ZJTextStyleParser.h"
+#import "ZJTextAttribute.h"
+#import "ZJTextElement.h"
+#import "ZJTextParagraph.h"
+#import "ZJTextStyle.h"
+#import "ZJTextLayer.h"
+#import "ZJTextView.h"
 
 FOUNDATION_EXPORT double ZJAttributedTextVersionNumber;
 FOUNDATION_EXPORT const unsigned char ZJAttributedTextVersionString[];

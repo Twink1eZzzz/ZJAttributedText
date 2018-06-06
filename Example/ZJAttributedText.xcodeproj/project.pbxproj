@@ -59,14 +59,14 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		635884D7F33DF871621C81C8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		635884D7F33DF871621C81C8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		864106C673C3109991740928 /* Pods-ZJAttributedText_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJAttributedText_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZJAttributedText_Tests/Pods-ZJAttributedText_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8874F79C66603603E5341137 /* Pods-ZJAttributedText_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJAttributedText_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZJAttributedText_Example/Pods-ZJAttributedText_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D228E2875FB88EFCFDD7D64F /* Pods-ZJAttributedText_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJAttributedText_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZJAttributedText_Tests/Pods-ZJAttributedText_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D73857EE5FA2A9AC5E661E23 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		E8A834FAFA07C299E580B12B /* ZJAttributedText.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = ZJAttributedText.podspec; path = ../ZJAttributedText.podspec; sourceTree = "<group>"; };
+		D73857EE5FA2A9AC5E661E23 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		E8A834FAFA07C299E580B12B /* ZJAttributedText.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZJAttributedText.podspec; path = ../ZJAttributedText.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +250,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "281925019@qq.com";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 2DEDNW2H7U;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -536,6 +539,7 @@
 			baseConfigurationReference = 8874F79C66603603E5341137 /* Pods-ZJAttributedText_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2DEDNW2H7U;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZJAttributedText/ZJAttributedText-Prefix.pch";
 				INFOPLIST_FILE = "ZJAttributedText/ZJAttributedText-Info.plist";
@@ -551,6 +555,7 @@
 			baseConfigurationReference = 10457B2758CA9F8F1867388E /* Pods-ZJAttributedText_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2DEDNW2H7U;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZJAttributedText/ZJAttributedText-Prefix.pch";
 				INFOPLIST_FILE = "ZJAttributedText/ZJAttributedText-Info.plist";
