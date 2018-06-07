@@ -12,12 +12,12 @@
 @interface ZJTextFactory : NSObject
 
 /**
- 绘制文本Layer
+ 绘制文本视图
 
  @param elements 元素数组
  @param size 约束尺寸
  @return 绘制layer
  */
-+ (CALayer *)textLayerWithElements:(NSArray<ZJTextElement *> *)elements constraint:(CGSize *)size;
++ (UIView *)textViewWithElements:(NSArray<ZJTextElement *> *)elements constraint:(CGSize)size;
 
 @end

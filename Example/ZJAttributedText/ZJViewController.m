@@ -7,6 +7,7 @@
 //
 
 #import "ZJViewController.h"
+#import "ZJTextFactory.h"
 
 @interface ZJViewController ()
 
@@ -18,6 +19,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    UIView *view = [ZJTextFactory textViewWithElements:nil constraint:CGSizeMake(MAXFLOAT, MAXFLOAT)];
+    view.frame = CGRectMake(100, 100, 100, 100);
+    
+    [self.view addSubview:view];
 }
 
 - (void)didReceiveMemoryWarning

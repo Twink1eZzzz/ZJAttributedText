@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23A503A150CD54C5E1C3D3D1F4DD73B2 /* ZJTextStyleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DB7316C4695537568320B5BCCB0CA8 /* ZJTextStyleParser.m */; };
 		35BC59C508080DF47B574E178EF7B435 /* Pods-ZJAttributedText_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA6F87F5882939ADCAC15C9AEA4812B7 /* Pods-ZJAttributedText_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		46033577FB5AFA64B0372F83212B15E0 /* Pods-ZJAttributedText_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BCE465BFF29F239A7BD94106948597 /* Pods-ZJAttributedText_Example-dummy.m */; };
-		774FC0CA61AAB65C17CE91374702C750 /* ZJTextStyleParser.h in Headers */ = {isa = PBXBuildFile; fileRef = AF89CF01C5849B50B1093E2567099D0A /* ZJTextStyleParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7921A7B4E358EDD1F138C6DCBCC1EBF1 /* ZJTextFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E361FA649ECD2C20435D28EC62A1E0A /* ZJTextFactory.m */; };
 		7BFED28B7FBC3A59CF89301A187C90BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		883350957559513413652408A9105239 /* ZJAttributedText-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 36E05848C9C1AA49975E6690C71505C4 /* ZJAttributedText-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -22,11 +20,9 @@
 		AD0221A4B00B231DB3BA2EE5678B80E2 /* Pods-ZJAttributedText_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 447F374E9D387D65EB19CCA5A14DE9C1 /* Pods-ZJAttributedText_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB445F227F22A6B54DD41176DD42CC08 /* ZJTextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DE8C9101FF7DD12E92DF906B88EA1A /* ZJTextElement.m */; };
 		C3DF91CF7265D30EE2CDC79BD9280800 /* ZJTextElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 500B9D961D653AD429C7D5BC25E79B0C /* ZJTextElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C4B857DC7EF5254D40DC5E5C3FB578BA /* ZJTextLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 910217B05A85CA9A6E330BFE68D73CB4 /* ZJTextLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8EE5ADD847D7C592A5FB5F85F5B9F9C /* ZJTextAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 9453CB01442159624F457C80EA1B1473 /* ZJTextAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D735BF1D7E035C8A0CFF6E86B676CECC /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2481834677EF42DF846EF315E651C0FD /* ZJTextView.m */; };
 		D78EA8D648A5336E3B8DFA1852B34EFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		D9DC98151B8543E405C1D3E8977A7788 /* ZJTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 884FB7446178B7DB139D435969647936 /* ZJTextLayer.m */; };
 		FD61DDFDBDF58ABB9268C60094DF3905 /* ZJTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = EE2EC8331C49E2501F3A1DD7F894CD70 /* ZJTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -59,23 +55,20 @@
 		46E71C82E6CA45B9CB35CF1FAC478F7D /* Pods-ZJAttributedText_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Tests-resources.sh"; sourceTree = "<group>"; };
 		4A06CC18F88D4DC33918D1C6618E0F50 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		500B9D961D653AD429C7D5BC25E79B0C /* ZJTextElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextElement.h; sourceTree = "<group>"; };
-		54DB7316C4695537568320B5BCCB0CA8 /* ZJTextStyleParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextStyleParser.m; sourceTree = "<group>"; };
+		60F4469020C7E7A80015E35A /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		640D11ED6B13175CB531EA629B2FE71B /* Pods-ZJAttributedText_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZJAttributedText_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6D28C77B646AF2C4BB5387B49E646308 /* ZJAttributedText.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ZJAttributedText.modulemap; sourceTree = "<group>"; };
 		72F749754C8193F6020891F6AB7BA020 /* Pods-ZJAttributedText_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Example-frameworks.sh"; sourceTree = "<group>"; };
 		79539763720BC7379E79CD84D4B7ADA1 /* Pods-ZJAttributedText_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZJAttributedText_Tests-dummy.m"; sourceTree = "<group>"; };
 		83CD6FF5D2B99B0104E8D1980E454910 /* Pods-ZJAttributedText_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		884FB7446178B7DB139D435969647936 /* ZJTextLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextLayer.m; sourceTree = "<group>"; };
 		8F01F47B51E4466BB0BF33B1F44F2D0E /* Pods-ZJAttributedText_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ZJAttributedText_Tests.modulemap"; sourceTree = "<group>"; };
 		90BE4CFAC3FE9B8DEE042A257FEE23FA /* ZJAttributedText-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZJAttributedText-dummy.m"; sourceTree = "<group>"; };
-		910217B05A85CA9A6E330BFE68D73CB4 /* ZJTextLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextLayer.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9453CB01442159624F457C80EA1B1473 /* ZJTextAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextAttribute.h; sourceTree = "<group>"; };
 		9C3532B3EC67D3A4E8623684B7F9163B /* Pods-ZJAttributedText_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5D51304400B2129F74BF0F3DA202F3E /* Pods-ZJAttributedText_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ZJAttributedText_Example.modulemap"; sourceTree = "<group>"; };
 		A91237529BF4FF4B2B16FC67345AF7B4 /* Pods_ZJAttributedText_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZJAttributedText_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF89CF01C5849B50B1093E2567099D0A /* ZJTextStyleParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextStyleParser.h; sourceTree = "<group>"; };
 		B71523E7BC47634CF80DAA724665A7DA /* Pods-ZJAttributedText_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Example-resources.sh"; sourceTree = "<group>"; };
 		CA6F87F5882939ADCAC15C9AEA4812B7 /* Pods-ZJAttributedText_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZJAttributedText_Example-umbrella.h"; sourceTree = "<group>"; };
 		D5FB621935F5F7CAB883D0732845E7E1 /* ZJAttributedText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZJAttributedText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,8 +191,6 @@
 			children = (
 				DF741CB4045B34BD56099FB0E18C7FBE /* ZJTextFactory.h */,
 				3E361FA649ECD2C20435D28EC62A1E0A /* ZJTextFactory.m */,
-				AF89CF01C5849B50B1093E2567099D0A /* ZJTextStyleParser.h */,
-				54DB7316C4695537568320B5BCCB0CA8 /* ZJTextStyleParser.m */,
 			);
 			name = Core;
 			path = ZJAttributedText/Core;
@@ -225,8 +216,7 @@
 		C6B9E62C7F5A546F828F827FBC983C18 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				910217B05A85CA9A6E330BFE68D73CB4 /* ZJTextLayer.h */,
-				884FB7446178B7DB139D435969647936 /* ZJTextLayer.m */,
+				60F4469020C7E7A80015E35A /* test.png */,
 				EE2EC8331C49E2501F3A1DD7F894CD70 /* ZJTextView.h */,
 				2481834677EF42DF846EF315E651C0FD /* ZJTextView.m */,
 			);
@@ -285,8 +275,6 @@
 				C8EE5ADD847D7C592A5FB5F85F5B9F9C /* ZJTextAttribute.h in Headers */,
 				C3DF91CF7265D30EE2CDC79BD9280800 /* ZJTextElement.h in Headers */,
 				A741B69130B0D3D82CF5C89AA6F9A27B /* ZJTextFactory.h in Headers */,
-				C4B857DC7EF5254D40DC5E5C3FB578BA /* ZJTextLayer.h in Headers */,
-				774FC0CA61AAB65C17CE91374702C750 /* ZJTextStyleParser.h in Headers */,
 				FD61DDFDBDF58ABB9268C60094DF3905 /* ZJTextView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,8 +379,6 @@
 				9B314772D7AEB7F49EDA2EF77D8E4BAA /* ZJTextAttribute.m in Sources */,
 				BB445F227F22A6B54DD41176DD42CC08 /* ZJTextElement.m in Sources */,
 				7921A7B4E358EDD1F138C6DCBCC1EBF1 /* ZJTextFactory.m in Sources */,
-				D9DC98151B8543E405C1D3E8977A7788 /* ZJTextLayer.m in Sources */,
-				23A503A150CD54C5E1C3D3D1F4DD73B2 /* ZJTextStyleParser.m in Sources */,
 				D735BF1D7E035C8A0CFF6E86B676CECC /* ZJTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
