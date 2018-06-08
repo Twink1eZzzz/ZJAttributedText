@@ -41,7 +41,7 @@
     values[0] = delegate;
     CFDictionaryRef attributes = CFDictionaryCreate(kCFAllocatorSystemDefault, (void *)keys, (void *)values, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
     CFAttributedStringRef placeHolderAttributedString = CFAttributedStringCreate(kCFAllocatorSystemDefault, placeHolderString, attributes);
-    CFRelease(delegate);
+    
     
     //创建内容
     CFMutableAttributedStringRef mutableAttributeString = CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
@@ -56,11 +56,64 @@
     CFIndex length = CFAttributedStringGetLength(mutableAttributeString);
     CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, length), path, NULL);
     CTFrameDraw(frame, ctx);
+    
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"png"];
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    CGRect imageFrame = [self getRectWithFrame:frame];
+    CGContextDrawImage(ctx, imageFrame, image.CGImage);
+    
+    CFRelease(delegate);
+    CFRelease(placeHolderString);
+    CFRelease(attributes);
+    CFRelease(placeHolderAttributedString);
+    CFRelease(mutableAttributeString);
+    CFRelease(string);
+    CFRelease(frame);
+    CFRelease(path);
+    CFRelease(frameSetter);
 }
 
 - (CGRect)getRectWithFrame:(CTFrameRef)frame {
     
-    NSArray *linesArray = CTFrameGetLines(frame);
+    CFArrayRef linesArray = CTFrameGetLines(frame);\
+    CFIndex linesCount = CFArrayGetCount(linesArray);
+    CGPoint points[linesCount];
+    CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), points);
+    
+    //遍历CTLine
+    for (CFIndex i = 0; i < linesCount; i++) {
+        
+        CTLineRef line = CFArrayGetValueAtIndex(linesArray, i);
+        CFArrayRef runsArray = CTLineGetGlyphRuns(line);
+        CFIndex runsCount = CFArrayGetCount(runsArray);
+        
+        //遍历CTRun
+        for (CFIndex j = 0; j < runsCount; j++) {
+            
+            CTRunRef run = CFArrayGetValueAtIndex(runsArray, j);
+            CFDictionaryRef attributes = CTRunGetAttributes(run);
+            CTRunDelegateRef delegate = CFDictionaryGetValue(attributes, kCTRunDelegateAttributeName);
+            if (!delegate) continue;
+            
+            CFDictionaryRef config = CTRunDelegateGetRefCon(delegate);
+            if (!config || CFGetTypeID(config) != CFDictionaryGetTypeID()) continue;
+            
+            CGPoint point = points[i];
+            CGFloat ascent;
+            CGFloat descent;
+            CGRect runBounds;
+            runBounds.size.width = CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, NULL);
+            runBounds.size.height = ascent + descent;
+            CGFloat offsetX = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
+            runBounds.origin.x = point.x + offsetX;
+            runBounds.origin.y = point.y - descent;
+            CGPathRef path = CTFrameGetPath(frame);
+            CGRect boxRect = CGPathGetBoundingBox(path);
+            CGRect imageBounds = CGRectOffset(runBounds, boxRect.origin.x, boxRect.origin.y);
+            return imageBounds;
+        }
+    }
+    return CGRectZero;
 }
 
 static CGFloat ascentCallback(void *ref) {
