@@ -5,8 +5,8 @@
 //  Created by zhangjun on 2018/6/6.
 //
 
-#import "ZJTextAttribute.h"
+#import "ZJTextAttributes.h"
 
-@implementation ZJTextAttribute
+@implementation ZJTextAttributes
 
 @end

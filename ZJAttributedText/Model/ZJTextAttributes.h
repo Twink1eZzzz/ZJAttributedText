@@ -10,7 +10,7 @@
 typedef void(^OnLayloutBlock)(CGRect frame);
 typedef void(^OnPressBlock)(void);
 
-@interface ZJTextAttribute : NSObject
+@interface ZJTextAttributes : NSObject
 
 #pragma mark - supported
 

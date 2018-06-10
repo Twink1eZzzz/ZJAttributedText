@@ -21,15 +21,21 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
 
-    UIView *view = [ZJTextFactory textViewWithElements:nil constraint:CGSizeMake(MAXFLOAT, MAXFLOAT)];
+    UIView *view = [ZJTextFactory textViewWithElements:nil defaultAttribute:nil];
     view.frame = CGRectMake(100, 100, 100, 100);
     [self.view addSubview:view];
-    for (NSInteger i = 0; i < 150000; i++) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * i * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    for (NSInteger i = 0; i < 1500000; i++) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * i * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [view setNeedsDisplay];
-        });
+//        });
     }
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [view removeFromSuperview];
+        UIView *newView = [ZJTextFactory textViewWithElements:nil defaultAttribute:nil];
+        newView.frame = CGRectMake(100, 100, 100, 100);
+        [self.view addSubview:newView];
+    });
 }
 
 - (void)didReceiveMemoryWarning
