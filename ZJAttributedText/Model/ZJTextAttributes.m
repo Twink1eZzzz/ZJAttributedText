@@ -6,6 +6,7 @@
 //
 
 #import "ZJTextAttributes.h"
+#import <Objc/runtime.h>
 
 @implementation ZJTextAttributes
 
