@@ -8,74 +8,101 @@
 #import "ZJTextView.h"
 #import <CoreText/CoreText.h>
 
+@interface ZJTextView()
+@property (nonatomic, assign) CGImageRef drawImage;
+
+@end
+
 @implementation ZJTextView
 
 - (void)drawRect:(CGRect)rect {
     
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    
-    //翻转上下文
-    CGContextSetTextMatrix(ctx, CGAffineTransformIdentity);
-    CGContextTranslateCTM(ctx, 0, self.bounds.size.height);
-    CGContextScaleCTM(ctx, 1.0, -1.0);
-    
-    //回调设置
-    CTRunDelegateCallbacks callbacks;
-    memset(&callbacks, 0, sizeof(CTRunDelegateCallbacks));
-    callbacks.version = kCTRunDelegateVersion1;
-    callbacks.getAscent = ascentCallback;
-    callbacks.getDescent = descentCallback;
-    callbacks.getWidth = widthCallback;
-    
-    NSDictionary *picDic = @{@"height" : @20,
-                             @"width" : @30};
-    CTRunDelegateRef delegate = CTRunDelegateCreate(&callbacks, (__bridge void *)picDic);
-    
-    //图片占位
-    unichar placeHolder = 0xFFFC;
-    CFStringRef placeHolderString = CFStringCreateWithCharacters(kCFAllocatorSystemDefault, &placeHolder, 1);
-    
-    CFStringRef keys[1];
-    keys[0] = kCTRunDelegateAttributeName;
-    CTRunDelegateRef values[1];
-    values[0] = delegate;
-    CFDictionaryRef attributes = CFDictionaryCreate(kCFAllocatorSystemDefault, (void *)keys, (void *)values, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
-    CFAttributedStringRef placeHolderAttributedString = CFAttributedStringCreate(kCFAllocatorSystemDefault, placeHolderString, attributes);
-    
-    
-    //创建内容
-    CFMutableAttributedStringRef mutableAttributeString = CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
-    CFStringRef string = CFSTR("test text\n");
-    CFAttributedStringReplaceString(mutableAttributeString, CFRangeMake(0, 0), string);
-    CFAttributedStringReplaceAttributedString(mutableAttributeString, CFRangeMake(CFAttributedStringGetLength(mutableAttributeString), 0), placeHolderAttributedString);
-    
-    //绘制
-    CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString(mutableAttributeString);
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddRect(path, NULL, self.bounds);
-    CFIndex length = CFAttributedStringGetLength(mutableAttributeString);
-    CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, length), path, NULL);
-    CTFrameDraw(frame, ctx);
-    
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"png"];
-    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    CGRect imageFrame = [self getRectWithFrame:frame];
-    CGContextDrawImage(ctx, imageFrame, image.CGImage);
-    
-    CFRelease(delegate);
-    CFRelease(placeHolderString);
-    CFRelease(attributes);
-    CFRelease(placeHolderAttributedString);
-    CFRelease(mutableAttributeString);
-    CFRelease(string);
-    CFRelease(frame);
-    CFRelease(path);
-    CFRelease(frameSetter);
+    CGRect bounds = self.bounds;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        
+        //开启图片上下文
+        UIGraphicsBeginImageContext(rect.size);
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        
+        //翻转上下文
+        CGContextSetTextMatrix(ctx, CGAffineTransformIdentity);
+        CGContextTranslateCTM(ctx, 0, rect.size.height);
+        CGContextScaleCTM(ctx, 1.0, -1.0);
+        
+        //回调设置
+        CTRunDelegateCallbacks callbacks;
+        memset(&callbacks, 0, sizeof(CTRunDelegateCallbacks));
+        callbacks.version = kCTRunDelegateVersion1;
+        callbacks.getAscent = ascentCallback;
+        callbacks.getDescent = descentCallback;
+        callbacks.getWidth = widthCallback;
+        
+        NSDictionary *picDic = @{@"height" : @14,
+                                 @"width" : @14};
+        CTRunDelegateRef delegate = CTRunDelegateCreate(&callbacks, (__bridge void *)picDic);
+        
+        //图片占位
+        unichar placeHolder = 0xFFFC;
+        CFStringRef placeHolderString = CFStringCreateWithCharacters(kCFAllocatorSystemDefault, &placeHolder, 1);
+        CFStringRef keys[1];
+        keys[0] = kCTRunDelegateAttributeName;
+        CTRunDelegateRef values[1];
+        values[0] = delegate;
+        CFDictionaryRef attributes = CFDictionaryCreate(kCFAllocatorSystemDefault, (void *)keys, (void *)values, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+        CFAttributedStringRef placeHolderAttributedString = CFAttributedStringCreate(kCFAllocatorSystemDefault, placeHolderString, attributes);
+        
+        //创建内容
+        CFMutableAttributedStringRef mutableAttributeString = CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
+        CFStringRef string = CFSTR("test text");
+        CFAttributedStringReplaceString(mutableAttributeString, CFRangeMake(0, 0), string);
+        CFAttributedStringReplaceAttributedString(mutableAttributeString, CFRangeMake(CFAttributedStringGetLength(mutableAttributeString), 0), placeHolderAttributedString);
+        
+        //绘制
+        CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString(mutableAttributeString);
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathAddRect(path, NULL, bounds);
+        CFIndex length = CFAttributedStringGetLength(mutableAttributeString);
+        CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, length), path, NULL);
+        CTFrameDraw(frame, ctx);
+        
+        NSString *imagePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"test" ofType:@"png"];
+        UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+        CGRect imageFrame = [self getRectWithFrame:frame];
+        CGContextDrawImage(ctx, imageFrame, image.CGImage);
+        
+        //释放内存
+        CFRelease(delegate);
+        CFRelease(placeHolderString);
+        CFRelease(attributes);
+        CFRelease(placeHolderAttributedString);
+        CFRelease(mutableAttributeString);
+        CFRelease(frameSetter);
+        CFRelease(string);
+        CFRelease(path);
+        CFRelease(frame);
+        
+        //获取位图
+        CGImageRef drawImageRef = CGBitmapContextCreateImage(ctx);
+        UIImage *drawImage = [[UIImage alloc] initWithCGImage:drawImageRef];
+        
+        //关闭上下文
+        UIGraphicsEndImageContext();
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.layer.contents = (__bridge id)_drawImage;
+        });
+    });
+}
+
+- (void)dealloc {
+    if (_drawImage) {
+        CFRelease(_drawImage);
+    }
 }
 
 - (CGRect)getRectWithFrame:(CTFrameRef)frame {
     
-    CFArrayRef linesArray = CTFrameGetLines(frame);\
+    CFArrayRef linesArray = CTFrameGetLines(frame);
     CFIndex linesCount = CFArrayGetCount(linesArray);
     CGPoint points[linesCount];
     CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), points);

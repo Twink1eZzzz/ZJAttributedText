@@ -12,7 +12,7 @@ typedef NS_ENUM(NSUInteger, ZJTextElementImageContentMode) {
     ZJTextElementImageContentModeAspectScale
 };
 
-@class ZJTextAttribute;
+@class ZJTextAttributes;
 
 @interface ZJTextElement : NSObject
 
@@ -26,6 +26,6 @@ typedef NS_ENUM(NSUInteger, ZJTextElementImageContentMode) {
 /**
  属性
  */
-@property (nonatomic, strong) ZJTextAttribute *attribute;
+@property (nonatomic, strong) ZJTextAttributes *attribute;
 
 @end

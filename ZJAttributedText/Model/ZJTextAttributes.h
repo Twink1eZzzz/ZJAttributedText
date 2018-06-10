@@ -18,9 +18,9 @@ typedef void(^OnPressBlock)(void);
 #pragma mark - not supported
 
 /**
- 控制字体是否要根据iOS的“文本大小”辅助选项来进行缩放
+ 点击变色
  */
-@property (nonatomic, assign, getter=isAllowFontScaling) BOOL allowFontScaling;
+@property (nonatomic, assign, getter=isHighlightEnable) BOOL highlightEnable;
 
 /**
  当挂载或者布局变化以后调用
@@ -71,5 +71,10 @@ typedef void(^OnPressBlock)(void);
  阴影偏移
  */
 @property (nonatomic, assign) CGSize shadowOffset;
+
+/**
+ 约束尺寸
+ */
+@property (nonatomic, assign) CGRect constaintSize;
 
 @end

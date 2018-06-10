@@ -11,10 +11,9 @@
 
 @implementation ZJTextFactory
 
-+ (UIView *)textViewWithElements:(NSArray<ZJTextElement *> *)elements constraint:(CGSize)size {
++ (UIView *)textViewWithElements:(NSArray<ZJTextElement *> *)elements defaultAttribute:(ZJTextAttributes *)attributes {
     
     ZJTextView *layer = [ZJTextView new];
-    layer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3];
     return layer;
 }
 
