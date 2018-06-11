@@ -20,12 +20,10 @@ static NSString *const kZJTextImageAttributesAssociateKey = @"kZJTextImageAttrib
                                   NSFontAttributeName : @"font",\
                                   NSForegroundColorAttributeName : @"color",\
                                   NSKernAttributeName : @"letterSpacing",\
-                                  NSObliquenessAttributeName : @"obliquity",\
-                                  NSExpansionAttributeName : @"flat",\
                                   NSStrokeWidthAttributeName : @"strokeWidth",\
                                   NSStrokeColorAttributeName : @"strokeColor",\
-                                  NSShadowAttributeName : @"shadow",\
-                                  NSFontAttributeName : @"font"\
+                                  NSFontAttributeName : @"font",\
+                                  NSVerticalGlyphFormAttributeName : @"isVertical"\
                                   }
 
 @implementation ZJTextFactory
@@ -56,9 +54,10 @@ static NSString *const kZJTextImageAttributesAssociateKey = @"kZJTextImageAttrib
     attributes4.font = [UIFont systemFontOfSize:25];
     attributes4.color = [UIColor redColor];
     attributes4.strokeColor = [UIColor blueColor];
-    //    attributes4.strokeWidth = @0.5; //TODO: 此属性会崩溃
-    attr
-
+    attributes4.strokeWidth = @-1;
+    attributes4.letterSpacing = @10;
+    attributes4.isVertical = @(NO);
+    
     element4.attributes = attributes4;
     
     [self drawLayer:view.layer withElements:@[element1, element2, element3, element4] defaultAttributes:nil];
