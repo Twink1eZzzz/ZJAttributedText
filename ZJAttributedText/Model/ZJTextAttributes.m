@@ -1,12 +1,11 @@
 //
-//  ZJTextAttribute.m
+//  ZJTextAttributes.m
 //  ZJAttributedText
 //
-//  Created by zhangjun on 2018/6/6.
+//  Created by zhangjun on 2018/6/11.
 //
 
 #import "ZJTextAttributes.h"
-#import <Objc/runtime.h>
 
 @implementation ZJTextAttributes
 

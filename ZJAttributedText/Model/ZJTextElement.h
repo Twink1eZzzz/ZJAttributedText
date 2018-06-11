@@ -23,20 +23,4 @@
  */
 @property (nonatomic, strong) ZJTextAttributes *attributes;
 
-/**
- 生成富文本
-
- @param defaultAttributes 默认属性
- @param ignored 是否忽略缓存
- @return 富文本
- */
-- (NSAttributedString *)generateAttributedStringWithDefaultAttributes:(ZJTextAttributes *)defaultAttributes ignoredCache:(BOOL)ignored;
-
-/**
- 重新生成富文本
-
- @return 富文本
- */
-- (NSAttributedString *)regenerateAttributedString;
-
 @end
