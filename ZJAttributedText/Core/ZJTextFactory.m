@@ -211,6 +211,8 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
 
 + (ZJTextAttributes *)combineWithAttributesArray:(NSArray<ZJTextAttributes *> *)attributesArray {
     
+    //根据传入属性对象数组合并出一个新的属性对象. 按数组下表为属性取值优先级
+    
     ZJTextAttributes *combineAttributes = [ZJTextAttributes new];
     
     Class class = [ZJTextAttributes class];
@@ -231,6 +233,8 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
 }
 
 + (UIImage *)drawImageWithContent:(id)content {
+    
+    //将不同类型内容绘制为图片
     
     UIGraphicsBeginImageContext([content frame].size);
     if ([content isKindOfClass:[CALayer class]]) {
@@ -264,6 +268,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
     
     if (!attributesArray.count) return nil;
 
+    //遍历所有基本属性, 生成属性字典
     NSMutableDictionary *attribuesDic = [NSMutableDictionary dictionary];
     
     for (NSString *attributeName in kZJTextAttributesMapper) {
