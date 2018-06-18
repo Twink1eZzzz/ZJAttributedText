@@ -43,31 +43,37 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         BOOL needAdjust = NO;
         for (ZJTextElement *element in elements) {
             
+            //若没有属性, 创建一个空属性站位
             if (!element.attributes) {
                 element.attributes = [ZJTextAttributes new];
             }
             
+            //合并全局属性至元素属性
             if (defaultAttributes) {
                 ZJTextAttributes *combineAttributes = [self combineWithAttributesArray:@[defaultAttributes, element.attributes]];
                 element.attributes = combineAttributes;
             }
             
+            //处理文本
             if ([element.content isKindOfClass:[NSString class]]) {
 
+                //若需要垂直居中模式需要算出高度后二次调整垂直偏移
                 needAdjust = needAdjust ? : [element.attributes.verticalCenter boolValue];
                 
-                //处理文本
+                //生成富文本
                 NSAttributedString *attributedString = [self generateAttributedStringWithContent:element.content attributes:element.attributes];
                 
+                //记录该段文本的位置
                 NSInteger location = entireAttributedString.length;
                 NSInteger length = attributedString.length;
                 element.rangeInParagraph = NSMakeRange(location, length);
                 
+                //拼接
                 [entireAttributedString appendAttributedString:attributedString];
                 
             } else {
                 
-                //处理非文本
+                //处理非文本, 非图片其他类型则调用相关方法绘制成图片
                 UIImage *image = nil;
                 if ([element.content isKindOfClass:[UIImage class]]) {
                     image = element.content;
@@ -79,12 +85,15 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
                 
                 if (image) {
                     
+                    //保存绘制图片
                     element.drawImage = image;
                     
+                    //保存图片位置
                     NSInteger location = entireAttributedString.length + 1;
                     NSInteger length = 1;
                     element.rangeInParagraph = NSMakeRange(location, length);
                     
+                    //储存图片元素, 后面在占位绘制图片及调整位置
                     [imageElementsArray addObject:element];
                     
                     //设置回调
@@ -96,7 +105,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
                     callbacks.getWidth = widthCallback;
                     
                     //创建代理
-                    CTRunDelegateRef delegate = CTRunDelegateCreate(&callbacks, (__bridge void *)element); //TODO: nil测试
+                    CTRunDelegateRef delegate = CTRunDelegateCreate(&callbacks, (__bridge void *)element);
                     if (delegate) {
                         NSDictionary *attributes = @{(__bridge NSString *)kCTRunDelegateAttributeName : (__bridge id)delegate};
                         unichar placeHolder = 0xFFFC;
@@ -110,11 +119,13 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
             }
         }
         
-        //绘制文本
+        //创建CoreText相关抽象
         CFAttributedStringRef attributedStringRef = (__bridge CFAttributedStringRef)entireAttributedString;
         CTFramesetterRef frameSetterRef = CTFramesetterCreateWithAttributedString(attributedStringRef);
         CGSize defaultParagraphSize = [defaultAttributes.paragraphSizeValue CGSizeValue];
         CGSize paragraphSize = CGSizeEqualToSize(defaultParagraphSize, CGSizeZero) ? CGSizeMake(MAXFLOAT, MAXFLOAT) : defaultParagraphSize;
+        
+        //第一次试算
         CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(frameSetterRef, CFRangeMake(0, entireAttributedString.length), nil, paragraphSize, nil);
         
         //二次调整
@@ -122,6 +133,8 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
             for (ZJTextElement *element in elements) {
                 if (element.attributes.verticalCenter) {
                     if (element.rangeInParagraph.length && element.rangeInParagraph.location + element.rangeInParagraph.length <= entireAttributedString.length) {
+                        
+                        //计算剧种模式文字上下偏移量
                         UIFont *font = element.attributes.font ? : [UIFont systemFontOfSize:12];
                         CGFloat verticalOffset = (size.height - (font.ascender + font.descender)) / 2 + element.attributes.verticalOffset.doubleValue;
                         [entireAttributedString addAttributes:@{NSBaselineOffsetAttributeName : @(verticalOffset)} range:element.rangeInParagraph];
@@ -136,6 +149,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
             }
         }
         
+        //生成相关路径->CTFrame
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathAddRect(path, NULL, CGRectMake(0, 0, size.width, size.height));
         CFIndex length = CFAttributedStringGetLength(attributedStringRef);
@@ -150,15 +164,17 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         CGContextTranslateCTM(context, 0, size.height);
         CGContextScaleCTM(context, 1.0, -1.0);
         
+        //绘制文本
         CTFrameDraw(frameRef, context);
         
-        //绘制图片
+        //绘制图片, 先计算图片位置
         NSArray *rectsArray = [self getRectsWithFrame:frameRef];
         NSInteger i = 0;
         for (ZJTextElement *imageElement in imageElementsArray) {
             if (i < rectsArray.count) {
                 CGRect imageFrame = [rectsArray[i] CGRectValue];
                 
+                //垂直居中模式调整offset
                 if (imageElement.attributes.verticalCenter) {
                     imageFrame.origin.y += (size.height - imageFrame.size.height) / 2;
                 }
