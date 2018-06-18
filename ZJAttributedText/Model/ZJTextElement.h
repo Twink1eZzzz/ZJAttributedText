@@ -19,8 +19,18 @@
 @property (nonatomic, strong) id content;
 
 /**
+ 绘制出的图片
+ */
+@property (nonatomic, strong) UIImage *drawImage;
+
+/**
  属性
  */
 @property (nonatomic, strong) ZJTextAttributes *attributes;
+
+/**
+ 在富文本中的位置
+ */
+@property (nonatomic, assign) NSRange rangeInParagraph;
 
 @end

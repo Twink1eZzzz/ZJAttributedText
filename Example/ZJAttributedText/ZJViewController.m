@@ -8,6 +8,8 @@
 
 #import "ZJViewController.h"
 #import "ZJTextFactory.h"
+#import "ZJTextElement.h"
+#import "ZJTextAttributes.h"
 
 @interface ZJViewController ()
 
@@ -19,11 +21,59 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
 
-    UIView *view = [ZJTextFactory textViewWithElements:nil defaultAttributes:nil];
-    view.frame = CGRectMake(100, 100, 200, 200);
-    [self.view addSubview:view];
+    
+    NSString *imagePath = [[NSBundle bundleForClass:[ZJTextElement class]] pathForResource:@"test" ofType:@"png"];
+    UIImage *image2 = [UIImage imageWithContentsOfFile:imagePath];
+    
+    ZJTextElement *element1 = [ZJTextElement new];
+    element1.content = @"test";
+    
+    ZJTextElement *element2 = [ZJTextElement new];
+    element2.content = image2;
+    ZJTextAttributes *attributes2 = [ZJTextAttributes new];
+    attributes2.imageSizeValue = [NSValue valueWithCGSize:CGSizeMake(25, 25)];
+    attributes2.verticalCenter = @YES;
+//    attributes2.verticalOffset = @-10;
+//    attributes2.verticalOffset = @15;
+    element2.attributes = attributes2;
+    
+    
+    ZJTextElement *element3 = [ZJTextElement new];
+    UIImage *image3 = [UIImage imageWithContentsOfFile:imagePath];
+    element3.content = image3;
+    ZJTextAttributes *attributes3 = [ZJTextAttributes new];
+//    attributes3.verticalOffset = @5;
+    element3.attributes = attributes3;
+    
+    
+    ZJTextElement *element4 = [ZJTextElement new];
+    element4.content = @"test";
+    ZJTextAttributes *attributes4 = [ZJTextAttributes new];
+    attributes4.font = [UIFont systemFontOfSize:25];
+    attributes4.color = [UIColor redColor];
+    attributes4.strokeColor = [UIColor blueColor];
+    attributes4.strokeWidth = @-1;
+    attributes4.letterSpacing = @10;
+    attributes4.isVertical = @(NO);
+    element4.attributes = attributes4;
+    
+    ZJTextElement *element5 = [ZJTextElement new];
+    element5.content = @"as阿萨德阿萨德";
+    ZJTextAttributes *attributes5 = [ZJTextAttributes new];
+//    attributes5.verticalOffset = @-3;
+    element5.attributes = attributes5;
+
+    NSArray *elements = @[element1, element2, element3, element4, element5];
+
+    ZJTextAttributes *defaultAttributes = [ZJTextAttributes new];
+    defaultAttributes.paragraphSizeValue = [NSValue valueWithCGSize:CGSizeMake(300, 300)];
+    defaultAttributes.letterSpacing = @2;
+    defaultAttributes.verticalCenter = @YES;
+    
+    [ZJTextFactory drawTextLayerWithElements:elements defaultAttributes:defaultAttributes completion:^(id draw) {
+        [self.view.layer addSublayer:draw];
+    }];
 //    for (NSInteger i = 0; i < 1500000; i++) {
 ////        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * i * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //            [view setNeedsDisplay];

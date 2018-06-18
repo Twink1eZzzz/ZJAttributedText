@@ -7,17 +7,19 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^ZJAttributesTextDrawCompletionBlock)(id draw);
+
 @class ZJTextElement, ZJTextAttributes;
 
 @interface ZJTextFactory : NSObject
 
 /**
- 绘制文本视图
-
+ 绘制文本Layer
+ 
  @param elements 元素数组
  @param defaultAttributes 默认属性
- @return 绘制layer
+ @param completion 绘制完成回调
  */
-+ (UIView *)textViewWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes;
++ (void)drawTextLayerWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(ZJAttributesTextDrawCompletionBlock)completion;
 
 @end

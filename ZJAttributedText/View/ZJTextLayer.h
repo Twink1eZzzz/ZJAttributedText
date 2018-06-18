@@ -7,6 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ZJTextLayer : NSObject
+@interface ZJTextLayer : CALayer
 
 @end

@@ -9,6 +9,13 @@
 
 @interface ZJTextAttributes : NSObject
 
+#pragma mark - common attributes
+
+/**
+ 竖直方向偏移
+ */
+@property (nonatomic, strong) NSNumber *verticalOffset;
+
 #pragma mark - string attributes
 
 /**
@@ -41,6 +48,11 @@
  */
 @property (nonatomic, strong) NSNumber *isVertical;
 
+/**
+ 文字是否自动垂直居中
+ */
+@property (nonatomic, strong) NSNumber *verticalCenter;
+
 ///**
 // 斜体倾斜值
 // */
@@ -59,8 +71,15 @@
 #pragma mark - image attributes
 
 /**
- 尺寸
+ 图片尺寸, 默认为图片本身尺寸
  */
-@property (nonatomic, assign) CGSize size;
+@property (nonatomic, strong) NSValue *imageSizeValue;
+
+#pragma mark - paragraph attributes
+
+/**
+ 段落尺寸, 只在defaultAttributes生效, 默认Maxfloat
+ */
+@property (nonatomic, strong) NSValue *paragraphSizeValue;
 
 @end

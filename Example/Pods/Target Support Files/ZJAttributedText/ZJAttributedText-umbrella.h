@@ -11,8 +11,9 @@
 #endif
 
 #import "ZJTextFactory.h"
-#import "ZJTextAttribute.h"
+#import "ZJTextAttributes.h"
 #import "ZJTextElement.h"
+#import "ZJTextLayer.h"
 #import "ZJTextView.h"
 
 FOUNDATION_EXPORT double ZJAttributedTextVersionNumber;

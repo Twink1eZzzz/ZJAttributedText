@@ -7,7 +7,7 @@
 
 #import "ZJTextFactory.h"
 #import <CoreText/CoreText.h>
-#import "ZJTextView.h"
+#import "ZJTextLayer.h"
 #import "ZJTextElement.h"
 #import "ZJTextAttributes.h"
 #import <Objc/runtime.h>
@@ -17,76 +17,52 @@ static NSString *const kZJTextImageWidth = @"kZJTextImageWidth";
 static NSString *const kZJTextImageAttributesAssociateKey = @"kZJTextImageAttributesAssociateKey";
 
 #define kZJTextAttributesMapper @{\
-                                  NSFontAttributeName : @"font",\
-                                  NSForegroundColorAttributeName : @"color",\
-                                  NSKernAttributeName : @"letterSpacing",\
-                                  NSStrokeWidthAttributeName : @"strokeWidth",\
-                                  NSStrokeColorAttributeName : @"strokeColor",\
-                                  NSFontAttributeName : @"font",\
-                                  NSVerticalGlyphFormAttributeName : @"isVertical"\
-                                  }
+NSFontAttributeName : @"font",\
+NSForegroundColorAttributeName : @"color",\
+NSKernAttributeName : @"letterSpacing",\
+NSStrokeWidthAttributeName : @"strokeWidth",\
+NSStrokeColorAttributeName : @"strokeColor",\
+NSFontAttributeName : @"font",\
+NSVerticalGlyphFormAttributeName : @"isVertical",\
+NSBaselineOffsetAttributeName : @"verticalOffset"\
+}
 
 @implementation ZJTextFactory
 
-+ (UIView *)textViewWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes {
++ (void)drawTextLayerWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(ZJAttributesTextDrawCompletionBlock)completion {
     
-    ZJTextView *view = [ZJTextView new];
-    view.frame = CGRectMake(0, 0, 200, 200);
-    NSString *imagePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"test" ofType:@"png"];
-    UIImage *image2 = [UIImage imageWithContentsOfFile:imagePath];
-    
-    ZJTextElement *element1 = [ZJTextElement new];
-    element1.content = @"test";
-    
-    ZJTextElement *element2 = [ZJTextElement new];
-    element2.content = image2;
-    ZJTextAttributes *attributes2 = [ZJTextAttributes new];
-    attributes2.size = CGSizeMake(25, 25);
-    element2.attributes = attributes2;
-    
-    ZJTextElement *element3 = [ZJTextElement new];
-    UIImage *image3 = [UIImage imageWithContentsOfFile:imagePath];
-    element3.content = image3;
-    
-    ZJTextElement *element4 = [ZJTextElement new];
-    element4.content = @"test";
-    ZJTextAttributes *attributes4 = [ZJTextAttributes new];
-    attributes4.font = [UIFont systemFontOfSize:25];
-    attributes4.color = [UIColor redColor];
-    attributes4.strokeColor = [UIColor blueColor];
-    attributes4.strokeWidth = @-1;
-    attributes4.letterSpacing = @10;
-    attributes4.isVertical = @(NO);
-    
-    element4.attributes = attributes4;
-    
-    [self drawLayer:view.layer withElements:@[element1, element2, element3, element4] defaultAttributes:nil];
-    
-    return view;
-}
-
-+ (void)drawLayer:(CALayer *)layer withElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes {
-    
-    if (!layer || !elements.count) return;
-    
-    //常量
-    CGRect layerBounds = layer.bounds;
-    CGSize layerSize = layerBounds.size;
-    CGFloat height = layerSize.height;
+    if (!elements.count) return;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-
+        
         //组装完整字符串
         NSMutableAttributedString *entireAttributedString = [[NSMutableAttributedString alloc] init];
-        NSMutableArray *imageArray = [NSMutableArray array];
+        NSMutableArray *imageElementsArray = [NSMutableArray array];
         
         //遍历所有元素
+        BOOL needAdjust = NO;
         for (ZJTextElement *element in elements) {
             
+            if (!element.attributes) {
+                element.attributes = [ZJTextAttributes new];
+            }
+            
+            if (defaultAttributes) {
+                ZJTextAttributes *combineAttributes = [self combineWithAttributesArray:@[defaultAttributes, element.attributes]];
+                element.attributes = combineAttributes;
+            }
+            
             if ([element.content isKindOfClass:[NSString class]]) {
+
+                needAdjust = needAdjust ? : [element.attributes.verticalCenter boolValue];
                 
                 //处理文本
-                NSAttributedString *attributedString = [self generateAttributedStringWithContent:element.content attributes:element.attributes defaultAttributes:defaultAttributes];
+                NSAttributedString *attributedString = [self generateAttributedStringWithContent:element.content attributes:element.attributes];
+                
+                NSInteger location = entireAttributedString.length;
+                NSInteger length = attributedString.length;
+                element.rangeInParagraph = NSMakeRange(location, length);
+                
                 [entireAttributedString appendAttributedString:attributedString];
                 
             } else {
@@ -103,8 +79,14 @@ static NSString *const kZJTextImageAttributesAssociateKey = @"kZJTextImageAttrib
                 
                 if (image) {
                     
-                    [imageArray addObject:image];
-      
+                    element.drawImage = image;
+                    
+                    NSInteger location = entireAttributedString.length + 1;
+                    NSInteger length = 1;
+                    element.rangeInParagraph = NSMakeRange(location, length);
+                    
+                    [imageElementsArray addObject:element];
+                    
                     //设置回调
                     CTRunDelegateCallbacks callbacks;
                     memset(&callbacks, 0, sizeof(CTRunDelegateCallbacks));
@@ -128,30 +110,60 @@ static NSString *const kZJTextImageAttributesAssociateKey = @"kZJTextImageAttrib
             }
         }
         
+        //绘制文本
+        CFAttributedStringRef attributedStringRef = (__bridge CFAttributedStringRef)entireAttributedString;
+        CTFramesetterRef frameSetterRef = CTFramesetterCreateWithAttributedString(attributedStringRef);
+        CGSize defaultParagraphSize = [defaultAttributes.paragraphSizeValue CGSizeValue];
+        CGSize paragraphSize = CGSizeEqualToSize(defaultParagraphSize, CGSizeZero) ? CGSizeMake(MAXFLOAT, MAXFLOAT) : defaultParagraphSize;
+        CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(frameSetterRef, CFRangeMake(0, entireAttributedString.length), nil, paragraphSize, nil);
+        
+        //二次调整
+        if (needAdjust) {
+            for (ZJTextElement *element in elements) {
+                if (element.attributes.verticalCenter) {
+                    if (element.rangeInParagraph.length && element.rangeInParagraph.location + element.rangeInParagraph.length <= entireAttributedString.length) {
+                        UIFont *font = element.attributes.font ? : [UIFont systemFontOfSize:12];
+                        CGFloat verticalOffset = (size.height - (font.ascender + font.descender)) / 2 + element.attributes.verticalOffset.doubleValue;
+                        [entireAttributedString addAttributes:@{NSBaselineOffsetAttributeName : @(verticalOffset)} range:element.rangeInParagraph];
+                        
+                        //绘制文本
+                        CFAttributedStringRef attributedStringRef = (__bridge CFAttributedStringRef)entireAttributedString;
+                        CFRelease(frameSetterRef);
+                        frameSetterRef = CTFramesetterCreateWithAttributedString(attributedStringRef);
+                        //size = CTFramesetterSuggestFrameSizeWithConstraints(frameSetterRef, CFRangeMake(0, entireAttributedString.length), nil, paragraphSize, nil);
+                    }
+                }
+            }
+        }
+        
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathAddRect(path, NULL, CGRectMake(0, 0, size.width, size.height));
+        CFIndex length = CFAttributedStringGetLength(attributedStringRef);
+        CTFrameRef frameRef = CTFramesetterCreateFrame(frameSetterRef, CFRangeMake(0, length), path, NULL);
+        
         //开启图片上下文
-        UIGraphicsBeginImageContextWithOptions(layerSize, NO, [UIScreen mainScreen].scale);
+        UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
         CGContextRef context = UIGraphicsGetCurrentContext();
         
         //翻转上下文
         CGContextSetTextMatrix(context, CGAffineTransformIdentity);
-        CGContextTranslateCTM(context, 0, height);
+        CGContextTranslateCTM(context, 0, size.height);
         CGContextScaleCTM(context, 1.0, -1.0);
         
-        //绘制文本
-        CFAttributedStringRef attributedStringRef = (__bridge CFAttributedStringRef)entireAttributedString;
-        CTFramesetterRef frameSetterRef = CTFramesetterCreateWithAttributedString(attributedStringRef);
-        CGMutablePathRef path = CGPathCreateMutable();
-        CGPathAddRect(path, NULL, layerBounds);
-        CFIndex length = CFAttributedStringGetLength(attributedStringRef);
-        CTFrameRef frame = CTFramesetterCreateFrame(frameSetterRef, CFRangeMake(0, length), path, NULL);
-        CTFrameDraw(frame, context);
+        CTFrameDraw(frameRef, context);
         
         //绘制图片
-        NSArray *rectsArray = [self getRectsWithFrame:frame];
+        NSArray *rectsArray = [self getRectsWithFrame:frameRef];
         NSInteger i = 0;
-        for (UIImage *image in imageArray) {
+        for (ZJTextElement *imageElement in imageElementsArray) {
             if (i < rectsArray.count) {
                 CGRect imageFrame = [rectsArray[i] CGRectValue];
+                
+                if (imageElement.attributes.verticalCenter) {
+                    imageFrame.origin.y += (size.height - imageFrame.size.height) / 2;
+                }
+                
+                UIImage *image = imageElement.drawImage;
                 CGContextDrawImage(context, imageFrame, image.CGImage);
                 i++;
             }
@@ -160,18 +172,46 @@ static NSString *const kZJTextImageAttributesAssociateKey = @"kZJTextImageAttrib
         //获取位图
         CGImageRef drawImageRef = CGBitmapContextCreateImage(context);
         UIImage *drawImage = [[UIImage alloc] initWithCGImage:drawImageRef];
+        
         //关闭上下文
         UIGraphicsEndImageContext();
         
+        //主线程生成Layer
         dispatch_async(dispatch_get_main_queue(), ^{
+            CALayer *layer = [CALayer layer];
+            layer.frame = CGRectMake(0, 0, size.width, size.height);
             layer.contents = (__bridge id)drawImage.CGImage;
+            if (completion) {
+                completion(layer);
+            }
         });
         
         //释放内存
         CFRelease(frameSetterRef);
         CFRelease(path);
-        CFRelease(frame);
+        CFRelease(frameRef);
     });
+}
+
++ (ZJTextAttributes *)combineWithAttributesArray:(NSArray<ZJTextAttributes *> *)attributesArray {
+    
+    ZJTextAttributes *combineAttributes = [ZJTextAttributes new];
+    
+    Class class = [ZJTextAttributes class];
+    unsigned int count = 0;
+    Ivar *ivars = class_copyIvarList(class, &count);
+    for (int i = 0; i < count; i++) {
+        NSString *key = [NSString stringWithUTF8String:ivar_getName(ivars[i])];
+        id value = nil;
+        for (ZJTextAttributes *attributes in attributesArray) {
+            value = [attributes valueForKey:key];
+            if (value) {
+                [combineAttributes setValue:value forKey:key];
+                break;
+            }
+        }
+    }
+    return combineAttributes;
 }
 
 + (UIImage *)drawImageWithContent:(id)content {
@@ -188,18 +228,19 @@ static NSString *const kZJTextImageAttributesAssociateKey = @"kZJTextImageAttrib
     return image;
 }
 
-+ (NSAttributedString *)generateAttributedStringWithContent:(NSString *)content attributes:(ZJTextAttributes *)attributes defaultAttributes:(ZJTextAttributes *)defaultAttributes {
++ (NSAttributedString *)generateAttributedStringWithContent:(NSString *)content attributes:(ZJTextAttributes *)attributes {
     
     if (!content) return nil;
     
     NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:content];
     if (!mutableAttributedString) return nil;
     
-    NSDictionary *attributesDic = [self generateAttribuesDicWithAttributesArray:[NSArray arrayWithObjects:attributes, defaultAttributes, nil]];
+    //增加基本属性
+    NSDictionary *attributesDic = [self generateAttribuesDicWithAttributesArray:@[attributes]];
     if (attributesDic) {
         [mutableAttributedString addAttributes:attributesDic range:NSMakeRange(0, mutableAttributedString.length)];
     }
-   
+    
     return mutableAttributedString.copy;
 }
 
@@ -208,8 +249,7 @@ static NSString *const kZJTextImageAttributesAssociateKey = @"kZJTextImageAttrib
     if (!attributesArray.count) return nil;
 
     NSMutableDictionary *attribuesDic = [NSMutableDictionary dictionary];
-    attribuesDic[NSVerticalGlyphFormAttributeName] = @0;
-
+    
     for (NSString *attributeName in kZJTextAttributesMapper) {
         NSString *propertyName = kZJTextAttributesMapper[attributeName];
         NSInteger index = 0;
@@ -277,19 +317,29 @@ static NSString *const kZJTextImageAttributesAssociateKey = @"kZJTextImageAttrib
 static CGFloat ascentCallback(void *ref) {
     ZJTextElement *element = (__bridge ZJTextElement *)ref;
     if (element.attributes) {
-        return element.attributes.size.height ? : [element.content size].height;
+        CGSize imageSize = [element.attributes.imageSizeValue CGSizeValue];
+        CGFloat height = imageSize.height ? : [element.content size].height;
+        CGFloat ascent = height;
+        if (element.attributes.verticalOffset) {
+            ascent += element.attributes.verticalOffset.doubleValue;
+        }
+        return ascent;
     }
     return [element.content size].height;
 }
 
 static CGFloat descentCallback(void *ref) {
-    return 0;
+    ZJTextElement *element = (__bridge ZJTextElement *)ref;
+    CGFloat offset = element.attributes.verticalOffset.doubleValue;
+    return -offset;
 }
 
 static CGFloat widthCallback(void *ref) {
     ZJTextElement *element = (__bridge ZJTextElement *)ref;
     if (element.attributes) {
-        return element.attributes.size.width ? : [element.content size].width;
+        CGSize imageSize = [element.attributes.imageSizeValue CGSizeValue];
+        CGFloat width = imageSize.width ? : [element.content size].width;
+        return width;
     }
     return [element.content size].width;
 }
