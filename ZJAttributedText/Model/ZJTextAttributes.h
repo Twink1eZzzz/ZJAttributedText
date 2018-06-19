@@ -7,6 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
+
 @interface ZJTextAttributes : NSObject
 
 #pragma mark - common attributes
@@ -15,6 +17,16 @@
  竖直方向偏移
  */
 @property (nonatomic, strong) NSNumber *verticalOffset;
+
+/**
+ 点击Block
+ */
+@property (nonatomic, copy) ZJTextZJTextAttributeOnClickedBlock onClicked;
+
+/**
+ 是否缓存frame, 会计算文本在整段富文本中的frame
+ */
+@property (nonatomic, strong) NSNumber *cacheFrame;
 
 #pragma mark - string attributes
 
@@ -80,6 +92,6 @@
 /**
  段落尺寸, 只在defaultAttributes生效, 默认Maxfloat
  */
-@property (nonatomic, strong) NSValue *paragraphSizeValue;
+@property (nonatomic, strong) NSValue *constraintSizeValue;
 
 @end

@@ -29,8 +29,13 @@
 @property (nonatomic, strong) ZJTextAttributes *attributes;
 
 /**
- 在富文本中的位置
+ 在富文本中的范围
  */
-@property (nonatomic, assign) NSRange rangeInParagraph;
+@property (nonatomic, strong, readonly) NSValue *rangeValue;
+
+/**
+ 在富文本中的frame
+ */
+@property (nonatomic, strong, readonly) NSValue *frameValue;
 
 @end

@@ -33,7 +33,7 @@
     element2.content = image2;
     ZJTextAttributes *attributes2 = [ZJTextAttributes new];
     attributes2.imageSizeValue = [NSValue valueWithCGSize:CGSizeMake(25, 25)];
-    attributes2.verticalCenter = @YES;
+//    attributes2.verticalCenter = @YES;
 //    attributes2.verticalOffset = @-10;
 //    attributes2.verticalOffset = @15;
     element2.attributes = attributes2;
@@ -42,9 +42,9 @@
     ZJTextElement *element3 = [ZJTextElement new];
     UIImage *image3 = [UIImage imageWithContentsOfFile:imagePath];
     element3.content = image3;
-    ZJTextAttributes *attributes3 = [ZJTextAttributes new];
-//    attributes3.verticalOffset = @5;
-    element3.attributes = attributes3;
+//    ZJTextAttributes *attributes3 = [ZJTextAttributes new];
+////    attributes3.verticalOffset = @5;
+//    element3.attributes = attributes3;
     
     
     ZJTextElement *element4 = [ZJTextElement new];
@@ -59,7 +59,7 @@
     element4.attributes = attributes4;
     
     ZJTextElement *element5 = [ZJTextElement new];
-    element5.content = @"as阿萨德阿萨德";
+    element5.content = @"萨德阿萨德德阿萨德德阿萨德德阿萨德德阿萨德德阿萨德";
     ZJTextAttributes *attributes5 = [ZJTextAttributes new];
 //    attributes5.verticalOffset = @-3;
     element5.attributes = attributes5;
@@ -67,11 +67,19 @@
     NSArray *elements = @[element1, element2, element3, element4, element5];
 
     ZJTextAttributes *defaultAttributes = [ZJTextAttributes new];
-    defaultAttributes.paragraphSizeValue = [NSValue valueWithCGSize:CGSizeMake(300, 300)];
+    defaultAttributes.constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(300, 300)];
     defaultAttributes.letterSpacing = @2;
-    defaultAttributes.verticalCenter = @YES;
+//    defaultAttributes.verticalCenter = @YES;
+    defaultAttributes.cacheFrame = @YES;
     
-    [ZJTextFactory drawTextLayerWithElements:elements defaultAttributes:defaultAttributes completion:^(id draw) {
+    
+    [ZJTextFactory drawTextLayerWithElements:elements defaultAttributes:defaultAttributes completion:^(CALayer *draw) {
+        draw.frame = CGRectMake(50, 50, draw.frame.size.width, draw.frame.size.height);
+        CALayer *layer = [CALayer layer];
+        layer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.2].CGColor;
+        layer.frame = [element5.frameValue CGRectValue];
+        [draw addSublayer:layer];
+        
         [self.view.layer addSublayer:draw];
     }];
 //    for (NSInteger i = 0; i < 1500000; i++) {
