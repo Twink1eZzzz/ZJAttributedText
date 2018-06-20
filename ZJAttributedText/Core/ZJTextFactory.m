@@ -14,7 +14,6 @@
 
 static NSString *const kZJTextImageHeight = @"kZJTextImageHeight";
 static NSString *const kZJTextImageWidth = @"kZJTextImageWidth";
-static NSString *const kZJTextImageAttributesAssociateKey = @"kZJTextImageAttributesAssociateKey";
 static NSString *const kZJTextElementAttributeName = @"kZJTextElementAttributeName";
 
 #define kZJTextAttributesMapper @{\
@@ -47,7 +46,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         
         //遍历所有元素
         BOOL needAdjust = NO;
-        BOOL needCacheFrame = NO;
+        
         for (ZJTextElement *element in elements) {
             
             //若没有属性, 创建一个空属性站位
@@ -93,9 +92,6 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
                 
                 if (image) {
                     
-                    //若有图片, 需要遍历CTRun获取Frame
-                    needCacheFrame = YES;
-                    
                     //保存绘制图片
                     element.drawImage = image;
                     
@@ -136,7 +132,8 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
                         
                         //计算剧种模式文字上下偏移量
                         UIFont *font = element.attributes.font ? : [UIFont systemFontOfSize:12];
-                        CGFloat verticalOffset = (size.height - (font.ascender + font.descender)) / 2 + element.attributes.verticalOffset.doubleValue;
+                        CGFloat fontHeight = font.ascender + font.descender;
+                        CGFloat verticalOffset = element.attributes.verticalOffset.doubleValue + (size.height / 4 - fontHeight / 2);
                         [entireAttributedString addAttributes:@{NSBaselineOffsetAttributeName : @(verticalOffset)} range:rangeInParagraph];
                         
                         //绘制文本实例
@@ -166,32 +163,25 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         //绘制文本
         CTFrameDraw(frameRef, context);
         
-        if (needCacheFrame) {
+        //缓存位置
+        [self cacheFrameToElementIfNeeded:frameRef size:size];
+
+        //绘制图片
+        for (ZJTextElement *imageElement in imageElementsArray) {
             
-            //缓存位置
-            [self cacheFrameToElement:frameRef];
+            NSArray *frameValueArray = imageElement.drawFrameValueArray;
+            CGRect imageFrame = [[frameValueArray firstObject] CGRectValue];
             
-            for (ZJTextElement *imageElement in imageElementsArray) {
+            //垂直居中模式调整offset
+            if (imageElement.attributes.verticalCenter) {
+                imageFrame.origin.y -= (size.height - imageFrame.size.height) / 2;
                 
-                CGRect imageFrame = [imageElement.frameValue CGRectValue];
-                
-                //垂直居中模式调整offset
-                if (imageElement.attributes.verticalCenter) {
-                    imageFrame.origin.y += (size.height - imageFrame.size.height) / 2;
-                    
-                    //调整
-                    [imageElement setValue:[NSValue valueWithCGRect:imageFrame] forKey:@"frameValue"];
-                }
-                
-                UIImage *image = imageElement.drawImage;
-                CGContextDrawImage(context, imageFrame, image.CGImage);
+                //调整
+                [imageElement setValue: @[[NSValue valueWithCGRect:imageFrame]] forKey:@"drawFrameValueArray"];
             }
-        }
-        
-        for (ZJTextElement *elementsss in elements) {
             
-            CGRect rect = [elementsss.frameValue CGRectValue];
-            NSLog(@"%@", NSStringFromCGRect(rect));
+            UIImage *image = imageElement.drawImage;
+            CGContextDrawImage(context, imageFrame, image.CGImage);
         }
         
         //获取位图
@@ -204,6 +194,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         //主线程生成Layer
         dispatch_async(dispatch_get_main_queue(), ^{
             CALayer *layer = [CALayer layer];
+            layer.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.1].CGColor;
             layer.frame = CGRectMake(0, 0, size.width, size.height);
             layer.contents = (__bridge id)drawImage.CGImage;
             if (completion) {
@@ -326,7 +317,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
     return nil;
 }
 
-+ (void)cacheFrameToElement:(CTFrameRef)frame {
++ (void)cacheFrameToElementIfNeeded:(CTFrameRef)frame size:(CGSize)size {
     
     CFArrayRef linesArray = CTFrameGetLines(frame);
     CFIndex linesCount = CFArrayGetCount(linesArray);
@@ -346,6 +337,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
             CTRunRef run = CFArrayGetValueAtIndex(runsArray, j);
             CFDictionaryRef attributes = CTRunGetAttributes(run);
             
+            //是否必要计算
             BOOL needCaculate = YES;
             ZJTextElement *element = CFDictionaryGetValue(attributes, (__bridge CFStringRef)kZJTextElementAttributeName);
             if (element) {
@@ -368,11 +360,40 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
                 runBounds.origin.y = point.y - descent;
                 CGPathRef path = CTFrameGetPath(frame);
                 CGRect boxRect = CGPathGetBoundingBox(path);
-                CGRect imageBounds = CGRectOffset(runBounds, boxRect.origin.x, boxRect.origin.y);
                 
-                NSValue *boundsValue = [NSValue valueWithCGRect:imageBounds];
+                //绘制的基础frame
+                CGRect bounds = CGRectOffset(runBounds, boxRect.origin.x, boxRect.origin.y);
+                NSValue *frameValue = [NSValue valueWithCGRect:bounds];
                 
-                [element setValue:boundsValue forKey:@"frameValue"];
+                NSArray *drawFrameValueArray = element.drawFrameValueArray;
+                if (!drawFrameValueArray) {
+                    drawFrameValueArray = @[frameValue];
+                } else {
+                    drawFrameValueArray = [drawFrameValueArray arrayByAddingObject:frameValue];
+                }
+                [element setValue:drawFrameValueArray forKey:@"drawFrameValueArray"];
+                
+                //显示的frame: 由绘制的基础frame->二次调整->翻转得到
+                CGFloat overY = bounds.origin.y;
+                if (element.attributes.verticalCenter) {
+                    if (element.drawImage) {
+                        overY += (size.height - bounds.size.height) / 2;
+                    } else {
+                        NSNumber *verticalOffset = CFDictionaryGetValue(attributes, NSBaselineOffsetAttributeName);
+                        overY += verticalOffset.floatValue;
+                    }
+                }
+                overY = size.height - overY - bounds.size.height;
+                CGRect overBounds = CGRectMake(bounds.origin.x, overY, bounds.size.width, bounds.size.height);
+                NSValue *overFrameValue = [NSValue valueWithCGRect:overBounds];
+                
+                NSArray *frameValueArray = element.frameValueArray;
+                if (!frameValueArray) {
+                    frameValueArray = @[overFrameValue];
+                } else {
+                    frameValueArray = [frameValueArray arrayByAddingObject:overFrameValue];
+                }
+                [element setValue:frameValueArray forKey:@"frameValueArray"];
             }
         }
     }
@@ -381,19 +402,18 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
 static CGFloat ascentCallback(void *ref) {
     
     ZJTextElement *element = (__bridge ZJTextElement *)ref;
-
     if (element.drawImage) {
-        
-        if (element.attributes) {
+        CGFloat originWidth = [element.drawImage size].width / [UIScreen mainScreen].scale;
+        if (element.attributes && element.attributes.imageSizeValue) {
             CGSize imageSize = [element.attributes.imageSizeValue CGSizeValue];
-            CGFloat height = imageSize.height ? : [element.content size].height;
+            CGFloat height = imageSize.height;
             CGFloat ascent = height;
             if (element.attributes.verticalOffset) {
                 ascent += element.attributes.verticalOffset.doubleValue;
             }
             return ascent;
         }
-        return [element.content size].height;
+        return originWidth;
     }
     return 0;
 }
@@ -401,9 +421,7 @@ static CGFloat ascentCallback(void *ref) {
 static CGFloat descentCallback(void *ref) {
     
     ZJTextElement *element = (__bridge ZJTextElement *)ref;
-    
     if (element.drawImage) {
-        
         CGFloat offset = element.attributes.verticalOffset.doubleValue;
         return -offset;
     }
@@ -413,15 +431,14 @@ static CGFloat descentCallback(void *ref) {
 static CGFloat widthCallback(void *ref) {
     
     ZJTextElement *element = (__bridge ZJTextElement *)ref;
-
     if (element.drawImage) {
-        
-        if (element.attributes) {
+        CGFloat originWidth = [element.drawImage size].width / [UIScreen mainScreen].scale;
+        if (element.attributes && element.attributes.imageSizeValue) {
             CGSize imageSize = [element.attributes.imageSizeValue CGSizeValue];
-            CGFloat width = imageSize.width ? : [element.content size].width;
+            CGFloat width = imageSize.width;
             return width;
         }
-        return [element.content size].width;
+        return originWidth;
     }
     return 0;
     

@@ -10,6 +10,7 @@
 #import "ZJTextFactory.h"
 #import "ZJTextElement.h"
 #import "ZJTextAttributes.h"
+#import <objc/runtime.h>
 
 @interface ZJViewController ()
 
@@ -42,9 +43,9 @@
     ZJTextElement *element3 = [ZJTextElement new];
     UIImage *image3 = [UIImage imageWithContentsOfFile:imagePath];
     element3.content = image3;
-//    ZJTextAttributes *attributes3 = [ZJTextAttributes new];
-////    attributes3.verticalOffset = @5;
-//    element3.attributes = attributes3;
+    ZJTextAttributes *attributes3 = [ZJTextAttributes new];
+//    attributes3.imageSizeValue =  [NSValue valueWithCGSize:CGSizeMake(30, 30)];
+    element3.attributes = attributes3;
     
     
     ZJTextElement *element4 = [ZJTextElement new];
@@ -56,10 +57,11 @@
     attributes4.strokeWidth = @-1;
     attributes4.letterSpacing = @10;
     attributes4.isVertical = @(NO);
+//    attributes4.verticalCenter = @YES;
     element4.attributes = attributes4;
     
     ZJTextElement *element5 = [ZJTextElement new];
-    element5.content = @"萨德阿萨德德阿萨德德阿萨德德阿萨德德阿萨德德阿萨德";
+    element5.content = @"萨德阿萨德德阿萨阿萨德德阿萨阿萨德德阿萨德德德德阿萨德德德德阿萨德";
     ZJTextAttributes *attributes5 = [ZJTextAttributes new];
 //    attributes5.verticalOffset = @-3;
     element5.attributes = attributes5;
@@ -75,10 +77,16 @@
     
     [ZJTextFactory drawTextLayerWithElements:elements defaultAttributes:defaultAttributes completion:^(CALayer *draw) {
         draw.frame = CGRectMake(50, 50, draw.frame.size.width, draw.frame.size.height);
-        CALayer *layer = [CALayer layer];
-        layer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.2].CGColor;
-        layer.frame = [element5.frameValue CGRectValue];
-        [draw addSublayer:layer];
+        
+        NSArray *frameValueArray = element5.frameValueArray;
+        for (NSValue *frameValue in frameValueArray) {
+            CALayer *layer = [CALayer layer];
+            layer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.2].CGColor;
+            CGRect frame = [frameValue CGRectValue];
+            layer.frame = frame;
+            [draw addSublayer:layer];
+        }
+        
         
         [self.view.layer addSublayer:draw];
     }];
