@@ -28,17 +28,17 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
  */
 @property (nonatomic, strong) NSNumber *cacheFrame;
 
+/**
+ 字体, 如果是非文字元素(图片), 设置font, 会
+ */
+@property (nonatomic, strong) UIFont *font;
+
 #pragma mark - string attributes
 
 /**
  颜色
  */
 @property (nonatomic, strong) UIColor *color;
-
-/**
- 字体
- */
-@property (nonatomic, strong) UIFont *font;
 
 /**
  字间距
@@ -60,10 +60,10 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
  */
 @property (nonatomic, strong) NSNumber *isVertical;
 
-/**
- 文字是否自动垂直居中
- */
-@property (nonatomic, strong) NSNumber *verticalCenter;
+///**
+// 文字是否自动垂直居中
+// */
+//@property (nonatomic, strong) NSNumber *verticalCenter;
 
 ///**
 // 斜体倾斜值

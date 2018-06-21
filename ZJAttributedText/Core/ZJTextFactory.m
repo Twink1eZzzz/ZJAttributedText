@@ -43,10 +43,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         //组装完整字符串
         NSMutableAttributedString *entireAttributedString = [[NSMutableAttributedString alloc] init];
         NSMutableArray *imageElementsArray = [NSMutableArray array];
-        
-        //遍历所有元素
-        BOOL needAdjust = NO;
-        
+     
         for (ZJTextElement *element in elements) {
             
             //若没有属性, 创建一个空属性站位
@@ -63,9 +60,6 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
             //处理文本
             if ([element.content isKindOfClass:[NSString class]]) {
 
-                //若需要垂直居中模式需要算出高度后二次调整垂直偏移
-                needAdjust = needAdjust ? : [element.attributes.verticalCenter boolValue];
-                
                 //生成富文本
                 NSAttributedString *attributedString = [self generateAttributedStringWithStringElement:element];
                 if (!attributedString) continue;
@@ -119,31 +113,8 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         CGSize defaultParagraphSize = [defaultAttributes.constraintSizeValue CGSizeValue];
         CGSize paragraphSize = CGSizeEqualToSize(defaultParagraphSize, CGSizeZero) ? CGSizeMake(MAXFLOAT, MAXFLOAT) : defaultParagraphSize;
         
-        //第一次试算
+        //试算
         CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(frameSetterRef, CFRangeMake(0, entireAttributedString.length), nil, paragraphSize, nil);
-        
-        //二次调整
-        if (needAdjust) {
-            for (ZJTextElement *element in elements) {
-                if (element.attributes.verticalCenter) {
-                    if (element.rangeValue) {
-                        
-                        NSRange rangeInParagraph = [element.rangeValue rangeValue];
-                        
-                        //计算剧种模式文字上下偏移量
-                        UIFont *font = element.attributes.font ? : [UIFont systemFontOfSize:12];
-                        CGFloat fontHeight = font.ascender + font.descender;
-                        CGFloat verticalOffset = element.attributes.verticalOffset.doubleValue + (size.height / 4 - fontHeight / 2);
-                        [entireAttributedString addAttributes:@{NSBaselineOffsetAttributeName : @(verticalOffset)} range:rangeInParagraph];
-                        
-                        //绘制文本实例
-                        CFAttributedStringRef attributedStringRef = (__bridge CFAttributedStringRef)entireAttributedString;
-                        CFRelease(frameSetterRef);
-                        frameSetterRef = CTFramesetterCreateWithAttributedString(attributedStringRef);
-                    }
-                }
-            }
-        }
         
         //生成相关路径->CTFrame
         CGMutablePathRef path = CGPathCreateMutable();
@@ -159,10 +130,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         CGContextSetTextMatrix(context, CGAffineTransformIdentity);
         CGContextTranslateCTM(context, 0, size.height);
         CGContextScaleCTM(context, 1.0, -1.0);
-        
-        //绘制文本
-        CTFrameDraw(frameRef, context);
-        
+
         //缓存位置
         [self cacheFrameToElementIfNeeded:frameRef size:size];
 
@@ -172,17 +140,12 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
             NSArray *frameValueArray = imageElement.drawFrameValueArray;
             CGRect imageFrame = [[frameValueArray firstObject] CGRectValue];
             
-            //垂直居中模式调整offset
-            if (imageElement.attributes.verticalCenter) {
-                imageFrame.origin.y -= (size.height - imageFrame.size.height) / 2;
-                
-                //调整
-                [imageElement setValue: @[[NSValue valueWithCGRect:imageFrame]] forKey:@"drawFrameValueArray"];
-            }
-            
             UIImage *image = imageElement.drawImage;
             CGContextDrawImage(context, imageFrame, image.CGImage);
         }
+        
+        //绘制文本
+        CTFrameDraw(frameRef, context);
         
         //获取位图
         CGImageRef drawImageRef = CGBitmapContextCreateImage(context);
@@ -253,15 +216,17 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
     NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:element.content];
     if (!mutableAttributedString) return nil;
     
+    NSRange range = NSMakeRange(0, mutableAttributedString.length);
+    
     //增加基本属性
     NSDictionary *attributesDic = [self generateAttribuesDicWithAttributesArray:@[element.attributes]];
     if (attributesDic) {
-        [mutableAttributedString addAttributes:attributesDic range:NSMakeRange(0, mutableAttributedString.length)];
+        [mutableAttributedString addAttributes:attributesDic range:range];
     }
     
     //关联元素与CTRun
     NSDictionary *attributes = @{kZJTextElementAttributeName : element};
-    [mutableAttributedString addAttributes:attributes range:NSMakeRange(0, mutableAttributedString.length)];
+    [mutableAttributedString addAttributes:attributes range:range];
     
     return mutableAttributedString.copy;
 }
@@ -373,16 +338,8 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
                 }
                 [element setValue:drawFrameValueArray forKey:@"drawFrameValueArray"];
                 
-                //显示的frame: 由绘制的基础frame->二次调整->翻转得到
+                //显示的frame: 由绘制的基础frame->翻转得到
                 CGFloat overY = bounds.origin.y;
-                if (element.attributes.verticalCenter) {
-                    if (element.drawImage) {
-                        overY += (size.height - bounds.size.height) / 2;
-                    } else {
-                        NSNumber *verticalOffset = CFDictionaryGetValue(attributes, NSBaselineOffsetAttributeName);
-                        overY += verticalOffset.floatValue;
-                    }
-                }
                 overY = size.height - overY - bounds.size.height;
                 CGRect overBounds = CGRectMake(bounds.origin.x, overY, bounds.size.width, bounds.size.height);
                 NSValue *overFrameValue = [NSValue valueWithCGRect:overBounds];
@@ -402,30 +359,49 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
 static CGFloat ascentCallback(void *ref) {
     
     ZJTextElement *element = (__bridge ZJTextElement *)ref;
+    CGFloat ascent = 0;
     if (element.drawImage) {
-        CGFloat originWidth = [element.drawImage size].width / [UIScreen mainScreen].scale;
+        CGFloat height = 0;
         if (element.attributes && element.attributes.imageSizeValue) {
             CGSize imageSize = [element.attributes.imageSizeValue CGSizeValue];
-            CGFloat height = imageSize.height;
-            CGFloat ascent = height;
-            if (element.attributes.verticalOffset) {
-                ascent += element.attributes.verticalOffset.doubleValue;
-            }
-            return ascent;
+            height = imageSize.height;
+        } else {
+            height = [element.drawImage size].height / [UIScreen mainScreen].scale;
         }
-        return originWidth;
+        UIFont *font = [UIFont systemFontOfSize:12];
+        CGFloat fontDescent = fabs(font.descender);
+        CGFloat fontAscent = fabs(font.ascender);
+        CGFloat fontHeight = (fontDescent + fontAscent);
+        ascent = (height - fontHeight) / 2 + fabs(font.ascender);
+        if (element.attributes.verticalOffset) {
+            ascent += element.attributes.verticalOffset.doubleValue;
+        }
     }
-    return 0;
+    return ascent;
 }
 
 static CGFloat descentCallback(void *ref) {
     
     ZJTextElement *element = (__bridge ZJTextElement *)ref;
+    CGFloat descent = 0;
     if (element.drawImage) {
-        CGFloat offset = element.attributes.verticalOffset.doubleValue;
-        return -offset;
+        CGFloat height = 0;
+        if (element.attributes && element.attributes.imageSizeValue) {
+            CGSize imageSize = [element.attributes.imageSizeValue CGSizeValue];
+            height = imageSize.height;
+        } else {
+            height = [element.drawImage size].height / [UIScreen mainScreen].scale;
+        }
+        UIFont *font = [UIFont systemFontOfSize:12];
+        CGFloat fontDescent = fabs(font.descender);
+        CGFloat fontAscent = fabs(font.ascender);
+        CGFloat fontHeight = (fontDescent + fontAscent);
+        descent = (height - fontHeight) / 2 + fabs(font.descender);
+        if (element.attributes.verticalOffset) {
+            descent -= element.attributes.verticalOffset.doubleValue;
+        }
     }
-    return 0;
+    return descent;
 }
 
 static CGFloat widthCallback(void *ref) {
@@ -441,8 +417,6 @@ static CGFloat widthCallback(void *ref) {
         return originWidth;
     }
     return 0;
-    
-    
 }
 
 @end

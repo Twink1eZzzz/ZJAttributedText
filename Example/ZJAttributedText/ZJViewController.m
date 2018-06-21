@@ -45,6 +45,7 @@
     element3.content = image3;
     ZJTextAttributes *attributes3 = [ZJTextAttributes new];
 //    attributes3.imageSizeValue =  [NSValue valueWithCGSize:CGSizeMake(30, 30)];
+//    attributes3.verticalOffset = @-10;
     element3.attributes = attributes3;
     
     
@@ -61,12 +62,12 @@
     element4.attributes = attributes4;
     
     ZJTextElement *element5 = [ZJTextElement new];
-    element5.content = @"萨德阿萨德德阿萨阿萨德德阿萨阿萨德德阿萨德德德德阿萨德德德德阿萨德";
+    element5.content = @"萨德阿萨德德阿萨阿萨德";
     ZJTextAttributes *attributes5 = [ZJTextAttributes new];
 //    attributes5.verticalOffset = @-3;
     element5.attributes = attributes5;
 
-    NSArray *elements = @[element1, element2, element3, element4, element5];
+    NSArray *elements = @[element1, element2, element3, element5];
 
     ZJTextAttributes *defaultAttributes = [ZJTextAttributes new];
     defaultAttributes.constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(300, 300)];
