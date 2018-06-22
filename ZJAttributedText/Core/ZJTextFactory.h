@@ -18,7 +18,7 @@
  @param defaultAttributes 默认属性
  @param completion 绘制完成回调
  */
-+ (void)drawTextViewWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(void(^)(id drawView))completion;
++ (void)drawTextViewWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(void(^)(UIView *drawView))completion;
 
 /**
  绘制文本Layer, 不响应手势
@@ -27,6 +27,6 @@
  @param defaultAttributes 默认属性
  @param completion 绘制完成回调
  */
-+ (void)drawTextLayerWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(void(^)(id drawLayer))completion;
++ (void)drawTextLayerWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(void(^)(CALayer *drawLayer))completion;
 
 @end

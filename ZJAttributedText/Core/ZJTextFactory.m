@@ -7,14 +7,15 @@
 
 #import "ZJTextFactory.h"
 #import <CoreText/CoreText.h>
-#import "ZJTextLayer.h"
+#import "ZJTextView.h"
 #import "ZJTextElement.h"
 #import "ZJTextAttributes.h"
 #import <Objc/runtime.h>
 
-static NSString *const kZJTextImageHeight = @"kZJTextImageHeight";
-static NSString *const kZJTextImageWidth = @"kZJTextImageWidth";
 static NSString *const kZJTextElementAttributeName = @"kZJTextElementAttributeName";
+static NSString *const kZJTextImageAscentAssociateKey = @"kZJTextImageAscentAssociateKey";
+static NSString *const kZJTextImageDescentAssociateKey = @"kZJTextImageDescentAssociateKey";
+static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssociateKey";
 
 #define kZJTextAttributesMapper @{\
 NSFontAttributeName : @"font",\
@@ -29,12 +30,21 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
 
 @implementation ZJTextFactory
 
-+ (void)drawTextViewWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(void(^)(id drawView))completion {
++ (void)drawTextViewWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(void(^)(UIView *drawView))completion {
     
-    
+    [self drawTextLayerWithElements:elements defaultAttributes:defaultAttributes completion:^(CALayer *drawLayer) {
+        if (drawLayer) {
+            ZJTextView *drawView = [[ZJTextView alloc] initWithFrame:drawLayer.bounds];
+            drawView.elements = elements;
+            drawView.drawLayer = drawLayer;
+            if (completion) {
+                completion(drawView);
+            }
+        }
+    }];
 }
 
-+ (void)drawTextLayerWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(void(^)(id drawLayer))completion {
++ (void)drawTextLayerWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(void(^)(CALayer *drawLayer))completion {
     
     if (!elements.count) return;
     
@@ -157,7 +167,6 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         //主线程生成Layer
         dispatch_async(dispatch_get_main_queue(), ^{
             CALayer *layer = [CALayer layer];
-            layer.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.1].CGColor;
             layer.frame = CGRectMake(0, 0, size.width, size.height);
             layer.contents = (__bridge id)drawImage.CGImage;
             if (completion) {
@@ -259,6 +268,49 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
     
      if (!element || !element.content || !element.drawImage) return nil;
     
+    //缓存图片绘制属性
+    //基本属性
+    CGFloat height = 0;
+    CGFloat width = 0;
+    if (element.attributes && element.attributes.imageSizeValue) {
+        CGSize imageSize = [element.attributes.imageSizeValue CGSizeValue];
+        height = imageSize.height;
+        width = imageSize.width;
+    } else {
+        height = [element.drawImage size].height / [UIScreen mainScreen].scale;
+        width = [element.drawImage size].width / [UIScreen mainScreen].scale;
+    }
+    
+    //对齐模式
+    CGFloat ascent = 0;
+    CGFloat descent = 0;
+    switch (element.attributes.imageAlign) {
+        case ZJTextImageAlignBottomToBaseLine:
+            ascent = height;
+            break;
+            
+        case ZJTextImageAlignCenterToFont: {
+            UIFont *font = element.attributes.font ? : [UIFont systemFontOfSize:12];
+            CGFloat fontAscent = fabs(font.ascender);
+            CGFloat fontDescent = fabs(font.descender);
+            CGFloat fontHeight = (fontDescent + fontAscent);
+            CGFloat deltaHeght = (height - fontHeight) / 2;
+            ascent = deltaHeght + fontAscent;
+            descent = deltaHeght+ fontDescent;
+            break;
+        }
+    }
+    
+    //垂直偏移
+    if (element.attributes.verticalOffset) {
+        ascent += element.attributes.verticalOffset.doubleValue;
+        descent -= element.attributes.verticalOffset.doubleValue;
+    }
+
+    objc_setAssociatedObject(element, kZJTextImageAscentAssociateKey.UTF8String, @(ascent), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(element, kZJTextImageDescentAssociateKey.UTF8String, @(descent), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(element, kZJTextImageWidthAssociateKey.UTF8String, @(width), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
     //设置回调
     CTRunDelegateCallbacks callbacks;
     memset(&callbacks, 0, sizeof(CTRunDelegateCallbacks));
@@ -357,66 +409,21 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
 }
 
 static CGFloat ascentCallback(void *ref) {
-    
     ZJTextElement *element = (__bridge ZJTextElement *)ref;
-    CGFloat ascent = 0;
-    if (element.drawImage) {
-        CGFloat height = 0;
-        if (element.attributes && element.attributes.imageSizeValue) {
-            CGSize imageSize = [element.attributes.imageSizeValue CGSizeValue];
-            height = imageSize.height;
-        } else {
-            height = [element.drawImage size].height / [UIScreen mainScreen].scale;
-        }
-        UIFont *font = [UIFont systemFontOfSize:12];
-        CGFloat fontDescent = fabs(font.descender);
-        CGFloat fontAscent = fabs(font.ascender);
-        CGFloat fontHeight = (fontDescent + fontAscent);
-        ascent = (height - fontHeight) / 2 + fabs(font.ascender);
-        if (element.attributes.verticalOffset) {
-            ascent += element.attributes.verticalOffset.doubleValue;
-        }
-    }
-    return ascent;
+    NSNumber *ascent = objc_getAssociatedObject(element, kZJTextImageAscentAssociateKey.UTF8String);
+    return ascent.doubleValue;
 }
 
 static CGFloat descentCallback(void *ref) {
-    
     ZJTextElement *element = (__bridge ZJTextElement *)ref;
-    CGFloat descent = 0;
-    if (element.drawImage) {
-        CGFloat height = 0;
-        if (element.attributes && element.attributes.imageSizeValue) {
-            CGSize imageSize = [element.attributes.imageSizeValue CGSizeValue];
-            height = imageSize.height;
-        } else {
-            height = [element.drawImage size].height / [UIScreen mainScreen].scale;
-        }
-        UIFont *font = [UIFont systemFontOfSize:12];
-        CGFloat fontDescent = fabs(font.descender);
-        CGFloat fontAscent = fabs(font.ascender);
-        CGFloat fontHeight = (fontDescent + fontAscent);
-        descent = (height - fontHeight) / 2 + fabs(font.descender);
-        if (element.attributes.verticalOffset) {
-            descent -= element.attributes.verticalOffset.doubleValue;
-        }
-    }
-    return descent;
+    NSNumber *descent = objc_getAssociatedObject(element, kZJTextImageDescentAssociateKey.UTF8String);
+    return descent.doubleValue;
 }
 
 static CGFloat widthCallback(void *ref) {
-    
     ZJTextElement *element = (__bridge ZJTextElement *)ref;
-    if (element.drawImage) {
-        CGFloat originWidth = [element.drawImage size].width / [UIScreen mainScreen].scale;
-        if (element.attributes && element.attributes.imageSizeValue) {
-            CGSize imageSize = [element.attributes.imageSizeValue CGSizeValue];
-            CGFloat width = imageSize.width;
-            return width;
-        }
-        return originWidth;
-    }
-    return 0;
+    NSNumber *width = objc_getAssociatedObject(element, kZJTextImageWidthAssociateKey.UTF8String);
+    return width.doubleValue;
 }
 
 @end

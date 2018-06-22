@@ -38,6 +38,9 @@
 //    attributes2.verticalOffset = @-10;
 //    attributes2.verticalOffset = @15;
     element2.attributes = attributes2;
+    element2.attributes.onClicked = ^{
+        NSLog(@"element2 :%s", __func__);
+    };
     
     
     ZJTextElement *element3 = [ZJTextElement new];
@@ -52,7 +55,7 @@
     ZJTextElement *element4 = [ZJTextElement new];
     element4.content = @"test";
     ZJTextAttributes *attributes4 = [ZJTextAttributes new];
-    attributes4.font = [UIFont systemFontOfSize:25];
+    attributes4.font = [UIFont systemFontOfSize:20];
     attributes4.color = [UIColor redColor];
     attributes4.strokeColor = [UIColor blueColor];
     attributes4.strokeWidth = @-1;
@@ -62,34 +65,40 @@
     element4.attributes = attributes4;
     
     ZJTextElement *element5 = [ZJTextElement new];
-    element5.content = @"萨德阿萨德德阿萨阿萨德";
+    element5.content = @"萨德阿萨德德阿萨阿萨阿萨德德阿萨阿萨阿萨德德阿萨阿萨阿萨德德阿萨阿萨德";
     ZJTextAttributes *attributes5 = [ZJTextAttributes new];
 //    attributes5.verticalOffset = @-3;
     element5.attributes = attributes5;
+    element5.attributes.onClicked = ^{
+        NSLog(@"element5 :%s", __func__);
+    };
 
-    NSArray *elements = @[element1, element2, element3, element5];
+    NSArray *elements = @[element1, element2, element3, element4, element5];
 
     ZJTextAttributes *defaultAttributes = [ZJTextAttributes new];
     defaultAttributes.constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(300, 300)];
     defaultAttributes.letterSpacing = @2;
-//    defaultAttributes.verticalCenter = @YES;
+    defaultAttributes.imageAlign = ZJTextImageAlignCenterToFont;
     defaultAttributes.cacheFrame = @YES;
     
     
-    [ZJTextFactory drawTextLayerWithElements:elements defaultAttributes:defaultAttributes completion:^(CALayer *draw) {
+    [ZJTextFactory drawTextViewWithElements:elements defaultAttributes:defaultAttributes completion:^(UIView *draw) {
+//        draw.frame = CGRectMake(50, 50, draw.frame.size.width, draw.frame.size.height);
+//
+//        NSArray *frameValueArray = element5.frameValueArray;
+//        for (NSValue *frameValue in frameValueArray) {
+//            CALayer *layer = [CALayer layer];
+//            layer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.2].CGColor;
+//            CGRect frame = [frameValue CGRectValue];
+//            layer.frame = frame;
+//            [draw addSublayer:layer];
+//        }
+//
+//
+//        [self.view.layer addSublayer:draw];
+        
         draw.frame = CGRectMake(50, 50, draw.frame.size.width, draw.frame.size.height);
-        
-        NSArray *frameValueArray = element5.frameValueArray;
-        for (NSValue *frameValue in frameValueArray) {
-            CALayer *layer = [CALayer layer];
-            layer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.2].CGColor;
-            CGRect frame = [frameValue CGRectValue];
-            layer.frame = frame;
-            [draw addSublayer:layer];
-        }
-        
-        
-        [self.view.layer addSublayer:draw];
+        [self.view addSubview:draw];
     }];
 //    for (NSInteger i = 0; i < 1500000; i++) {
 ////        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * i * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
