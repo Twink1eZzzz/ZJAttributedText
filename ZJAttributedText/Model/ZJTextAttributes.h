@@ -61,14 +61,9 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
 @property (nonatomic, strong) UIColor *strokeColor;
 
 /**
- 是否是纵向, 默认NO
+ 文字绘制随文字书写方向, 默认 否(0), 是(非0)
  */
-@property (nonatomic, strong) NSNumber *isVertical;
-
-///**
-// 文字是否自动垂直居中
-// */
-//@property (nonatomic, strong) NSNumber *verticalCenter;
+@property (nonatomic, strong) NSNumber *verticalForm;
 
 ///**
 // 斜体倾斜值

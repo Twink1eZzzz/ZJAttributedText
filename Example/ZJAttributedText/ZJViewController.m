@@ -48,7 +48,7 @@
     element3.content = image3;
     ZJTextAttributes *attributes3 = [ZJTextAttributes new];
 //    attributes3.imageSizeValue =  [NSValue valueWithCGSize:CGSizeMake(30, 30)];
-//    attributes3.verticalOffset = @-10;
+    attributes3.verticalOffset = @-10;
     element3.attributes = attributes3;
     
     
@@ -60,7 +60,6 @@
     attributes4.strokeColor = [UIColor blueColor];
     attributes4.strokeWidth = @-1;
     attributes4.letterSpacing = @10;
-    attributes4.isVertical = @(NO);
 //    attributes4.verticalCenter = @YES;
     element4.attributes = attributes4;
     
@@ -69,6 +68,8 @@
     ZJTextAttributes *attributes5 = [ZJTextAttributes new];
 //    attributes5.verticalOffset = @-3;
     element5.attributes = attributes5;
+    attributes5.verticalOffset = @-10;
+//    element5.attributes.verticalForm = @-1;
     element5.attributes.onClicked = ^{
         NSLog(@"element5 :%s", __func__);
     };
@@ -80,19 +81,21 @@
     defaultAttributes.letterSpacing = @2;
     defaultAttributes.imageAlign = ZJTextImageAlignCenterToFont;
     defaultAttributes.cacheFrame = @YES;
-    
+//    defaultAttributes.onClicked = ^{
+//      NSLog(@"%s", __func__);
+//    };
     
     [ZJTextFactory drawTextViewWithElements:elements defaultAttributes:defaultAttributes completion:^(UIView *draw) {
 //        draw.frame = CGRectMake(50, 50, draw.frame.size.width, draw.frame.size.height);
 //
-//        NSArray *frameValueArray = element5.frameValueArray;
-//        for (NSValue *frameValue in frameValueArray) {
-//            CALayer *layer = [CALayer layer];
-//            layer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.2].CGColor;
-//            CGRect frame = [frameValue CGRectValue];
-//            layer.frame = frame;
-//            [draw addSublayer:layer];
-//        }
+        NSArray *frameValueArray = element5.frameValueArray;
+        for (NSValue *frameValue in frameValueArray) {
+            CALayer *layer = [CALayer layer];
+            layer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.2].CGColor;
+            CGRect frame = [frameValue CGRectValue];
+            layer.frame = frame;
+            [draw.layer addSublayer:layer];
+        }
 //
 //
 //        [self.view.layer addSublayer:draw];

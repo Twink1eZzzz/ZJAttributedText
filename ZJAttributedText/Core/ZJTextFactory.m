@@ -17,17 +17,6 @@ static NSString *const kZJTextImageAscentAssociateKey = @"kZJTextImageAscentAsso
 static NSString *const kZJTextImageDescentAssociateKey = @"kZJTextImageDescentAssociateKey";
 static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssociateKey";
 
-#define kZJTextAttributesMapper @{\
-NSFontAttributeName : @"font",\
-NSForegroundColorAttributeName : @"color",\
-NSKernAttributeName : @"letterSpacing",\
-NSStrokeWidthAttributeName : @"strokeWidth",\
-NSStrokeColorAttributeName : @"strokeColor",\
-NSFontAttributeName : @"font",\
-NSVerticalGlyphFormAttributeName : @"isVertical",\
-NSBaselineOffsetAttributeName : @"verticalOffset"\
-}
-
 @implementation ZJTextFactory
 
 + (void)drawTextViewWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(void(^)(UIView *drawView))completion {
@@ -51,7 +40,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
         //组装完整字符串
-        NSMutableAttributedString *entireAttributedString = [[NSMutableAttributedString alloc] init];
+        CFMutableAttributedStringRef entireAttributedString = CFAttributedStringCreateMutable(CFAllocatorGetDefault(), 0);
         NSMutableArray *imageElementsArray = [NSMutableArray array];
      
         for (ZJTextElement *element in elements) {
@@ -71,16 +60,16 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
             if ([element.content isKindOfClass:[NSString class]]) {
 
                 //生成富文本
-                NSAttributedString *attributedString = [self generateAttributedStringWithStringElement:element];
+                CFAttributedStringRef attributedString = [self generateAttributedStringWithStringElement:element];
                 if (!attributedString) continue;
                 
                 //记录该段文本的位置
-                NSInteger location = entireAttributedString.length;
-                NSInteger length = attributedString.length;
+                NSInteger location = CFAttributedStringGetLength(entireAttributedString);
+                NSInteger length = CFAttributedStringGetLength(attributedString);
                 [element setValue:[NSValue valueWithRange:NSMakeRange(location, length)] forKey:@"rangeValue"];
                 
                 //拼接
-                [entireAttributedString appendAttributedString:attributedString];
+                CFAttributedStringReplaceAttributedString(entireAttributedString, CFRangeMake(location, 0), attributedString);
                 
             } else {
                 
@@ -103,34 +92,33 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
                     [imageElementsArray addObject:element];
                     
                     //生成富文本
-                    NSAttributedString *attributedString = [self generateAttributedStringWithImageElement:element];
+                    CFAttributedStringRef attributedString = [self generateAttributedStringWithImageElement:element];
                     if (!attributedString) continue;
                     
                     //保存图片位置
-                    NSInteger location = entireAttributedString.length;
-                    NSInteger length = attributedString.length;
+                    NSInteger location = CFAttributedStringGetLength(entireAttributedString);
+                    NSInteger length = CFAttributedStringGetLength(attributedString);
                     [element setValue:[NSValue valueWithRange:NSMakeRange(location, length)] forKey:@"rangeValue"];
-                    
+                
                     //拼接
-                    [entireAttributedString appendAttributedString:attributedString];
+                    CFAttributedStringReplaceAttributedString(entireAttributedString, CFRangeMake(location, 0), attributedString);
                 }
             }
         }
         
         //创建CoreText相关抽象
-        CFAttributedStringRef attributedStringRef = (__bridge CFAttributedStringRef)entireAttributedString;
-        CTFramesetterRef frameSetterRef = CTFramesetterCreateWithAttributedString(attributedStringRef);
+        CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString(entireAttributedString);
         CGSize defaultParagraphSize = [defaultAttributes.constraintSizeValue CGSizeValue];
         CGSize paragraphSize = CGSizeEqualToSize(defaultParagraphSize, CGSizeZero) ? CGSizeMake(MAXFLOAT, MAXFLOAT) : defaultParagraphSize;
         
         //试算
-        CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(frameSetterRef, CFRangeMake(0, entireAttributedString.length), nil, paragraphSize, nil);
+        CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(frameSetter, CFRangeMake(0, CFAttributedStringGetLength(entireAttributedString)), nil, paragraphSize, nil);
         
         //生成相关路径->CTFrame
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathAddRect(path, NULL, CGRectMake(0, 0, size.width, size.height));
-        CFIndex length = CFAttributedStringGetLength(attributedStringRef);
-        CTFrameRef frameRef = CTFramesetterCreateFrame(frameSetterRef, CFRangeMake(0, length), path, NULL);
+        CFIndex length = CFAttributedStringGetLength(entireAttributedString);
+        CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, length), path, NULL);
         
         //开启图片上下文
         UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
@@ -142,7 +130,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         CGContextScaleCTM(context, 1.0, -1.0);
 
         //缓存位置
-        [self cacheFrameToElementIfNeeded:frameRef size:size];
+        [self cacheFrameToElementIfNeeded:frame size:size];
 
         //绘制图片
         for (ZJTextElement *imageElement in imageElementsArray) {
@@ -155,7 +143,7 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         }
         
         //绘制文本
-        CTFrameDraw(frameRef, context);
+        CTFrameDraw(frame, context);
         
         //获取位图
         CGImageRef drawImageRef = CGBitmapContextCreateImage(context);
@@ -175,9 +163,9 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
         });
         
         //释放内存
-        CFRelease(frameSetterRef);
+        CFRelease(frameSetter);
         CFRelease(path);
-        CFRelease(frameRef);
+        CFRelease(frame);
     });
 }
 
@@ -218,53 +206,80 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
     return image;
 }
 
-+ (NSAttributedString *)generateAttributedStringWithStringElement:(ZJTextElement *)element {
++ (CFAttributedStringRef)generateAttributedStringWithStringElement:(ZJTextElement *)element {
     
     if (!element || !element.content || ![element.content isKindOfClass:[NSString class]]) return nil;
     
-    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:element.content];
+    //创建富文本
+    CFMutableAttributedStringRef mutableAttributedString = CFAttributedStringCreateMutable(CFAllocatorGetDefault(), 0);
     if (!mutableAttributedString) return nil;
     
-    NSRange range = NSMakeRange(0, mutableAttributedString.length);
+    CFAttributedStringReplaceString(mutableAttributedString, CFRangeMake(0, 0), (CFStringRef)element.content);
+    CFRange range = CFRangeMake(0, CFAttributedStringGetLength(mutableAttributedString));
     
     //增加基本属性
-    NSDictionary *attributesDic = [self generateAttribuesDicWithAttributesArray:@[element.attributes]];
+    CFDictionaryRef attributesDic = [self generateattributesDicWithElement:element];
     if (attributesDic) {
-        [mutableAttributedString addAttributes:attributesDic range:range];
+        CFAttributedStringSetAttributes(mutableAttributedString, range, attributesDic, false);
     }
     
-    //关联元素与CTRun
-    NSDictionary *attributes = @{kZJTextElementAttributeName : element};
-    [mutableAttributedString addAttributes:attributes range:range];
-    
-    return mutableAttributedString.copy;
+    return mutableAttributedString;
 }
 
-+ (NSDictionary *)generateAttribuesDicWithAttributesArray:(NSArray<ZJTextAttributes *> *)attributesArray {
++ (CFDictionaryRef)generateattributesDicWithElement:(ZJTextElement *)element {
     
-    if (!attributesArray.count) return nil;
+    if (!element) return nil;
 
-    //遍历所有基本属性, 生成属性字典
-    NSMutableDictionary *attribuesDic = [NSMutableDictionary dictionary];
+    //创建字典
+    CFMutableDictionaryRef attributesDic = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
     
-    for (NSString *attributeName in kZJTextAttributesMapper) {
-        NSString *propertyName = kZJTextAttributesMapper[attributeName];
-        NSInteger index = 0;
-        id property = nil;
-        while (!property && index < attributesArray.count) {
-            id attributes = attributesArray[index];
-            property = [attributes valueForKey:propertyName];
-            index++;
-        }
-        if (property) {
-            attribuesDic[attributeName] = property;
-        }
+    //关联元素
+    CFDictionaryAddValue(attributesDic, (CFStringRef)kZJTextElementAttributeName, (__bridge const void *)element);
+    
+    //基础属性
+    ZJTextAttributes *attributes = element.attributes;
+    if (attributes.font) {
+        CTFontRef font = CTFontCreateWithName((CFStringRef)attributes.font.fontName, attributes.font.pointSize, NULL);
+        CFDictionaryAddValue(attributesDic, kCTFontAttributeName, font);
     }
     
-    return attribuesDic.copy;
+    if (attributes.color) {
+        CFDictionaryAddValue(attributesDic, kCTForegroundColorAttributeName, attributes.color.CGColor);
+    }
+    
+    if (attributes.letterSpacing) {
+        CFDictionaryAddValue(attributesDic, kCTKernAttributeName, (CFNumberRef)attributes.letterSpacing);
+    }
+    
+    if (attributes.strokeWidth) {
+        CFDictionaryAddValue(attributesDic, kCTStrokeWidthAttributeName, (CFNumberRef)attributes.strokeWidth);
+    }
+    
+    if (attributes.strokeColor) {
+        CFDictionaryAddValue(attributesDic, kCTStrokeColorAttributeName, attributes.strokeColor.CGColor);
+    }
+    
+    if (attributes.verticalForm) {
+        CFDictionaryAddValue(attributesDic, kCTVerticalFormsAttributeName, (CFNumberRef)attributes.verticalForm);
+    }
+    
+    if (attributes.verticalOffset) {
+        CFDictionaryAddValue(attributesDic, NSBaselineOffsetAttributeName, (CFNumberRef)attributes.verticalOffset);
+    }
+    
+    //段落属性
+//    CTParagraphStyleRef
+//    
+////    kCTParagraphStyleAttributeName
+//    
+//    if (attributes.obliquity) {
+//        CFDictionaryAddValue(attributesDic, kctobli, <#const void *value#>)
+//    }
+    
+    return attributesDic;
 }
 
-+ (NSAttributedString *)generateAttributedStringWithImageElement:(ZJTextElement *)element {
++ (CFAttributedStringRef)generateAttributedStringWithImageElement:(ZJTextElement *)element {
     
      if (!element || !element.content || !element.drawImage) return nil;
     
@@ -322,14 +337,17 @@ NSBaselineOffsetAttributeName : @"verticalOffset"\
     //创建代理
     CTRunDelegateRef delegate = CTRunDelegateCreate(&callbacks, (__bridge void *)element);
     if (delegate) {
-        NSDictionary *attributes = @{(__bridge NSString *)kCTRunDelegateAttributeName : (__bridge id)delegate,
-                                     kZJTextElementAttributeName : element};
+        
+        CFMutableDictionaryRef attributesDic = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+        CFDictionaryAddValue(attributesDic, kCTRunDelegateAttributeName, delegate);
+        CFDictionaryAddValue(attributesDic, (CFStringRef)kZJTextElementAttributeName, (__bridge const void *)element);
+    
         unichar placeHolder = 0xFFFC;
-        NSString *placeHolderString = [NSString stringWithCharacters:&placeHolder length:1];
-        NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:placeHolderString attributes:attributes];
+        CFAttributedStringRef attributedString = CFAttributedStringCreate(CFAllocatorGetDefault(), CFStringCreateWithCharacters(CFAllocatorGetDefault(), &placeHolder, 1), attributesDic);
+        
         CFRelease(delegate);
         
-        return attributedString.copy;
+        return attributedString;
     }
     return nil;
 }
