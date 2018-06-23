@@ -45,7 +45,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
      
         for (ZJTextElement *element in elements) {
             
-            //若没有属性, 创建一个空属性站位
+            //若没有属性, 创建一个空属性占位
             if (!element.attributes) {
                 element.attributes = [ZJTextAttributes new];
             }
@@ -70,7 +70,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
                 
                 //拼接
                 CFAttributedStringReplaceAttributedString(entireAttributedString, CFRangeMake(location, 0), attributedString);
-                
+                CFRelease(attributedString);
             } else {
                 
                 //处理非文本, 非图片其他类型则调用相关方法绘制成图片
@@ -102,6 +102,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
                 
                     //拼接
                     CFAttributedStringReplaceAttributedString(entireAttributedString, CFRangeMake(location, 0), attributedString);
+                    CFRelease(attributedString);
                 }
             }
         }
@@ -147,7 +148,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         
         //获取位图
         CGImageRef drawImageRef = CGBitmapContextCreateImage(context);
-        UIImage *drawImage = [[UIImage alloc] initWithCGImage:drawImageRef];
+        UIImage *drawImage = [UIImage imageWithCGImage:drawImageRef];
         
         //关闭上下文
         UIGraphicsEndImageContext();
@@ -155,6 +156,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         //主线程生成Layer
         dispatch_async(dispatch_get_main_queue(), ^{
             CALayer *layer = [CALayer layer];
+            layer.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.3].CGColor;
             layer.frame = CGRectMake(0, 0, size.width, size.height);
             layer.contents = (__bridge id)drawImage.CGImage;
             if (completion) {
@@ -163,6 +165,8 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         });
         
         //释放内存
+        CFRelease(drawImageRef);
+        CFRelease(entireAttributedString);
         CFRelease(frameSetter);
         CFRelease(path);
         CFRelease(frame);
@@ -273,37 +277,57 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
     
     //段落属性
     CFMutableArrayRef settingsArray =  CFArrayCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeArrayCallBacks);
+    
     if (attributes.minLineSpace) {
-        NSValue *settingValue = [self settingValueWith:kCTParagraphStyleSpecifierMinimumLineSpacing numberValue:attributes.minLineSpace];
+        CGFloat params = attributes.minLineSpace.doubleValue;
+        CTParagraphStyleSetting setting;
+        setting.spec = kCTParagraphStyleSpecifierMinimumLineSpacing;
+        setting.valueSize = sizeof(CGFloat);
+        setting.value = &params;
+        NSValue *settingValue = [NSValue valueWithBytes:&setting objCType:@encode(CTParagraphStyleSetting)];
         if (settingValue) {
             CFArrayAppendValue(settingsArray, (__bridge const void *)settingValue);
         }
     }
     
     if (attributes.maxLineSpace) {
-        NSValue *settingValue = [self settingValueWith:kCTParagraphStyleSpecifierMaximumLineSpacing numberValue:attributes.maxLineSpace];
+        CGFloat params = attributes.maxLineSpace.doubleValue;
+        CTParagraphStyleSetting setting;
+        setting.spec = kCTParagraphStyleSpecifierMaximumLineSpacing;
+        setting.valueSize = sizeof(CGFloat);
+        setting.value = &params;
+        NSValue *settingValue = [NSValue valueWithBytes:&setting objCType:@encode(CTParagraphStyleSetting)];
         if (settingValue) {
             CFArrayAppendValue(settingsArray, (__bridge const void *)settingValue);
         }
     }
 
     if (attributes.minLineHeight) {
-        NSValue *settingValue = [self settingValueWith:kCTParagraphStyleSpecifierMinimumLineHeight numberValue:attributes.minLineHeight];
+        CGFloat params = attributes.minLineHeight.doubleValue;
+        CTParagraphStyleSetting setting;
+        setting.spec = kCTParagraphStyleSpecifierMinimumLineHeight;
+        setting.valueSize = sizeof(CGFloat);
+        setting.value = &params;
+        NSValue *settingValue = [NSValue valueWithBytes:&setting objCType:@encode(CTParagraphStyleSetting)];
         if (settingValue) {
             CFArrayAppendValue(settingsArray, (__bridge const void *)settingValue);
         }
     }
 
     if (attributes.maxLineHeight) {
-        NSValue *settingValue = [self settingValueWith:kCTParagraphStyleSpecifierMaximumLineHeight numberValue:attributes.maxLineHeight];
+        CGFloat params = attributes.maxLineHeight.doubleValue;
+        CTParagraphStyleSetting setting;
+        setting.spec = kCTParagraphStyleSpecifierMaximumLineHeight;
+        setting.valueSize = sizeof(CGFloat);
+        setting.value = &params;
+        NSValue *settingValue = [NSValue valueWithBytes:&setting objCType:@encode(CTParagraphStyleSetting)];
         if (settingValue) {
             CFArrayAppendValue(settingsArray, (__bridge const void *)settingValue);
         }
     }
     
-    CFIndex settingsCount = CFArrayGetCount(settingsArray);
+    const int settingsCount = (int)CFArrayGetCount(settingsArray);
     CTParagraphStyleSetting settings[settingsCount];
-    memset(settings, 0, settingsCount);
     for (NSInteger i = 0; i < settingsCount; i++) {
         NSValue *settingValue = CFArrayGetValueAtIndex(settingsArray, i);
         CTParagraphStyleSetting setting;
@@ -317,18 +341,6 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
     }
     
     return attributesDic;
-}
-
-+ (NSValue *)settingValueWith:(CTParagraphStyleSpecifier)specifier numberValue:(NSNumber *)value  {
-    
-    CGFloat space = value.doubleValue;
-    CTParagraphStyleSetting setting;
-    setting.spec = specifier;
-    setting.valueSize = sizeof(CGFloat);
-    setting.value = &space;
-    
-    NSValue *settingValue = [NSValue valueWithBytes:&setting objCType:@encode(CTParagraphStyleSetting)];
-    return settingValue;
 }
 
 + (CFAttributedStringRef)generateAttributedStringWithImageElement:(ZJTextElement *)element {
@@ -396,7 +408,6 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
     
         unichar placeHolder = 0xFFFC;
         CFAttributedStringRef attributedString = CFAttributedStringCreate(CFAllocatorGetDefault(), CFStringCreateWithCharacters(CFAllocatorGetDefault(), &placeHolder, 1), attributesDic);
-        
         CFRelease(delegate);
         
         return attributedString;

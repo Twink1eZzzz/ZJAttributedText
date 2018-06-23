@@ -82,10 +82,11 @@
     NSArray *elements = @[element1, element2, element3, element4, element5];
 
     ZJTextAttributes *defaultAttributes = [ZJTextAttributes new];
-    defaultAttributes.constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(300, 300)];
+    defaultAttributes.constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(300, 500)];
     defaultAttributes.letterSpace = @2;
 
     defaultAttributes.minLineSpace = @10;
+    defaultAttributes.minLineHeight = @30;
     defaultAttributes.imageAlign = ZJTextImageAlignCenterToFont;
     defaultAttributes.cacheFrame = @YES;    defaultAttributes.onClicked = ^{
       NSLog(@"%s", __func__);
