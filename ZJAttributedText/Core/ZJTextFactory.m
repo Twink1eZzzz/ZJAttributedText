@@ -8,6 +8,7 @@
 #import "ZJTextFactory.h"
 #import <CoreText/CoreText.h>
 #import "ZJTextView.h"
+#import "ZJTextLayer.h"
 #import "ZJTextElement.h"
 #import "ZJTextAttributes.h"
 #import <Objc/runtime.h>
@@ -23,6 +24,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
 
 + (void)drawTextViewWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(void(^)(UIView *drawView))completion {
     
+    //内部调用绘制Layer, 再用视图包装用来计算点击
     [self drawTextLayerWithElements:elements defaultAttributes:defaultAttributes completion:^(CALayer *drawLayer) {
         if (drawLayer) {
             ZJTextView *drawView = [[ZJTextView alloc] initWithFrame:drawLayer.bounds];
@@ -86,7 +88,8 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         
         //主线程生成Layer
         dispatch_async(dispatch_get_main_queue(), ^{
-            CALayer *layer = [CALayer layer];
+            ZJTextLayer *layer = [ZJTextLayer layer];
+            layer.elements = elements;
             layer.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.3].CGColor;
             layer.frame = CGRectMake(0, 0, size.width, size.height);
             layer.contents = (__bridge id)drawImage.CGImage;
@@ -102,6 +105,8 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         CFRelease(frame);
     });
 }
+
+#pragma mark - private
 
 + (ZJTextAttributes *)combineWithAttributesArray:(NSArray<ZJTextAttributes *> *)attributesArray {
     
@@ -148,7 +153,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         if (image) {
             
             //保存绘制图片
-            element.drawImage = image;
+            [element setValue:image forKey:@"drawImage"];
             
             //生成富文本
             [self appendImageElement:element toEntireAttributedString:entireAttributedString];

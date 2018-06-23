@@ -19,14 +19,14 @@
 @property (nonatomic, strong) id content;
 
 /**
- 绘制出的图片
- */
-@property (nonatomic, strong) UIImage *drawImage;
-
-/**
  属性
  */
 @property (nonatomic, strong) ZJTextAttributes *attributes;
+
+/**
+ 绘制出的图片
+ */
+@property (nonatomic, strong, readonly) UIImage *drawImage;
 
 /**
  在富文本中的范围

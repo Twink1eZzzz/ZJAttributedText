@@ -96,7 +96,11 @@
      */
     defaultAttributes.align = @2;
     defaultAttributes.imageAlign = @(ZJTextImageAlignCenterToFont);
-    defaultAttributes.cacheFrame = @YES;    defaultAttributes.onClicked = ^{
+    defaultAttributes.cacheFrame = @YES;
+    defaultAttributes.onClicked = ^{
+      NSLog(@"%s", __func__);
+    };
+    defaultAttributes.onLayout = ^{
       NSLog(@"%s", __func__);
     };
     

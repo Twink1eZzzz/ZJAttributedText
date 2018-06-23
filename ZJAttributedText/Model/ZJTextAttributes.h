@@ -12,7 +12,7 @@ typedef NS_ENUM(NSUInteger, ZJTextImageAlign) {
     ZJTextImageAlignCenterToFont                  //图片居中向特定字体对齐, 需要设置 font 属性, 若没有为系统12号字体
 };
 
-typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
+typedef void(^ZJTextZJTextAttributeCommonBlock)(void);
 
 @interface ZJTextAttributes : NSObject
 
@@ -26,7 +26,12 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
 /**
  点击Block
  */
-@property (nonatomic, copy) ZJTextZJTextAttributeOnClickedBlock onClicked;
+@property (nonatomic, copy) ZJTextZJTextAttributeCommonBlock onClicked;
+
+/**
+ 显示后会调用, 整段富文本设置其中一个元素即可
+ */
+@property (nonatomic, copy) ZJTextZJTextAttributeCommonBlock onLayout;
 
 /**
  是否缓存frame, 会计算文本在整段富文本中的frame
