@@ -19,6 +19,8 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
 
 @implementation ZJTextFactory
 
+#pragma mark - public
+
 + (void)drawTextViewWithElements:(NSArray<ZJTextElement *> *)elements defaultAttributes:(ZJTextAttributes *)defaultAttributes completion:(void(^)(UIView *drawView))completion {
     
     [self drawTextLayerWithElements:elements defaultAttributes:defaultAttributes completion:^(CALayer *drawLayer) {
@@ -41,7 +43,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         
         //组装完整字符串
         CFMutableAttributedStringRef entireAttributedString = CFAttributedStringCreateMutable(CFAllocatorGetDefault(), 0);
-        NSMutableArray *imageElementsArray = [NSMutableArray array];
+        NSMutableArray *imageElements = [NSMutableArray array];
      
         for (ZJTextElement *element in elements) {
             
@@ -56,54 +58,12 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
                 element.attributes = combineAttributes;
             }
             
-            //处理文本
-            if ([element.content isKindOfClass:[NSString class]]) {
-
-                //生成富文本
-                CFAttributedStringRef attributedString = [self generateAttributedStringWithStringElement:element];
-                if (!attributedString) continue;
-                
-                //记录该段文本的位置
-                NSInteger location = CFAttributedStringGetLength(entireAttributedString);
-                NSInteger length = CFAttributedStringGetLength(attributedString);
-                [element setValue:[NSValue valueWithRange:NSMakeRange(location, length)] forKey:@"rangeValue"];
-                
-                //拼接
-                CFAttributedStringReplaceAttributedString(entireAttributedString, CFRangeMake(location, 0), attributedString);
-                CFRelease(attributedString);
-            } else {
-                
-                //处理非文本, 非图片其他类型则调用相关方法绘制成图片
-                UIImage *image = nil;
-                if ([element.content isKindOfClass:[UIImage class]]) {
-                    image = element.content;
-                } else if ([element.content isKindOfClass:[UIView class]]) {
-                    image = [self drawImageWithContent:element.content];
-                } else if ([element.content isKindOfClass:[CALayer class]]) {
-                    image = [self drawImageWithContent:element.content];
-                }
-                
-                if (image) {
-                    
-                    //保存绘制图片
-                    element.drawImage = image;
-                    
-                    //储存图片元素, 后面在占位绘制图片及调整位置
-                    [imageElementsArray addObject:element];
-                    
-                    //生成富文本
-                    CFAttributedStringRef attributedString = [self generateAttributedStringWithImageElement:element];
-                    if (!attributedString) continue;
-                    
-                    //保存图片位置
-                    NSInteger location = CFAttributedStringGetLength(entireAttributedString);
-                    NSInteger length = CFAttributedStringGetLength(attributedString);
-                    [element setValue:[NSValue valueWithRange:NSMakeRange(location, length)] forKey:@"rangeValue"];
-                
-                    //拼接
-                    CFAttributedStringReplaceAttributedString(entireAttributedString, CFRangeMake(location, 0), attributedString);
-                    CFRelease(attributedString);
-                }
+            //拼接字符串
+            [self appendElement:element toEntireAttributedString:entireAttributedString];
+           
+            //保存图片类的元素
+            if (element.drawImage) {
+                [imageElements addObject:element];
             }
         }
         
@@ -121,37 +81,8 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         CFIndex length = CFAttributedStringGetLength(entireAttributedString);
         CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, length), path, NULL);
         
-        //开启图片上下文
-        UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        
-        //翻转上下文
-        CGContextSetTextMatrix(context, CGAffineTransformIdentity);
-        CGContextTranslateCTM(context, 0, size.height);
-        CGContextScaleCTM(context, 1.0, -1.0);
-
-        //缓存位置
-        [self cacheFrameToElementIfNeeded:frame size:size];
-
         //绘制图片
-        for (ZJTextElement *imageElement in imageElementsArray) {
-            
-            NSArray *frameValueArray = imageElement.drawFrameValueArray;
-            CGRect imageFrame = [[frameValueArray firstObject] CGRectValue];
-            
-            UIImage *image = imageElement.drawImage;
-            CGContextDrawImage(context, imageFrame, image.CGImage);
-        }
-        
-        //绘制文本
-        CTFrameDraw(frame, context);
-        
-        //获取位图
-        CGImageRef drawImageRef = CGBitmapContextCreateImage(context);
-        UIImage *drawImage = [UIImage imageWithCGImage:drawImageRef];
-        
-        //关闭上下文
-        UIGraphicsEndImageContext();
+        UIImage *drawImage = [self drawBitmapWithTextFrame:frame imageElements:imageElements inSize:size];
         
         //主线程生成Layer
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -165,7 +96,6 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         });
         
         //释放内存
-        CFRelease(drawImageRef);
         CFRelease(entireAttributedString);
         CFRelease(frameSetter);
         CFRelease(path);
@@ -195,28 +125,44 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
     return combineAttributes;
 }
 
-+ (UIImage *)drawImageWithContent:(id)content {
++ (void)appendElement:(ZJTextElement *)element toEntireAttributedString:(CFMutableAttributedStringRef)entireAttributedString {
     
-    //将不同类型内容绘制为图片
-    UIGraphicsBeginImageContext([content frame].size);
-    if ([content isKindOfClass:[CALayer class]]) {
-        [content drawInContext:UIGraphicsGetCurrentContext()];
+    //处理文本
+    if ([element.content isKindOfClass:[NSString class]]) {
+        
+        //生成富文本
+        [self appendStringElement:element toEntireAttributedString:entireAttributedString];
+        
     } else {
-        [content renderInContext:UIGraphicsGetCurrentContext()];
+        
+        //处理非文本, 非图片其他类型则调用相关方法绘制成图片
+        UIImage *image = nil;
+        if ([element.content isKindOfClass:[UIImage class]]) {
+            image = element.content;
+        } else if ([element.content isKindOfClass:[UIView class]]) {
+            image = [self drawImageWithContent:element.content];
+        } else if ([element.content isKindOfClass:[CALayer class]]) {
+            image = [self drawImageWithContent:element.content];
+        }
+        
+        if (image) {
+            
+            //保存绘制图片
+            element.drawImage = image;
+            
+            //生成富文本
+            [self appendImageElement:element toEntireAttributedString:entireAttributedString];
+        }
     }
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
 }
 
-+ (CFAttributedStringRef)generateAttributedStringWithStringElement:(ZJTextElement *)element {
++ (void)appendStringElement:(ZJTextElement *)element toEntireAttributedString:(CFMutableAttributedStringRef)entireAttributedString {
     
-    if (!element || !element.content || ![element.content isKindOfClass:[NSString class]]) return nil;
+    if (!element || !element.content || ![element.content isKindOfClass:[NSString class]]) return;
     
     //创建富文本
     CFMutableAttributedStringRef mutableAttributedString = CFAttributedStringCreateMutable(CFAllocatorGetDefault(), 0);
-    if (!mutableAttributedString) return nil;
+    if (!mutableAttributedString) return;
     
     CFAttributedStringReplaceString(mutableAttributedString, CFRangeMake(0, 0), (CFStringRef)element.content);
     CFRange range = CFRangeMake(0, CFAttributedStringGetLength(mutableAttributedString));
@@ -227,13 +173,20 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         CFAttributedStringSetAttributes(mutableAttributedString, range, attributesDic, false);
     }
     
-    return mutableAttributedString;
+    //记录该段文本的位置
+    NSInteger location = CFAttributedStringGetLength(entireAttributedString);
+    NSInteger length = CFAttributedStringGetLength(mutableAttributedString);
+    [element setValue:[NSValue valueWithRange:NSMakeRange(location, length)] forKey:@"rangeValue"];
+    
+    //拼接
+    CFAttributedStringReplaceAttributedString(entireAttributedString, CFRangeMake(location, 0), mutableAttributedString);
+    CFRelease(mutableAttributedString);
 }
 
 + (CFDictionaryRef)generateattributesDicWithElement:(ZJTextElement *)element {
     
     if (!element) return nil;
-
+    
     //创建字典
     CFMutableDictionaryRef attributesDic = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
     
@@ -301,7 +254,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
             CFArrayAppendValue(settingsArray, (__bridge const void *)settingValue);
         }
     }
-
+    
     if (attributes.minLineHeight) {
         CGFloat params = attributes.minLineHeight.doubleValue;
         CTParagraphStyleSetting setting;
@@ -313,7 +266,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
             CFArrayAppendValue(settingsArray, (__bridge const void *)settingValue);
         }
     }
-
+    
     if (attributes.maxLineHeight) {
         CGFloat params = attributes.maxLineHeight.doubleValue;
         CTParagraphStyleSetting setting;
@@ -334,18 +287,34 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         [settingValue getValue:&setting];
         settings[i] = setting;
     }
-
+    
     CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, sizeof(settings));
     if (paragraphStyle) {
         CFDictionaryAddValue(attributesDic, kCTParagraphStyleAttributeName, paragraphStyle);
+        CFRelease(paragraphStyle);
     }
     
     return attributesDic;
 }
 
-+ (CFAttributedStringRef)generateAttributedStringWithImageElement:(ZJTextElement *)element {
++ (UIImage *)drawImageWithContent:(id)content {
     
-     if (!element || !element.content || !element.drawImage) return nil;
+    //将不同类型内容绘制为图片
+    UIGraphicsBeginImageContext([content frame].size);
+    if ([content isKindOfClass:[CALayer class]]) {
+        [content drawInContext:UIGraphicsGetCurrentContext()];
+    } else {
+        [content renderInContext:UIGraphicsGetCurrentContext()];
+    }
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
++ (void)appendImageElement:(ZJTextElement *)element toEntireAttributedString:(CFMutableAttributedStringRef)entireAttributedString {
+    
+    if (!element || !element.content || !element.drawImage) return;
     
     //缓存图片绘制属性
     //基本属性
@@ -385,7 +354,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         ascent += element.attributes.verticalOffset.doubleValue;
         descent -= element.attributes.verticalOffset.doubleValue;
     }
-
+    
     objc_setAssociatedObject(element, kZJTextImageAscentAssociateKey.UTF8String, @(ascent), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     objc_setAssociatedObject(element, kZJTextImageDescentAssociateKey.UTF8String, @(descent), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     objc_setAssociatedObject(element, kZJTextImageWidthAssociateKey.UTF8String, @(width), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -405,14 +374,24 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         CFMutableDictionaryRef attributesDic = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
         CFDictionaryAddValue(attributesDic, kCTRunDelegateAttributeName, delegate);
         CFDictionaryAddValue(attributesDic, (CFStringRef)kZJTextElementAttributeName, (__bridge const void *)element);
-    
-        unichar placeHolder = 0xFFFC;
-        CFAttributedStringRef attributedString = CFAttributedStringCreate(CFAllocatorGetDefault(), CFStringCreateWithCharacters(CFAllocatorGetDefault(), &placeHolder, 1), attributesDic);
-        CFRelease(delegate);
         
-        return attributedString;
+        unichar placeHolder = 0xFFFC;
+        CFStringRef placeHolderString = CFStringCreateWithCharacters(CFAllocatorGetDefault(), &placeHolder, 1);
+        CFAttributedStringRef attributedString = CFAttributedStringCreate(CFAllocatorGetDefault(), placeHolderString, attributesDic);
+        
+        //保存图片位置
+        NSInteger location = CFAttributedStringGetLength(entireAttributedString);
+        NSInteger length = CFAttributedStringGetLength(attributedString);
+        [element setValue:[NSValue valueWithRange:NSMakeRange(location, length)] forKey:@"rangeValue"];
+        
+        //拼接
+        CFAttributedStringReplaceAttributedString(entireAttributedString, CFRangeMake(location, 0), attributedString);
+        
+        //内存释放
+        CFRelease(delegate);
+        CFRelease(placeHolderString);
+        CFRelease(attributedString);
     }
-    return nil;
 }
 
 + (void)cacheFrameToElementIfNeeded:(CTFrameRef)frame size:(CGSize)size {
@@ -490,6 +469,46 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
             }
         }
     }
+}
+
++ (UIImage *)drawBitmapWithTextFrame:(CTFrameRef)frame imageElements:(NSArray<ZJTextElement *> *)imageElements inSize:(CGSize)size {
+    
+    //开启图片上下文
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    //翻转上下文
+    CGContextSetTextMatrix(context, CGAffineTransformIdentity);
+    CGContextTranslateCTM(context, 0, size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    //缓存位置
+    [self cacheFrameToElementIfNeeded:frame size:size];
+    
+    //绘制图片
+    for (ZJTextElement *imageElement in imageElements) {
+        
+        NSArray *frameValueArray = imageElement.drawFrameValueArray;
+        CGRect imageFrame = [[frameValueArray firstObject] CGRectValue];
+        
+        UIImage *image = imageElement.drawImage;
+        CGContextDrawImage(context, imageFrame, image.CGImage);
+    }
+    
+    //绘制文本
+    CTFrameDraw(frame, context);
+    
+    //获取位图
+    CGImageRef drawImageRef = CGBitmapContextCreateImage(context);
+    UIImage *drawImage = [UIImage imageWithCGImage:drawImageRef];
+    
+    //关闭上下文
+    UIGraphicsEndImageContext();
+    
+    //内存释放
+    CFRelease(drawImageRef);
+    
+    return drawImage;
 }
 
 static CGFloat ascentCallback(void *ref) {
