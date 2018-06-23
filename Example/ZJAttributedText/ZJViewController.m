@@ -81,14 +81,14 @@
     defaultAttributes.letterSpacing = @2;
     defaultAttributes.imageAlign = ZJTextImageAlignCenterToFont;
     defaultAttributes.cacheFrame = @YES;
-//    defaultAttributes.onClicked = ^{
-//      NSLog(@"%s", __func__);
-//    };
+    defaultAttributes.onClicked = ^{
+      NSLog(@"%s", __func__);
+    };
     
     [ZJTextFactory drawTextViewWithElements:elements defaultAttributes:defaultAttributes completion:^(UIView *draw) {
 //        draw.frame = CGRectMake(50, 50, draw.frame.size.width, draw.frame.size.height);
 //
-        NSArray *frameValueArray = element5.frameValueArray;
+        NSArray *frameValueArray = element3.frameValueArray;
         for (NSValue *frameValue in frameValueArray) {
             CALayer *layer = [CALayer layer];
             layer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.2].CGColor;

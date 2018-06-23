@@ -52,7 +52,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
             
             //合并全局属性至元素属性
             if (defaultAttributes) {
-                ZJTextAttributes *combineAttributes = [self combineWithAttributesArray:@[defaultAttributes, element.attributes]];
+                ZJTextAttributes *combineAttributes = [self combineWithAttributesArray:@[element.attributes, defaultAttributes]];
                 element.attributes = combineAttributes;
             }
             
@@ -411,6 +411,9 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
                 //显示的frame: 由绘制的基础frame->翻转得到
                 CGFloat overY = bounds.origin.y;
                 overY = size.height - overY - bounds.size.height;
+                if ([element.content isKindOfClass:[NSString class]]) {
+                    overY -= element.attributes.verticalOffset.doubleValue;
+                }
                 CGRect overBounds = CGRectMake(bounds.origin.x, overY, bounds.size.width, bounds.size.height);
                 NSValue *overFrameValue = [NSValue valueWithCGRect:overBounds];
                 
