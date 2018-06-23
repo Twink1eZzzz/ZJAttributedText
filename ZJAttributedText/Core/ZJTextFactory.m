@@ -247,8 +247,8 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         CFDictionaryAddValue(attributesDic, kCTForegroundColorAttributeName, attributes.color.CGColor);
     }
     
-    if (attributes.letterSpacing) {
-        CFDictionaryAddValue(attributesDic, kCTKernAttributeName, (CFNumberRef)attributes.letterSpacing);
+    if (attributes.letterSpace) {
+        CFDictionaryAddValue(attributesDic, kCTKernAttributeName, (CFNumberRef)attributes.letterSpace);
     }
     
     if (attributes.strokeWidth) {
@@ -267,16 +267,68 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         CFDictionaryAddValue(attributesDic, NSBaselineOffsetAttributeName, (CFNumberRef)attributes.verticalOffset);
     }
     
+    if (attributes.underline) {
+        CFDictionaryAddValue(attributesDic, kCTUnderlineStyleAttributeName, (CFNumberRef)attributes.underline);
+    }
+    
     //段落属性
-//    CTParagraphStyleRef
-//    
-////    kCTParagraphStyleAttributeName
-//    
-//    if (attributes.obliquity) {
-//        CFDictionaryAddValue(attributesDic, kctobli, <#const void *value#>)
-//    }
+    CFMutableArrayRef settingsArray =  CFArrayCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeArrayCallBacks);
+    if (attributes.minLineSpace) {
+        NSValue *settingValue = [self settingValueWith:kCTParagraphStyleSpecifierMinimumLineSpacing numberValue:attributes.minLineSpace];
+        if (settingValue) {
+            CFArrayAppendValue(settingsArray, (__bridge const void *)settingValue);
+        }
+    }
+    
+    if (attributes.maxLineSpace) {
+        NSValue *settingValue = [self settingValueWith:kCTParagraphStyleSpecifierMaximumLineSpacing numberValue:attributes.maxLineSpace];
+        if (settingValue) {
+            CFArrayAppendValue(settingsArray, (__bridge const void *)settingValue);
+        }
+    }
+
+    if (attributes.minLineHeight) {
+        NSValue *settingValue = [self settingValueWith:kCTParagraphStyleSpecifierMinimumLineHeight numberValue:attributes.minLineHeight];
+        if (settingValue) {
+            CFArrayAppendValue(settingsArray, (__bridge const void *)settingValue);
+        }
+    }
+
+    if (attributes.maxLineHeight) {
+        NSValue *settingValue = [self settingValueWith:kCTParagraphStyleSpecifierMaximumLineHeight numberValue:attributes.maxLineHeight];
+        if (settingValue) {
+            CFArrayAppendValue(settingsArray, (__bridge const void *)settingValue);
+        }
+    }
+    
+    CFIndex settingsCount = CFArrayGetCount(settingsArray);
+    CTParagraphStyleSetting settings[settingsCount];
+    memset(settings, 0, settingsCount);
+    for (NSInteger i = 0; i < settingsCount; i++) {
+        NSValue *settingValue = CFArrayGetValueAtIndex(settingsArray, i);
+        CTParagraphStyleSetting setting;
+        [settingValue getValue:&setting];
+        settings[i] = setting;
+    }
+
+    CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, sizeof(settings));
+    if (paragraphStyle) {
+        CFDictionaryAddValue(attributesDic, kCTParagraphStyleAttributeName, paragraphStyle);
+    }
     
     return attributesDic;
+}
+
++ (NSValue *)settingValueWith:(CTParagraphStyleSpecifier)specifier numberValue:(NSNumber *)value  {
+    
+    CGFloat space = value.doubleValue;
+    CTParagraphStyleSetting setting;
+    setting.spec = specifier;
+    setting.valueSize = sizeof(CGFloat);
+    setting.value = &space;
+    
+    NSValue *settingValue = [NSValue valueWithBytes:&setting objCType:@encode(CTParagraphStyleSetting)];
+    return settingValue;
 }
 
 + (CFAttributedStringRef)generateAttributedStringWithImageElement:(ZJTextElement *)element {

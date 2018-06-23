@@ -36,7 +36,7 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
 #pragma mark - string attributes
 
 /**
- 字体: 文字字体, 图片居中对齐字体
+ 字体: 文字字体/图片居中对齐字体
  */
 @property (nonatomic, strong) UIFont *font;
 
@@ -48,7 +48,7 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
 /**
  字间距
  */
-@property (nonatomic, strong) NSNumber *letterSpacing;
+@property (nonatomic, strong) NSNumber *letterSpace;
 
 /**
  描边宽度, 整数为镂空, Color不生效; 负数Color生效
@@ -65,20 +65,10 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
  */
 @property (nonatomic, strong) NSNumber *verticalForm;
 
-///**
-// 斜体倾斜值
-// */
-//@property (nonatomic, strong) NSNumber *obliquity;
-//
-///**
-// 扁平值
-// */
-//@property (nonatomic, strong) NSNumber *flat;
-//
-///**
-// 阴影
-// */
-//@property (nonatomic, strong) NSShadow *shadow;
+/**
+ 下划线类型, int, 0为none, 详细可看CTUnderlineStyle
+ */
+@property (nonatomic, strong) NSNumber *underline;
 
 #pragma mark - image attributes
 
@@ -95,8 +85,28 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
 #pragma mark - paragraph attributes
 
 /**
- 段落尺寸, 只在defaultAttributes生效, 默认Maxfloat
+ 绘制的约束尺寸, 默认Max
  */
 @property (nonatomic, strong) NSValue *constraintSizeValue;
+
+/**
+ 最小行间距
+ */
+@property (nonatomic, strong) NSNumber *minLineSpace;
+
+/**
+ 最大行间距
+ */
+@property (nonatomic, strong) NSNumber *maxLineSpace;
+
+/**
+ 最小行高
+ */
+@property (nonatomic, strong) NSNumber *minLineHeight;
+
+/**
+ 最小行高
+ */
+@property (nonatomic, strong) NSNumber *maxLineHeight;
 
 @end
