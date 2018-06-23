@@ -66,7 +66,7 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
 @property (nonatomic, strong) NSNumber *verticalForm;
 
 /**
- 下划线类型, int, 0为none, 详细可看CTUnderlineStyle
+ 下划线类型, 整形, 0为none, 1为细线 2为加粗 9为双条 参考 CTUnderlineStyle(仅枚举了三种, 其他值也有不同效果)
  */
 @property (nonatomic, strong) NSNumber *underline;
 
@@ -78,9 +78,9 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
 @property (nonatomic, strong) NSValue *imageSizeValue;
 
 /**
- 图片对齐模式
+ 图片对齐模式 参看 ZJTextImageAlign
  */
-@property (nonatomic, assign) ZJTextImageAlign imageAlign;
+@property (nonatomic, strong) NSNumber *imageAlign;
 
 #pragma mark - paragraph attributes
 
@@ -108,5 +108,10 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
  最小行高
  */
 @property (nonatomic, strong) NSNumber *maxLineHeight;
+
+/**
+ 对齐, 整形, 0为默认靠左 1为居中 2为靠右, 参考 NSTextAlignment
+ */
+@property (nonatomic, strong) NSNumber *align;
 
 @end

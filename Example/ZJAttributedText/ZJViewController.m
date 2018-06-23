@@ -35,24 +35,24 @@
     ZJTextElement *element2 = [ZJTextElement new];
     element2.content = @"难道不是你, 一直以来戒不掉的癖好, 你在想谁想到睡不着, 你应该觉得骄傲, 很多人想失恋也没有目标";
     element2.attributes.color = [[UIColor greenColor] colorWithAlphaComponent:0.8];
-    element2.attributes.imageSizeValue = [NSValue valueWithCGSize:CGSizeMake(25, 25)];
+    element2.attributes.imageSizeValue = [NSValue valueWithCGSize:CGSizeMake(40, 40)];
 //    attributes2.verticalCenter = @YES;
 //    attributes2.verticalOffset = @-10;
 //    attributes2.verticalOffset = @15;
     element2.attributes.onClicked = ^{
         NSLog(@"element2 :%s", __func__);
     };
-    element2.attributes.imageAlign = ZJTextImageAlignCenterToFont;
+//    element2.attributes.imageAlign = ZJTextImageAlignCenterToFont;
     
     
     ZJTextElement *element3 = [ZJTextElement new];
     UIImage *image3 = [UIImage imageWithContentsOfFile:imagePath];
     element3.content = image3;
     ZJTextAttributes *attributes3 = [ZJTextAttributes new];
-//    attributes3.imageSizeValue =  [NSValue valueWithCGSize:CGSizeMake(30, 30)];
+    attributes3.imageSizeValue =  [NSValue valueWithCGSize:CGSizeMake(30, 30)];
 //    attributes3.verticalOffset = @-10;
     element3.attributes = attributes3;
-    element3.attributes.imageAlign = ZJTextImageAlignCenterToFont;
+//    element3.attributes.imageAlign = ZJTextImageAlignCenterToFont;
     
     
     ZJTextElement *element4 = [ZJTextElement new];
@@ -84,10 +84,18 @@
     ZJTextAttributes *defaultAttributes = [ZJTextAttributes new];
     defaultAttributes.constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(300, 500)];
     defaultAttributes.letterSpace = @2;
-
     defaultAttributes.minLineSpace = @10;
     defaultAttributes.minLineHeight = @30;
-    defaultAttributes.imageAlign = ZJTextImageAlignCenterToFont;
+//    defaultAttributes.imageAlign = ZJTextImageAlignCenterToFont;
+    /*
+     kCTTextAlignmentLeft      = 0,
+     kCTTextAlignmentRight     = 1,
+     kCTTextAlignmentCenter    = 2,
+     kCTTextAlignmentJustified = 3,
+     kCTTextAlignmentNatural   = 4,
+     */
+    defaultAttributes.align = @2;
+    defaultAttributes.imageAlign = @(ZJTextImageAlignCenterToFont);
     defaultAttributes.cacheFrame = @YES;    defaultAttributes.onClicked = ^{
       NSLog(@"%s", __func__);
     };
