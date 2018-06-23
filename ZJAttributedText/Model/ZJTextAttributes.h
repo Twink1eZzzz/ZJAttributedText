@@ -114,4 +114,9 @@ typedef void(^ZJTextZJTextAttributeOnClickedBlock)(void);
  */
 @property (nonatomic, strong) NSNumber *align;
 
+/**
+ 对齐, 整形, 参考 NSLineBreakMode
+ */
+@property (nonatomic, strong) NSNumber *lineBreakMode;
+
 @end

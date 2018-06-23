@@ -291,6 +291,18 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         }
     }
     
+    if (attributes.lineBreakMode) {
+        int8_t params = attributes.align.intValue;
+        CTParagraphStyleSetting setting;
+        setting.spec = kCTParagraphStyleSpecifierLineBreakMode;
+        setting.valueSize = sizeof(int8_t);
+        setting.value = &params;
+        NSValue *settingValue = [NSValue valueWithBytes:&setting objCType:@encode(CTParagraphStyleSetting)];
+        if (settingValue) {
+            CFArrayAppendValue(settingsArray, (__bridge const void *)settingValue);
+        }
+    }
+    
     const int settingsCount = (int)CFArrayGetCount(settingsArray);
     CTParagraphStyleSetting settings[settingsCount];
     for (NSInteger i = 0; i < settingsCount; i++) {
