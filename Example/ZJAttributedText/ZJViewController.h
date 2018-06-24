@@ -2,8 +2,8 @@
 //  ZJViewController.h
 //  ZJAttributedText
 //
-//  Created by 281925019@qq.com on 06/04/2018.
-//  Copyright (c) 2018 281925019@qq.com. All rights reserved.
+//  Created by Jsoul1227@hotmail.com on 06/04/2018.
+//  Copyright (c) 2018 Jsoul1227@hotmail.com. All rights reserved.
 //
 
 @import UIKit;

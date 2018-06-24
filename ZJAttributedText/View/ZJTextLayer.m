@@ -11,6 +11,8 @@
 
 @implementation ZJTextLayer
 
+#pragma mark - lifeCycle
+
 - (void)layoutSublayers {
     [super layoutSublayers];
     

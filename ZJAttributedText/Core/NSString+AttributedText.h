@@ -7,6 +7,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NSString *(^ZJTextDotFontBlock)(UIFont *font);
+
 @interface NSString (AttributedText)
+
+/**
+ 设置字体
+ */
+@property (nonatomic, copy) ZJTextDotFontBlock font;
 
 @end

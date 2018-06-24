@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## ZJAttributedText
 
-Copyright (c) 2018 281925019@qq.com <zhangjun@douyu.tv>
+Copyright (c) 2018 Jsoul1227@hotmail.com <zhangjun@douyu.tv>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

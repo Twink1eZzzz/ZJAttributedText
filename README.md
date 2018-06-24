@@ -1,6 +1,6 @@
 # ZJAttributedText
 
-[![CI Status](https://img.shields.io/travis/281925019@qq.com/ZJAttributedText.svg?style=flat)](https://travis-ci.org/281925019@qq.com/ZJAttributedText)
+[![CI Status](https://img.shields.io/travis/Jsoul1227@hotmail.com/ZJAttributedText.svg?style=flat)](https://travis-ci.org/Jsoul1227@hotmail.com/ZJAttributedText)
 [![Version](https://img.shields.io/cocoapods/v/ZJAttributedText.svg?style=flat)](https://cocoapods.org/pods/ZJAttributedText)
 [![License](https://img.shields.io/cocoapods/l/ZJAttributedText.svg?style=flat)](https://cocoapods.org/pods/ZJAttributedText)
 [![Platform](https://img.shields.io/cocoapods/p/ZJAttributedText.svg?style=flat)](https://cocoapods.org/pods/ZJAttributedText)
@@ -22,7 +22,7 @@ pod 'ZJAttributedText'
 
 ## Author
 
-281925019@qq.com, zhangjun@douyu.tv
+Jsoul1227@hotmail.com, zhangjun@douyu.tv
 
 ## License
 
