@@ -294,7 +294,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         settings[i] = setting;
     }
     
-    CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, sizeof(settings));
+    CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, settingsCount);
     if (paragraphStyle) {
         CFDictionaryAddValue(attributesDic, kCTParagraphStyleAttributeName, paragraphStyle);
         CFRelease(paragraphStyle);

@@ -23,7 +23,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
+    //最基础用法
     [self baseFeature];
+    
+    
 }
 
 - (void)baseFeature {
@@ -76,9 +79,9 @@
     //元素6
     ZJTextElement *element6 = [ZJTextElement new];
     element6.content = @"\n我从来没想过时间会过的这么快，\n快的这五年我好像还没有认真生活，\n时间就没有了。\n没有认识新朋友，\n没有去过新景点，\n也没有吃过更新奇的食物，\n五年里没有任何值得留念的回忆。\n这本";
-
     element6.attributes.font = [UIFont systemFontOfSize:14 weight:UIFontWeightLight];
     
+    //元素7
     ZJTextElement *element7 = [ZJTextElement new];
     element7.content = @"《云边有个小卖部》";
     element7.attributes.font = [UIFont boldSystemFontOfSize:16];
@@ -87,14 +90,21 @@
         NSLog(@"书名: %@", element.content);
     };
     
+    //元素8
     ZJTextElement *element8 = [ZJTextElement new];
-    element8.content = @"\n他说，他陆陆续续写了两年，中间写到情绪崩溃，不得已停笔半年。";
+    element8.content = @"\n\n       --他说，他陆陆续续写了两年，中间写到情绪崩溃，不得已停笔半年。";
+    element8.attributes.color = [[UIColor grayColor] colorWithAlphaComponent:0.3];
+    element8.attributes.letterSpace = @0;
+    element8.attributes.align = @0;
+    element8.attributes.minLineSpace = @8;
     
+    //组成数组
     NSArray *elements = @[element1, element2, element3, element4, element5, element6, element7, element8];
     
+    //默认属性
     ZJTextAttributes *defaultAttributes = [ZJTextAttributes new];
     defaultAttributes.constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(325, 500)];
-    defaultAttributes.letterSpace = @2.5;
+    defaultAttributes.letterSpace = @3;
     defaultAttributes.minLineHeight = @20;
     defaultAttributes.align = @1;
     defaultAttributes.imageAlign = @(ZJTextImageAlignCenterToFont);
