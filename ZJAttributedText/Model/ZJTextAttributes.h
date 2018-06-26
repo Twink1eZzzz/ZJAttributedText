@@ -12,7 +12,9 @@ typedef NS_ENUM(NSUInteger, ZJTextImageAlign) {
     ZJTextImageAlignCenterToFont                  //图片居中向特定字体对齐, 需要设置 font 属性, 若没有为系统12号字体
 };
 
-typedef void(^ZJTextZJTextAttributeCommonBlock)(void);
+@class ZJTextElement;
+
+typedef void(^ZJTextZJTextAttributeCommonBlock)(ZJTextElement *element);
 
 @interface ZJTextAttributes : NSObject
 
@@ -115,7 +117,7 @@ typedef void(^ZJTextZJTextAttributeCommonBlock)(void);
 @property (nonatomic, strong) NSNumber *maxLineHeight;
 
 /**
- 对齐, 整形, 0为默认靠左 1为居中 2为靠右, 参考 NSTextAlignment
+ 对齐, 整形, 0为默认靠左 1为靠右 2为居中, 参考 CTTextAlignment
  */
 @property (nonatomic, strong) NSNumber *align;
 

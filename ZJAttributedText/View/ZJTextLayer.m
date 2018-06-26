@@ -18,7 +18,7 @@
     
     for (ZJTextElement *element in _elements) {
         if (element.attributes.onLayout) {
-            element.attributes.onLayout();
+            element.attributes.onLayout(element);
         }
     }
 }

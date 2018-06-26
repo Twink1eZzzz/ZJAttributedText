@@ -48,7 +48,7 @@
         } else {
             for (NSValue *frameValue in element.frameValueArray) {
                 if (CGRectContainsPoint(frameValue.CGRectValue, point)) {
-                    element.attributes.onClicked();
+                    element.attributes.onClicked(element);
                 }
             }
         }

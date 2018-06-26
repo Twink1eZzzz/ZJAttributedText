@@ -14,7 +14,7 @@
 #pragma mark - common
 
 /**
- 内容: 文本、图片、继承自UIView的视图、继承自CALayer的视图
+ 内容: 文本(NSString)或图片(UIImage)
  */
 @property (nonatomic, strong) id content;
 
@@ -22,11 +22,6 @@
  属性
  */
 @property (nonatomic, strong) ZJTextAttributes *attributes;
-
-/**
- 绘制出的图片
- */
-@property (nonatomic, strong, readonly) UIImage *drawImage;
 
 /**
  在富文本中的范围
