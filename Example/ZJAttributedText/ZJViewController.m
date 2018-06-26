@@ -31,9 +31,6 @@
 
 - (void)baseFeature {
     
-    NSString *imagePath = [[NSBundle bundleForClass:[ZJTextElement class]] pathForResource:@"test" ofType:@"png"];
-    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    
     //元素1
     ZJTextElement *element1 = [ZJTextElement new];
     element1.content = @"随笔\n\n";
@@ -56,25 +53,32 @@
     
     //元素3
     ZJTextElement *element3 = [ZJTextElement new];
-    element3.content = image;
-    element3.attributes.imageSizeValue =  [NSValue valueWithCGSize:CGSizeMake(30, 30)];
+    NSString *image3Path = [[NSBundle bundleForClass:[ZJTextElement class]] pathForResource:@"dy008" ofType:@"png"];
+    element3.content = [UIImage imageWithContentsOfFile:image3Path];
+//    element3.attributes.imageSizeValue =  [NSValue valueWithCGSize:CGSizeMake(30, 30)];
     element3.attributes.imageAlign = @(ZJTextImageAlignCenterToFont);
     element3.attributes.align = @2;
+    element3.attributes.font = [UIFont systemFontOfSize:10];
+    element3.attributes.minLineHeight = @100;
     
     //元素4
     ZJTextElement *element4 = [ZJTextElement new];
-    element4.content = @"分界线";
-    element4.attributes.font = [UIFont systemFontOfSize:15];
+    element4.content = @"-----分界-----";
+    element4.attributes.font = [UIFont systemFontOfSize:10];
     element4.attributes.color = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
     element4.attributes.strokeColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.7];
     element4.attributes.strokeWidth = @-2;
     element4.attributes.align = @2;
+    element4.attributes.minLineHeight = @100;
     
     //元素5
     ZJTextElement *element5 = [ZJTextElement new];
-    element5.content = image;
+    NSString *image5Path = [[NSBundle bundleForClass:[ZJTextElement class]] pathForResource:@"dy122" ofType:@"png"];
+    element5.content = [UIImage imageWithContentsOfFile:image5Path];
     element5.attributes.imageAlign = @(ZJTextImageAlignCenterToFont);
     element5.attributes.align = @2;
+    element5.attributes.font = [UIFont systemFontOfSize:10];
+    element5.attributes.minLineHeight = @100;
     
     //元素6
     ZJTextElement *element6 = [ZJTextElement new];
@@ -103,7 +107,7 @@
     
     //默认属性
     ZJTextAttributes *defaultAttributes = [ZJTextAttributes new];
-    defaultAttributes.constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(325, 500)];
+    defaultAttributes.constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(325, 550)];
     defaultAttributes.letterSpace = @3;
     defaultAttributes.minLineHeight = @20;
     defaultAttributes.align = @1;
