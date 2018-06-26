@@ -83,12 +83,12 @@
     //元素6
     ZJTextElement *element6 = [ZJTextElement new];
     element6.content = @"\n我从来没想过时间会过的这么快，\n快的这五年我好像还没有认真生活，\n时间就没有了。\n没有认识新朋友，\n没有去过新景点，\n也没有吃过更新奇的食物，\n五年里没有任何值得留念的回忆。\n这本";
-    element6.attributes.font = [UIFont systemFontOfSize:14 weight:UIFontWeightLight];
+    element6.attributes.font = [UIFont systemFontOfSize:16 weight:UIFontWeightLight];
     
     //元素7
     ZJTextElement *element7 = [ZJTextElement new];
     element7.content = @"《云边有个小卖部》";
-    element7.attributes.font = [UIFont boldSystemFontOfSize:16];
+    element7.attributes.font = [UIFont boldSystemFontOfSize:22];
     element7.attributes.color = [[UIColor blueColor] colorWithAlphaComponent:0.5];
     element7.attributes.onClicked = ^(ZJTextElement *element) {
         NSLog(@"书名: %@", element.content);
@@ -110,6 +110,7 @@
     defaultAttributes.constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(325, 550)];
     defaultAttributes.letterSpace = @3;
     defaultAttributes.minLineHeight = @20;
+    defaultAttributes.maxLineHeight = @20;
     defaultAttributes.align = @1;
     defaultAttributes.imageAlign = @(ZJTextImageAlignCenterToFont);
     defaultAttributes.cacheFrame = @YES;
