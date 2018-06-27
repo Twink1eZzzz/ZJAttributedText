@@ -82,7 +82,7 @@ typedef void(^ZJTextZJTextAttributeCommonBlock)(ZJTextElement *element);
 /**
  图片尺寸, 默认为图片本身尺寸
  */
-@property (nonatomic, strong) NSValue *imageSizeValue;
+@property (nonatomic, strong) NSValue *imageSize;
 
 /**
  图片对齐模式 参看 ZJTextImageAlign
@@ -94,7 +94,7 @@ typedef void(^ZJTextZJTextAttributeCommonBlock)(ZJTextElement *element);
 /**
  绘制的约束尺寸, 默认Max
  */
-@property (nonatomic, strong) NSValue *constraintSizeValue;
+@property (nonatomic, strong) NSValue *maxSize;
 
 /**
  最小行间距

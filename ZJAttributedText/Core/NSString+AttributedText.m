@@ -16,7 +16,9 @@ typedef void(^ZJTextElementsGenerateCompletionBlock)(NSArray *elements, ZJTextAt
 static NSString *const kZJTextStringAttributesAssociateKey = @"kZJTextStringAttributesAssociateKey";
 static NSString *const kZJTextStringContextAssociateKey = @"kZJTextStringContextAssociateKey";
 static NSString *const kZJTextStringImageAssociateKey = @"kZJTextStringImageAssociateKey";
+static NSString *const kZJTextStringImageURLAssociateKey = @"kZJTextStringImageURLAssociateKey";
 static NSString *const kZJTextStringImagePlaceHolderPrefix = @"$ImagePlaceHolder-";
+static NSString *const kZJTextStringImageURLPlaceHolderPrefix = @"$ImageURLPlaceHolder-";
 static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHolder-";
 
 @implementation NSString (AttributedText)
@@ -35,9 +37,9 @@ static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHo
 @dynamic strokeColor;
 @dynamic verticalForm;
 @dynamic underline;
-@dynamic imageSizeValue;
+@dynamic imageSize;
 @dynamic imageAlign;
-@dynamic constraintSizeValue;
+@dynamic maxSize;
 @dynamic minLineSpace;
 @dynamic maxLineSpace;
 @dynamic minLineHeight;
@@ -58,6 +60,12 @@ static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHo
             //若是图片, 则生成唯一图片占位
             NSString *placeHolder = [NSString stringWithFormat:@"%@%.0f$", kZJTextStringImagePlaceHolderPrefix, [[NSDate date] timeIntervalSince1970]];
             objc_setAssociatedObject(placeHolder, kZJTextStringImageAssociateKey.UTF8String, content, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(placeHolder, kZJTextStringContextAssociateKey.UTF8String, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            return placeHolder;
+        } else if ([content isKindOfClass:[NSURL class]]) {
+            //若是图片URL, 则生成唯一图片占位
+            NSString *placeHolder = [NSString stringWithFormat:@"%@%.0f$", kZJTextStringImageURLPlaceHolderPrefix, [[NSDate date] timeIntervalSince1970]];
+            objc_setAssociatedObject(placeHolder, kZJTextStringImageURLAssociateKey.UTF8String, content, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             objc_setAssociatedObject(placeHolder, kZJTextStringContextAssociateKey.UTF8String, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             return placeHolder;
         }
@@ -131,6 +139,9 @@ static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHo
         if ([content hasPrefix:kZJTextStringImagePlaceHolderPrefix]) {
             //处理图片占位
             realContent = objc_getAssociatedObject(content, kZJTextStringImageAssociateKey.UTF8String);
+        } else if ([content hasPrefix:kZJTextStringImageURLPlaceHolderPrefix]) {
+            //处理图片URL占位
+            realContent = objc_getAssociatedObject(content, kZJTextStringImageURLAssociateKey.UTF8String);
         } else if ([content hasPrefix:kZJTextStringDefaultPlaceHolderPrefix]) {
             //处理全局属性占位
             if (!defaultAttributes) {
@@ -234,9 +245,9 @@ static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHo
     };
 }
 
-- (ZJTextDotValueBlock)imageSizeValue {
+- (ZJTextDotValueBlock)imageSize {
     return ^(NSValue *value) {
-        [self setAssociate:self attribute:value forKey:@"imageSizeValue"];
+        [self setAssociate:self attribute:value forKey:@"imageSize"];
         return self;
     };
 }
@@ -248,9 +259,9 @@ static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHo
     };
 }
 
-- (ZJTextDotValueBlock)constraintSizeValue {
+- (ZJTextDotValueBlock)maxSize {
     return ^(NSValue *value) {
-        [self setAssociate:self attribute:value forKey:@"constraintSizeValue"];
+        [self setAssociate:self attribute:value forKey:@"maxSize"];
         return self;
     };
 }

@@ -7,373 +7,582 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09634EEB8E35BE0BD82A1C2153BA901A /* ZJAttributedText-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7FC091DEC0B95FC9F2560F449D14C1 /* ZJAttributedText-dummy.m */; };
-		23B8B2092AD4EA8165BF37D684ECE085 /* Pods-ZJAttributedText_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 69B5F11ADB84491BA3E340A67A2662EB /* Pods-ZJAttributedText_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		29D7530DBB9E874EF5383B3D37EE833D /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 837B7CD1495279B8956BBA4014EC0CA6 /* ZJTextView.m */; };
-		2ED4BE7D380EDCFB85960FC7E09AE948 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		348B47436FBC956EE954BF9DCA27311B /* NSString+AttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = A612F98273EF8D01AFAF95636C75D663 /* NSString+AttributedText.m */; };
-		35BC59C508080DF47B574E178EF7B435 /* Pods-ZJAttributedText_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A99FD0E18E3ACF40DDCDB204F1B7F77 /* Pods-ZJAttributedText_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3B090F22E7AC8B91B659EE67E4AF537D /* NSString+AttributedText.h in Headers */ = {isa = PBXBuildFile; fileRef = E18E1C1AAEBB5686F89D5B49915E432A /* NSString+AttributedText.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C5BABEC4577C08DB21FC9F1665F53E8 /* ZJTextAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 636461E8EC4D47F8BEBB2DD30F64A3FF /* ZJTextAttributes.m */; };
-		46033577FB5AFA64B0372F83212B15E0 /* Pods-ZJAttributedText_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66EAFF713752E36E67710806978DA2 /* Pods-ZJAttributedText_Example-dummy.m */; };
-		4839F325AC6E02558242B6D39FB9F3EC /* ZJTextElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 00BDAFC3EB18CEE5D0FD2653F722C289 /* ZJTextElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5FA7B0E2446C92ABD31CC328290D2138 /* ZJTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F481BF0B6E1BB0998C98A8EA6AD419B4 /* ZJTextLayer.m */; };
-		716F7A25B6C73198535E24EE13B7C279 /* ZJTextFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = B4142F97B6F2233B76AC2B36DD0007AB /* ZJTextFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		804E401A22120C81CE5BF99594971B34 /* ZJAttributedText-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B81B5C34832E124991FCE2F5551CD70 /* ZJAttributedText-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		80BA263186749DF5FF8F72706721D1AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		B79CCD59307BCE3BB5F9C9B8ABD224EA /* ZJTextLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D64ED672AADCDE774CADA961514A813A /* ZJTextLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BB29AF0C0BE866E938D3FE42896C2CDC /* ZJTextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDF3A51D0910A466ACB6DB7015E97DB /* ZJTextElement.m */; };
-		CAA7DA2A5B52508E172E405014FFBA82 /* ZJTextAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 95079B84A4E67CF58D912B7F42FB81E4 /* ZJTextAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DABF8BBB66F42D02F925AF8D908FC9F0 /* ZJTextFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E81357F4D41375A26FED13E543ADA6 /* ZJTextFactory.m */; };
-		E454DBC5BD3B0F1B8A4EE548AEDDDF44 /* Pods-ZJAttributedText_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B01B15C4D24A61AA9D4262AC975BD78D /* Pods-ZJAttributedText_Tests-dummy.m */; };
-		E5414D6A5206DEE7C348DF77CB5397C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		F01E684771A4860033C5F4D59F15AAF8 /* ZJTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 650728F7B677A383F8A19A35EE9D61B4 /* ZJTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D94578523D2D88FDA65DA9574ABB03 /* SDImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E11C6099EA0AEE5025EA8CE23AE4CD52 /* SDImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04FE1D0D7F289EF59577B8CE14BBFEF8 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 897A2E6CF754E3CD2802E04E07B85FF2 /* UIImageView+WebCache.m */; };
+		060448817FEE093DD693CB84C4EE5132 /* NSData+ImageContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CC944EBE9B115D71D88055BA1AEDF62 /* NSData+ImageContentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0869F0620FBD16FD58213DA7CCF456FA /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB5691D138548A6D253588575A439DB /* SDWebImageDecoder.m */; };
+		0967DA8B12C9919BE21E2FB017B645F4 /* ZJTextLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 96CBB7721B672CF45A743A9D22D3B288 /* ZJTextLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0B1B0096649704600A9ABE7BB9804650 /* UIView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A0A3175EE37BD9AD192EB81D00D9645 /* UIView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		115A181CF298329508DCB9DD70133C45 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51263AEF33F8BF027FB9BD35AFF704B /* SDWebImage.framework */; };
+		136EB61F59FEFB9B0B962EFC1C703BD9 /* SDImageCacheConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDD72A329D9BCE159C5F9AB4715F110 /* SDImageCacheConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17A4024B27436F00371D60674B06DB8E /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D4820634B6127B72FFA59EBC57B6D111 /* SDImageCache.m */; };
+		1AD59D2BED88ECAF5CCC3DD2025D5A7E /* NSString+AttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E006DD4B02F010936FEF0B2F1E2363 /* NSString+AttributedText.m */; };
+		22A2987AA5B748DE6A914F7E22785302 /* SDImageCacheConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9390C146A22D57B0273C0F6E125FBC7C /* SDImageCacheConfig.m */; };
+		25A5B0960C9D0981465F14715420D5EC /* ZJTextFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E52A174A05E454063E33CD623CA6EC /* ZJTextFactory.m */; };
+		288FBA5BEB9921F67CEBCCC27F1AA44C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F8173E1160A17D38E90F61A8CCE102 /* Foundation.framework */; };
+		2D2E7B53A3F65690971FA4100E3BBB18 /* UIView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D630734E07C84F0ABEE9466A7EFB6DCD /* UIView+WebCache.m */; };
+		2F0D8CC8E52A95358CF97A254E6DD071 /* Pods-ZJAttributedText_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA6F87F5882939ADCAC15C9AEA4812B7 /* Pods-ZJAttributedText_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3DAFBD94F26F848BFF996DBE723C71D3 /* ZJTextAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5A84B8F5C6C2D229C5F78369FB0B60 /* ZJTextAttributes.m */; };
+		47305CF11245F5983DCF3C06F815B234 /* UIImageView+HighlightedWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 219DF7D9481BA690B5AED9DA9FE66218 /* UIImageView+HighlightedWebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		487CFD97FE2B51094DB21711313E25D3 /* SDWebImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A73F0B24D98F189DCB613155DF1EE21 /* SDWebImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		507C5CFC1FAC5ABEF7411465C7E8C90A /* UIButton+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2847B7F3BCDC6C9EB44F0A1AB1523FE6 /* UIButton+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		507FD63C3E660E80862CEC1163F621F0 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 756298A570B6942FCED3F05081C78CFB /* SDWebImagePrefetcher.m */; };
+		550B753F31DAD1D2EED6C974747BD884 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C06DBFF2CD752DB0636D19906E16EB /* UIButton+WebCache.m */; };
+		57B23CE79F20AB1938EA34C234A40D6F /* SDWebImagePrefetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 56A1618B2AF1B2871E1604395C8EFA09 /* SDWebImagePrefetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E02DADD36836C8364EDC3081596D149 /* ZJTextFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 61719C5407A3A0D9425CE671ECC2D624 /* ZJTextFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5EFCCDAC91BD6D350A76F2B1BF643AEF /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A8C854FE34EA783A09CB3EA7645EA1 /* SDWebImageManager.m */; };
+		5F08E526F904EF2748609D563211711A /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 581CDE3BE000EFB36C6F8318D985FA34 /* SDWebImageDownloader.m */; };
+		65972ED0F34465D93DA946DBC23D371A /* ZJTextElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 381FBC526E0CFAC738E416EB5F4D673B /* ZJTextElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		69ECB714B54391F6800BE66171759BB7 /* UIImage+MultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C447DB94B0A2663402475F8E5DE6A56 /* UIImage+MultiFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6AA675260B50328E190BB983352368E5 /* UIImageView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = F30852B67732A61B5CB46EFD0C833C0A /* UIImageView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78E6B661D1722AA02F0B6E0B8CDF7E97 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DD8D28A9485235956A0F383D5C277 /* UIImage+GIF.m */; };
+		7D1588514C698D02431344108C0E72C1 /* SDWebImageOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A64EEECAD63A7EADEA29E7AEA25270 /* SDWebImageOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E048919D66A47A3E8ECDEB71ADAB7BB /* SDWebImage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F263A7CD222E3D02DF5B86C5C59DC1F /* SDWebImage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82C56BDFB7C22057FC68D76E09FC229A /* UIImage+GIF.h in Headers */ = {isa = PBXBuildFile; fileRef = D4747FB858DFF2AB2644FC0ADF585B45 /* UIImage+GIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84D705705E447D614C01EE92E2632901 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 005457EF3774E85747C0A258CE3FDA89 /* UIImage+MultiFormat.m */; };
+		862E56EB6191C17612A36E3F2E30A849 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DE49E458C6AD4CE8741368136C6F06 /* NSData+ImageContentType.m */; };
+		8A7E649C892A001CADF7A11D86119D33 /* Pods-ZJAttributedText_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79539763720BC7379E79CD84D4B7ADA1 /* Pods-ZJAttributedText_Tests-dummy.m */; };
+		8F2BFA24B546D167A4DB0C6F643614AB /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32BDF9064F173CA14BAD7C3AE81B2E /* UIView+WebCacheOperation.m */; };
+		8F39278C2F1B0E71545CA5657DE4F85A /* ZJTextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 39006206FCE8A9B1051758EA584F6AFF /* ZJTextElement.m */; };
+		8F5E8C5DE58795B3B98F8C45FFAD072B /* NSString+AttributedText.h in Headers */ = {isa = PBXBuildFile; fileRef = 0858F1CC6866980861327BCCB0CE6681 /* NSString+AttributedText.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91A9792ECA8882AE826B5963FFD23501 /* Pods-ZJAttributedText_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BCE465BFF29F239A7BD94106948597 /* Pods-ZJAttributedText_Example-dummy.m */; };
+		984C5765780E9799E529AB5F7175394E /* SDWebImageDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C04F3EEF4D17A35D8E31F28EE7A010C /* SDWebImageDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9BE7A82051B99A675257FE11A3FCD722 /* NSImage+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D47072C0ED9A1005E4C69BFBEAD3ACAA /* NSImage+WebCache.m */; };
+		A1D589166F200532AE7EFB5427EAAC25 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5AA963A21F63B4596AB29BEFBC20802 /* SDWebImageDownloaderOperation.m */; };
+		A2898222B8CF3DA6EFE63A86C1742BAA /* NSImage+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 85C1E697FDBDB6720C67C945FF48A5AA /* NSImage+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A4007112AA4C3A6F74FC0986BC62EC8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F8173E1160A17D38E90F61A8CCE102 /* Foundation.framework */; };
+		A4E024B92FC83481B2789EC3BFAF35B6 /* SDWebImageDownloaderOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F617793782B2F95533DEDCFE08C8232F /* SDWebImageDownloaderOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5516E680C2D20FA9378297855B19CAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F8173E1160A17D38E90F61A8CCE102 /* Foundation.framework */; };
+		AD0221A4B00B231DB3BA2EE5678B80E2 /* Pods-ZJAttributedText_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 447F374E9D387D65EB19CCA5A14DE9C1 /* Pods-ZJAttributedText_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE59B825D22BA86B125ACFE9C413495E /* SDWebImageCompat.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BD971CC5FA5A7D110FCDA068F60D7BF /* SDWebImageCompat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B61EA283D01C927160DDDF53F90B0A9A /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D75A76A610F2B4A845791E59AB926681 /* UIImageView+HighlightedWebCache.m */; };
+		C256BE2E5F7928E4E3CF29625DAA53A7 /* ZJTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DB90786DC8375AAAFEACC951835070C /* ZJTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB26314C482668846578DC0AA36AD514 /* ZJTextAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 59D8B5A17E615471BB81E14C62F12281 /* ZJTextAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CEE2B6831CB69C4C0C5A6BA8A907AD93 /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4968632F1A67D037CED910C867197F /* ZJTextView.m */; };
+		D0F67C79C3366993289CEF84750FEEE0 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 508D44C0A130FED6C793BB855FB9A3B3 /* SDWebImageCompat.m */; };
+		D78EA8D648A5336E3B8DFA1852B34EFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F8173E1160A17D38E90F61A8CCE102 /* Foundation.framework */; };
+		D96FA9F837209CD710D0F0EBDD4BF858 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6247661BD0EBA180F86A93AC24F45A /* ImageIO.framework */; };
+		DF8AF2C671ABE6540CB8CA2063E96179 /* ZJTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A9A87DD9D40A99BB3137B70CD8F00 /* ZJTextLayer.m */; };
+		E47053B7C02D7C4304091D5D1EB3DA9B /* ZJAttributedText-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2123711D3D41A8DA3156A86F4E03F2 /* ZJAttributedText-dummy.m */; };
+		F7EC394A117A98B15CE47EA1F65F766F /* SDWebImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C4DF9D5BAF2609E224B45E5E297E0B /* SDWebImage-dummy.m */; };
+		F8C5D5264B10C7C1F864C7A5E9D6534A /* UIView+WebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E48183907F6CCFBE1EB9099359CEAF27 /* UIView+WebCacheOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8F60E3572DBA1CF30AA7D1121783243 /* SDWebImageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BD35FDC410E27DE2A3CC284B53AC2AA0 /* SDWebImageManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB73220DFEB04161747855B9221EBB96 /* ZJAttributedText-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 73D80A9C20B09ED9C7B94AEB8BD85303 /* ZJAttributedText-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		17410625DA848550B539A5119B8E2287 /* PBXContainerItemProxy */ = {
+		3B9AC7A319593C16D1A9CEDEA4BFF6E6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1AF2B16DF57A3865E4BC37FB47F99252;
-			remoteInfo = ZJAttributedText;
+			remoteGlobalIDString = F4466457FC1BD797A3DDB06AEDF1D27A;
+			remoteInfo = SDWebImage;
 		};
-		D892DC5ACF462EF3EC88ABA7B71CAC0A /* PBXContainerItemProxy */ = {
+		56413A034B43F23F6C97B48D84300F8F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D8883E93DA6E6F9DB00C99414E489094;
-			remoteInfo = "Pods-ZJAttributedText_Example";
+			remoteGlobalIDString = F4466457FC1BD797A3DDB06AEDF1D27A;
+			remoteInfo = SDWebImage;
+		};
+		B2D1ECD1DBC2A7A78D8C92634531F4B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA910C5AFEB761CADC09875F98130AE9;
+			remoteInfo = ZJAttributedText;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00BDAFC3EB18CEE5D0FD2653F722C289 /* ZJTextElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextElement.h; sourceTree = "<group>"; };
-		00EE0244456E307B0C2C1E49CC78132E /* Pods-ZJAttributedText_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Example-resources.sh"; sourceTree = "<group>"; };
-		1513FB5146B3BDD1A9FB92A882E0BDD9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		15EFA249EE51A6838714535F77185DFF /* Pods-ZJAttributedText_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		1B81B5C34832E124991FCE2F5551CD70 /* ZJAttributedText-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZJAttributedText-umbrella.h"; sourceTree = "<group>"; };
-		1BE5A301B5703122C2CB5E87FFED9211 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1ED184D32822F39E972252C60E598870 /* Pods-ZJAttributedText_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZJAttributedText_Example.modulemap"; sourceTree = "<group>"; };
-		2113798BB10AA7CBB80CFB03CDEBECAF /* Pods-ZJAttributedText_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZJAttributedText_Tests.modulemap"; sourceTree = "<group>"; };
-		2A99FD0E18E3ACF40DDCDB204F1B7F77 /* Pods-ZJAttributedText_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZJAttributedText_Example-umbrella.h"; sourceTree = "<group>"; };
-		2E691CD35ADF452F427679BDC9F8D2C0 /* Pods_ZJAttributedText_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZJAttributedText_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35D670FAD835E61E55ED9C2C04A48762 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		36DE08E44AC59C28266028397E01BBFE /* Pods-ZJAttributedText_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZJAttributedText_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		589613AAD56F9AEFE63349C2306B1DB1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		5E66EAFF713752E36E67710806978DA2 /* Pods-ZJAttributedText_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZJAttributedText_Example-dummy.m"; sourceTree = "<group>"; };
-		636461E8EC4D47F8BEBB2DD30F64A3FF /* ZJTextAttributes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextAttributes.m; sourceTree = "<group>"; };
-		650728F7B677A383F8A19A35EE9D61B4 /* ZJTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
-		69B5F11ADB84491BA3E340A67A2662EB /* Pods-ZJAttributedText_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZJAttributedText_Tests-umbrella.h"; sourceTree = "<group>"; };
-		6C7FC091DEC0B95FC9F2560F449D14C1 /* ZJAttributedText-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZJAttributedText-dummy.m"; sourceTree = "<group>"; };
-		7C57E3F7FFC898BFA0F04E5BE8806C0D /* ZJAttributedText.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZJAttributedText.xcconfig; sourceTree = "<group>"; };
-		837B7CD1495279B8956BBA4014EC0CA6 /* ZJTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextView.m; sourceTree = "<group>"; };
-		841055BA10633B156787D0399980714E /* Pods-ZJAttributedText_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Example.release.xcconfig"; sourceTree = "<group>"; };
-		8DDF3A51D0910A466ACB6DB7015E97DB /* ZJTextElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextElement.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		95079B84A4E67CF58D912B7F42FB81E4 /* ZJTextAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextAttributes.h; sourceTree = "<group>"; };
-		98E81357F4D41375A26FED13E543ADA6 /* ZJTextFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextFactory.m; sourceTree = "<group>"; };
-		A612F98273EF8D01AFAF95636C75D663 /* NSString+AttributedText.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+AttributedText.m"; sourceTree = "<group>"; };
-		A6DB52C493268D069AA931913E4160C4 /* Pods-ZJAttributedText_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZJAttributedText_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		A91237529BF4FF4B2B16FC67345AF7B4 /* Pods_ZJAttributedText_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZJAttributedText_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC00BE8CEFB92978A912B88CD333786B /* Pods-ZJAttributedText_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZJAttributedText_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		B01B15C4D24A61AA9D4262AC975BD78D /* Pods-ZJAttributedText_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZJAttributedText_Tests-dummy.m"; sourceTree = "<group>"; };
-		B4142F97B6F2233B76AC2B36DD0007AB /* ZJTextFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextFactory.h; sourceTree = "<group>"; };
-		B446A693A3FFE8CEF8F9C1B2A3A12952 /* Pods-ZJAttributedText_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		BF7B638921ACC6D53AC740E5E80B1727 /* ZJAttributedText.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = ZJAttributedText.podspec; sourceTree = "<group>"; };
-		C103C39EADA499A3175B1E6B5FB69D60 /* Pods-ZJAttributedText_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		C122E847EC907ED7C006C8FF9885B39C /* ZJAttributedText-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZJAttributedText-prefix.pch"; sourceTree = "<group>"; };
-		C1E52B193193F3C17F6BE1C723910BF2 /* Pods-ZJAttributedText_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Tests-resources.sh"; sourceTree = "<group>"; };
-		C9864C3C52E7BC13AAAA3D4D72E524DB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D5FB621935F5F7CAB883D0732845E7E1 /* ZJAttributedText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZJAttributedText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D64ED672AADCDE774CADA961514A813A /* ZJTextLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextLayer.h; sourceTree = "<group>"; };
-		E1466F2B2C1E5244BB76A761DC4DB85C /* ZJAttributedText.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZJAttributedText.modulemap; sourceTree = "<group>"; };
-		E18E1C1AAEBB5686F89D5B49915E432A /* NSString+AttributedText.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString+AttributedText.h"; sourceTree = "<group>"; };
-		E6901C492BE0F2F79F2886744F3C2A95 /* Pods-ZJAttributedText_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZJAttributedText_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F481BF0B6E1BB0998C98A8EA6AD419B4 /* ZJTextLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextLayer.m; sourceTree = "<group>"; };
-		F48FE3DE3E3F1CDA1FE8604A43DBA67D /* Pods-ZJAttributedText_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		F826E6E6FBB73E69E395D1A9FBB3C791 /* Pods-ZJAttributedText_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Example-frameworks.sh"; sourceTree = "<group>"; };
+		005457EF3774E85747C0A258CE3FDA89 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MultiFormat.m"; path = "SDWebImage/UIImage+MultiFormat.m"; sourceTree = "<group>"; };
+		03C4DF9D5BAF2609E224B45E5E297E0B /* SDWebImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDWebImage-dummy.m"; sourceTree = "<group>"; };
+		0858F1CC6866980861327BCCB0CE6681 /* NSString+AttributedText.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString+AttributedText.h"; sourceTree = "<group>"; };
+		0AEFE0387AF115E0690380926EFDFE0E /* ZJAttributedText.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZJAttributedText.xcconfig; sourceTree = "<group>"; };
+		184F26E7FED7D19D1255BD011C2A568D /* SDWebImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SDWebImage.modulemap; sourceTree = "<group>"; };
+		18A64EEECAD63A7EADEA29E7AEA25270 /* SDWebImageOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageOperation.h; path = SDWebImage/SDWebImageOperation.h; sourceTree = "<group>"; };
+		1A6247661BD0EBA180F86A93AC24F45A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
+		1CC944EBE9B115D71D88055BA1AEDF62 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
+		20AF2D3CD67A23AE0B922E8CB80D0AB7 /* Pods-ZJAttributedText_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Example.release.xcconfig"; sourceTree = "<group>"; };
+		219DF7D9481BA690B5AED9DA9FE66218 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+HighlightedWebCache.h"; path = "SDWebImage/UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
+		256E6C98D52F1D79927E868503E7C8B6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		273DC19652AD711C27D02CDF88D19B0D /* Pods-ZJAttributedText_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZJAttributedText_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		2847B7F3BCDC6C9EB44F0A1AB1523FE6 /* UIButton+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+WebCache.h"; path = "SDWebImage/UIButton+WebCache.h"; sourceTree = "<group>"; };
+		2A0A3175EE37BD9AD192EB81D00D9645 /* UIView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+WebCache.h"; path = "SDWebImage/UIView+WebCache.h"; sourceTree = "<group>"; };
+		2A73F0B24D98F189DCB613155DF1EE21 /* SDWebImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloader.h; path = SDWebImage/SDWebImageDownloader.h; sourceTree = "<group>"; };
+		2D325B4D9C54B95C48DD2081A500A242 /* Pods-ZJAttributedText_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		381FBC526E0CFAC738E416EB5F4D673B /* ZJTextElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextElement.h; sourceTree = "<group>"; };
+		39006206FCE8A9B1051758EA584F6AFF /* ZJTextElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextElement.m; sourceTree = "<group>"; };
+		3BD56941FB5EED526DB29D859F2CA901 /* Pods-ZJAttributedText_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZJAttributedText_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4351DA22B7D7B4CB6C859D9D7BA1E071 /* Pods-ZJAttributedText_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZJAttributedText_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		447F374E9D387D65EB19CCA5A14DE9C1 /* Pods-ZJAttributedText_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZJAttributedText_Tests-umbrella.h"; sourceTree = "<group>"; };
+		46269F0BABCF5B6C6175FCF943CC4F1E /* Pods-ZJAttributedText_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		46BCE465BFF29F239A7BD94106948597 /* Pods-ZJAttributedText_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZJAttributedText_Example-dummy.m"; sourceTree = "<group>"; };
+		46E71C82E6CA45B9CB35CF1FAC478F7D /* Pods-ZJAttributedText_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Tests-resources.sh"; sourceTree = "<group>"; };
+		47C06DBFF2CD752DB0636D19906E16EB /* UIButton+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+WebCache.m"; path = "SDWebImage/UIButton+WebCache.m"; sourceTree = "<group>"; };
+		4A06CC18F88D4DC33918D1C6618E0F50 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C32BDF9064F173CA14BAD7C3AE81B2E /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		508D44C0A130FED6C793BB855FB9A3B3 /* SDWebImageCompat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCompat.m; path = SDWebImage/SDWebImageCompat.m; sourceTree = "<group>"; };
+		56A1618B2AF1B2871E1604395C8EFA09 /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImagePrefetcher.h; path = SDWebImage/SDWebImagePrefetcher.h; sourceTree = "<group>"; };
+		581CDE3BE000EFB36C6F8318D985FA34 /* SDWebImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloader.m; path = SDWebImage/SDWebImageDownloader.m; sourceTree = "<group>"; };
+		59D8B5A17E615471BB81E14C62F12281 /* ZJTextAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextAttributes.h; sourceTree = "<group>"; };
+		5C04F3EEF4D17A35D8E31F28EE7A010C /* SDWebImageDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDecoder.h; path = SDWebImage/SDWebImageDecoder.h; sourceTree = "<group>"; };
+		61719C5407A3A0D9425CE671ECC2D624 /* ZJTextFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextFactory.h; sourceTree = "<group>"; };
+		640D11ED6B13175CB531EA629B2FE71B /* Pods-ZJAttributedText_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZJAttributedText_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		670761A804D5C48A5177BA2AFB520F4B /* ZJAttributedText.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ZJAttributedText.modulemap; sourceTree = "<group>"; };
+		6C447DB94B0A2663402475F8E5DE6A56 /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MultiFormat.h"; path = "SDWebImage/UIImage+MultiFormat.h"; sourceTree = "<group>"; };
+		6DB5691D138548A6D253588575A439DB /* SDWebImageDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDecoder.m; path = SDWebImage/SDWebImageDecoder.m; sourceTree = "<group>"; };
+		6E11F75B4A3837E2F1B542A48E3DD647 /* ZJAttributedText-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZJAttributedText-prefix.pch"; sourceTree = "<group>"; };
+		705DD8D28A9485235956A0F383D5C277 /* UIImage+GIF.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+GIF.m"; path = "SDWebImage/UIImage+GIF.m"; sourceTree = "<group>"; };
+		72F749754C8193F6020891F6AB7BA020 /* Pods-ZJAttributedText_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Example-frameworks.sh"; sourceTree = "<group>"; };
+		73D80A9C20B09ED9C7B94AEB8BD85303 /* ZJAttributedText-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZJAttributedText-umbrella.h"; sourceTree = "<group>"; };
+		756298A570B6942FCED3F05081C78CFB /* SDWebImagePrefetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImagePrefetcher.m; path = SDWebImage/SDWebImagePrefetcher.m; sourceTree = "<group>"; };
+		79539763720BC7379E79CD84D4B7ADA1 /* Pods-ZJAttributedText_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZJAttributedText_Tests-dummy.m"; sourceTree = "<group>"; };
+		836942ACB385067A225A07FAC21305B0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83CD6FF5D2B99B0104E8D1980E454910 /* Pods-ZJAttributedText_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		85C1E697FDBDB6720C67C945FF48A5AA /* NSImage+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSImage+WebCache.h"; path = "SDWebImage/NSImage+WebCache.h"; sourceTree = "<group>"; };
+		897A2E6CF754E3CD2802E04E07B85FF2 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+WebCache.m"; path = "SDWebImage/UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		8BD971CC5FA5A7D110FCDA068F60D7BF /* SDWebImageCompat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCompat.h; path = SDWebImage/SDWebImageCompat.h; sourceTree = "<group>"; };
+		8DB90786DC8375AAAFEACC951835070C /* ZJTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
+		8F01F47B51E4466BB0BF33B1F44F2D0E /* Pods-ZJAttributedText_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ZJAttributedText_Tests.modulemap"; sourceTree = "<group>"; };
+		8F263A7CD222E3D02DF5B86C5C59DC1F /* SDWebImage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDWebImage-umbrella.h"; sourceTree = "<group>"; };
+		907879013B2CB24B98DDC489E9613D9E /* ZJAttributedText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZJAttributedText.framework; path = ZJAttributedText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9390C146A22D57B0273C0F6E125FBC7C /* SDImageCacheConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCacheConfig.m; path = SDWebImage/SDImageCacheConfig.m; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		957D22BF36B3FD6B988A917574B7ACCB /* Pods_ZJAttributedText_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZJAttributedText_Example.framework; path = "Pods-ZJAttributedText_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96CBB7721B672CF45A743A9D22D3B288 /* ZJTextLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextLayer.h; sourceTree = "<group>"; };
+		9C3532B3EC67D3A4E8623684B7F9163B /* Pods-ZJAttributedText_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		A1E52A174A05E454063E33CD623CA6EC /* ZJTextFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextFactory.m; sourceTree = "<group>"; };
+		A5D51304400B2129F74BF0F3DA202F3E /* Pods-ZJAttributedText_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ZJAttributedText_Example.modulemap"; sourceTree = "<group>"; };
+		AB4968632F1A67D037CED910C867197F /* ZJTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextView.m; sourceTree = "<group>"; };
+		AD5A84B8F5C6C2D229C5F78369FB0B60 /* ZJTextAttributes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextAttributes.m; sourceTree = "<group>"; };
+		B71523E7BC47634CF80DAA724665A7DA /* Pods-ZJAttributedText_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Example-resources.sh"; sourceTree = "<group>"; };
+		B7DE49E458C6AD4CE8741368136C6F06 /* NSData+ImageContentType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+ImageContentType.m"; path = "SDWebImage/NSData+ImageContentType.m"; sourceTree = "<group>"; };
+		B87A35250FFF76BE355533F62AD2681D /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SDWebImage.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB2123711D3D41A8DA3156A86F4E03F2 /* ZJAttributedText-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZJAttributedText-dummy.m"; sourceTree = "<group>"; };
+		BD35FDC410E27DE2A3CC284B53AC2AA0 /* SDWebImageManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageManager.h; path = SDWebImage/SDWebImageManager.h; sourceTree = "<group>"; };
+		BF4A9A87DD9D40A99BB3137B70CD8F00 /* ZJTextLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextLayer.m; sourceTree = "<group>"; };
+		C9B4BFEE82DA3E60DDF635C6E35F6B8E /* Pods_ZJAttributedText_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZJAttributedText_Tests.framework; path = "Pods-ZJAttributedText_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA6F87F5882939ADCAC15C9AEA4812B7 /* Pods-ZJAttributedText_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZJAttributedText_Example-umbrella.h"; sourceTree = "<group>"; };
+		D47072C0ED9A1005E4C69BFBEAD3ACAA /* NSImage+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSImage+WebCache.m"; path = "SDWebImage/NSImage+WebCache.m"; sourceTree = "<group>"; };
+		D4747FB858DFF2AB2644FC0ADF585B45 /* UIImage+GIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+GIF.h"; path = "SDWebImage/UIImage+GIF.h"; sourceTree = "<group>"; };
+		D4820634B6127B72FFA59EBC57B6D111 /* SDImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCache.m; path = SDWebImage/SDImageCache.m; sourceTree = "<group>"; };
+		D51263AEF33F8BF027FB9BD35AFF704B /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5AA963A21F63B4596AB29BEFBC20802 /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderOperation.m; path = SDWebImage/SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
+		D630734E07C84F0ABEE9466A7EFB6DCD /* UIView+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCache.m"; path = "SDWebImage/UIView+WebCache.m"; sourceTree = "<group>"; };
+		D73131230BBAE41C6548E65B4B92CA9A /* SDWebImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDWebImage-prefix.pch"; sourceTree = "<group>"; };
+		D75A76A610F2B4A845791E59AB926681 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+HighlightedWebCache.m"; path = "SDWebImage/UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
+		DBDD72A329D9BCE159C5F9AB4715F110 /* SDImageCacheConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCacheConfig.h; path = SDWebImage/SDImageCacheConfig.h; sourceTree = "<group>"; };
+		E11C6099EA0AEE5025EA8CE23AE4CD52 /* SDImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCache.h; path = SDWebImage/SDImageCache.h; sourceTree = "<group>"; };
+		E48183907F6CCFBE1EB9099359CEAF27 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+WebCacheOperation.h"; path = "SDWebImage/UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
+		E79B6A50304612DB06E5B302519F5123 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2F8173E1160A17D38E90F61A8CCE102 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		F30768E715A40999ED6646D16FC05FCF /* SDWebImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDWebImage.xcconfig; sourceTree = "<group>"; };
+		F30852B67732A61B5CB46EFD0C833C0A /* UIImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+WebCache.h"; path = "SDWebImage/UIImageView+WebCache.h"; sourceTree = "<group>"; };
+		F4A8C854FE34EA783A09CB3EA7645EA1 /* SDWebImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageManager.m; path = SDWebImage/SDWebImageManager.m; sourceTree = "<group>"; };
+		F5E006DD4B02F010936FEF0B2F1E2363 /* NSString+AttributedText.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+AttributedText.m"; sourceTree = "<group>"; };
+		F617793782B2F95533DEDCFE08C8232F /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderOperation.h; path = SDWebImage/SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0225FA7B3294CEEF68E319D76FF18E30 /* Frameworks */ = {
+		0D4EA8D3568FB6AF00D111801471BE1A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5414D6A5206DEE7C348DF77CB5397C6 /* Foundation.framework in Frameworks */,
+				288FBA5BEB9921F67CEBCCC27F1AA44C /* Foundation.framework in Frameworks */,
+				D96FA9F837209CD710D0F0EBDD4BF858 /* ImageIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07464A16097A8379A237DDE7682F77E5 /* Frameworks */ = {
+		30D09D594C0CE98A81149117A3D386F6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80BA263186749DF5FF8F72706721D1AA /* Foundation.framework in Frameworks */,
+				A4007112AA4C3A6F74FC0986BC62EC8B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C84B97258A3B3EE6162906F78B643F06 /* Frameworks */ = {
+		7C1296B89A628743746FEABDC67B0879 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2ED4BE7D380EDCFB85960FC7E09AE948 /* Foundation.framework in Frameworks */,
+				A5516E680C2D20FA9378297855B19CAD /* Foundation.framework in Frameworks */,
+				115A181CF298329508DCB9DD70133C45 /* SDWebImage.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E76906DDC3F9D5E154BCFA499BCD79E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D78EA8D648A5336E3B8DFA1852B34EFF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		14331A50924961B2FDFE04443327BAEC /* View */ = {
+		0FE3A42B870E5101260B68932280DAA0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				D64ED672AADCDE774CADA961514A813A /* ZJTextLayer.h */,
-				F481BF0B6E1BB0998C98A8EA6AD419B4 /* ZJTextLayer.m */,
-				650728F7B677A383F8A19A35EE9D61B4 /* ZJTextView.h */,
-				837B7CD1495279B8956BBA4014EC0CA6 /* ZJTextView.m */,
-			);
-			name = View;
-			path = ZJAttributedText/View;
-			sourceTree = "<group>";
-		};
-		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		72FF25E08C234686863F5CAFE52F9E4E /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				E18E1C1AAEBB5686F89D5B49915E432A /* NSString+AttributedText.h */,
-				A612F98273EF8D01AFAF95636C75D663 /* NSString+AttributedText.m */,
-				B4142F97B6F2233B76AC2B36DD0007AB /* ZJTextFactory.h */,
-				98E81357F4D41375A26FED13E543ADA6 /* ZJTextFactory.m */,
+				0858F1CC6866980861327BCCB0CE6681 /* NSString+AttributedText.h */,
+				F5E006DD4B02F010936FEF0B2F1E2363 /* NSString+AttributedText.m */,
+				61719C5407A3A0D9425CE671ECC2D624 /* ZJTextFactory.h */,
+				A1E52A174A05E454063E33CD623CA6EC /* ZJTextFactory.m */,
 			);
 			name = Core;
 			path = ZJAttributedText/Core;
 			sourceTree = "<group>";
 		};
-		75BF5A33FDCA78E25AE6DAEB16E2570E /* ZJAttributedText */ = {
+		11E2A9629E1B858849C6350CF5850535 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				72FF25E08C234686863F5CAFE52F9E4E /* Core */,
-				A455CEE5D977475D5950C663D1697E94 /* Model */,
-				CB0C4A43C0C769A8CB9DC8063B803A2A /* Pod */,
-				D0607DBEE5E86A1ABF6FDD9319D4CAFD /* Support Files */,
-				14331A50924961B2FDFE04443327BAEC /* View */,
+				1CC944EBE9B115D71D88055BA1AEDF62 /* NSData+ImageContentType.h */,
+				B7DE49E458C6AD4CE8741368136C6F06 /* NSData+ImageContentType.m */,
+				85C1E697FDBDB6720C67C945FF48A5AA /* NSImage+WebCache.h */,
+				D47072C0ED9A1005E4C69BFBEAD3ACAA /* NSImage+WebCache.m */,
+				E11C6099EA0AEE5025EA8CE23AE4CD52 /* SDImageCache.h */,
+				D4820634B6127B72FFA59EBC57B6D111 /* SDImageCache.m */,
+				DBDD72A329D9BCE159C5F9AB4715F110 /* SDImageCacheConfig.h */,
+				9390C146A22D57B0273C0F6E125FBC7C /* SDImageCacheConfig.m */,
+				8BD971CC5FA5A7D110FCDA068F60D7BF /* SDWebImageCompat.h */,
+				508D44C0A130FED6C793BB855FB9A3B3 /* SDWebImageCompat.m */,
+				5C04F3EEF4D17A35D8E31F28EE7A010C /* SDWebImageDecoder.h */,
+				6DB5691D138548A6D253588575A439DB /* SDWebImageDecoder.m */,
+				2A73F0B24D98F189DCB613155DF1EE21 /* SDWebImageDownloader.h */,
+				581CDE3BE000EFB36C6F8318D985FA34 /* SDWebImageDownloader.m */,
+				F617793782B2F95533DEDCFE08C8232F /* SDWebImageDownloaderOperation.h */,
+				D5AA963A21F63B4596AB29BEFBC20802 /* SDWebImageDownloaderOperation.m */,
+				BD35FDC410E27DE2A3CC284B53AC2AA0 /* SDWebImageManager.h */,
+				F4A8C854FE34EA783A09CB3EA7645EA1 /* SDWebImageManager.m */,
+				18A64EEECAD63A7EADEA29E7AEA25270 /* SDWebImageOperation.h */,
+				56A1618B2AF1B2871E1604395C8EFA09 /* SDWebImagePrefetcher.h */,
+				756298A570B6942FCED3F05081C78CFB /* SDWebImagePrefetcher.m */,
+				2847B7F3BCDC6C9EB44F0A1AB1523FE6 /* UIButton+WebCache.h */,
+				47C06DBFF2CD752DB0636D19906E16EB /* UIButton+WebCache.m */,
+				D4747FB858DFF2AB2644FC0ADF585B45 /* UIImage+GIF.h */,
+				705DD8D28A9485235956A0F383D5C277 /* UIImage+GIF.m */,
+				6C447DB94B0A2663402475F8E5DE6A56 /* UIImage+MultiFormat.h */,
+				005457EF3774E85747C0A258CE3FDA89 /* UIImage+MultiFormat.m */,
+				219DF7D9481BA690B5AED9DA9FE66218 /* UIImageView+HighlightedWebCache.h */,
+				D75A76A610F2B4A845791E59AB926681 /* UIImageView+HighlightedWebCache.m */,
+				F30852B67732A61B5CB46EFD0C833C0A /* UIImageView+WebCache.h */,
+				897A2E6CF754E3CD2802E04E07B85FF2 /* UIImageView+WebCache.m */,
+				2A0A3175EE37BD9AD192EB81D00D9645 /* UIView+WebCache.h */,
+				D630734E07C84F0ABEE9466A7EFB6DCD /* UIView+WebCache.m */,
+				E48183907F6CCFBE1EB9099359CEAF27 /* UIView+WebCacheOperation.h */,
+				4C32BDF9064F173CA14BAD7C3AE81B2E /* UIView+WebCacheOperation.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		123372E09B73F63E970BE212920C50F8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				256E6C98D52F1D79927E868503E7C8B6 /* Info.plist */,
+				184F26E7FED7D19D1255BD011C2A568D /* SDWebImage.modulemap */,
+				F30768E715A40999ED6646D16FC05FCF /* SDWebImage.xcconfig */,
+				03C4DF9D5BAF2609E224B45E5E297E0B /* SDWebImage-dummy.m */,
+				D73131230BBAE41C6548E65B4B92CA9A /* SDWebImage-prefix.pch */,
+				8F263A7CD222E3D02DF5B86C5C59DC1F /* SDWebImage-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SDWebImage";
+			sourceTree = "<group>";
+		};
+		1AF1DD3CB4C22E10508FF8C078CA9D76 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59D8B5A17E615471BB81E14C62F12281 /* ZJTextAttributes.h */,
+				AD5A84B8F5C6C2D229C5F78369FB0B60 /* ZJTextAttributes.m */,
+				381FBC526E0CFAC738E416EB5F4D673B /* ZJTextElement.h */,
+				39006206FCE8A9B1051758EA584F6AFF /* ZJTextElement.m */,
+			);
+			name = Model;
+			path = ZJAttributedText/Model;
+			sourceTree = "<group>";
+		};
+		23EAA5D571397353D4D311351A2D82BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D51263AEF33F8BF027FB9BD35AFF704B /* SDWebImage.framework */,
+				27615043ED1D087576FEF2328FC725AD /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		24FD1CF940F0AE5B4F311421283ABF33 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				836942ACB385067A225A07FAC21305B0 /* Info.plist */,
+				670761A804D5C48A5177BA2AFB520F4B /* ZJAttributedText.modulemap */,
+				0AEFE0387AF115E0690380926EFDFE0E /* ZJAttributedText.xcconfig */,
+				BB2123711D3D41A8DA3156A86F4E03F2 /* ZJAttributedText-dummy.m */,
+				6E11F75B4A3837E2F1B542A48E3DD647 /* ZJAttributedText-prefix.pch */,
+				73D80A9C20B09ED9C7B94AEB8BD85303 /* ZJAttributedText-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/ZJAttributedText";
+			sourceTree = "<group>";
+		};
+		27615043ED1D087576FEF2328FC725AD /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F2F8173E1160A17D38E90F61A8CCE102 /* Foundation.framework */,
+				1A6247661BD0EBA180F86A93AC24F45A /* ImageIO.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		44E6945426B2D5A9566409DB0DCA1D71 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				957D22BF36B3FD6B988A917574B7ACCB /* Pods_ZJAttributedText_Example.framework */,
+				C9B4BFEE82DA3E60DDF635C6E35F6B8E /* Pods_ZJAttributedText_Tests.framework */,
+				B87A35250FFF76BE355533F62AD2681D /* SDWebImage.framework */,
+				907879013B2CB24B98DDC489E9613D9E /* ZJAttributedText.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59CBBCD4DBE8473C5D7C0E2A3D931707 /* ZJAttributedText */ = {
+			isa = PBXGroup;
+			children = (
+				0FE3A42B870E5101260B68932280DAA0 /* Core */,
+				1AF1DD3CB4C22E10508FF8C078CA9D76 /* Model */,
+				24FD1CF940F0AE5B4F311421283ABF33 /* Support Files */,
+				E4392CFB8992EDCB7B39110827330319 /* View */,
 			);
 			name = ZJAttributedText;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		692F7E307AF93BFAC5E8FBD1FDC64ADD /* Pods-ZJAttributedText_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E79B6A50304612DB06E5B302519F5123 /* Info.plist */,
+				8F01F47B51E4466BB0BF33B1F44F2D0E /* Pods-ZJAttributedText_Tests.modulemap */,
+				640D11ED6B13175CB531EA629B2FE71B /* Pods-ZJAttributedText_Tests-acknowledgements.markdown */,
+				273DC19652AD711C27D02CDF88D19B0D /* Pods-ZJAttributedText_Tests-acknowledgements.plist */,
+				79539763720BC7379E79CD84D4B7ADA1 /* Pods-ZJAttributedText_Tests-dummy.m */,
+				83CD6FF5D2B99B0104E8D1980E454910 /* Pods-ZJAttributedText_Tests-frameworks.sh */,
+				46E71C82E6CA45B9CB35CF1FAC478F7D /* Pods-ZJAttributedText_Tests-resources.sh */,
+				447F374E9D387D65EB19CCA5A14DE9C1 /* Pods-ZJAttributedText_Tests-umbrella.h */,
+				9C3532B3EC67D3A4E8623684B7F9163B /* Pods-ZJAttributedText_Tests.debug.xcconfig */,
+				46269F0BABCF5B6C6175FCF943CC4F1E /* Pods-ZJAttributedText_Tests.release.xcconfig */,
+			);
+			name = "Pods-ZJAttributedText_Tests";
+			path = "Target Support Files/Pods-ZJAttributedText_Tests";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				E0EAFB50BE4ADDD6A0C81D06C858C4C0 /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				E67647E5DB1B732495AFE6D3EF90A236 /* Products */,
+				9391EB7663839796385ABD9150530AFF /* Development Pods */,
+				23EAA5D571397353D4D311351A2D82BB /* Frameworks */,
+				BF4B13718B20D23D5B220FA33C2583D8 /* Pods */,
+				44E6945426B2D5A9566409DB0DCA1D71 /* Products */,
 				BEB201923DC4F08F070FC9DEFF0478E8 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		A455CEE5D977475D5950C663D1697E94 /* Model */ = {
+		9391EB7663839796385ABD9150530AFF /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				95079B84A4E67CF58D912B7F42FB81E4 /* ZJTextAttributes.h */,
-				636461E8EC4D47F8BEBB2DD30F64A3FF /* ZJTextAttributes.m */,
-				00BDAFC3EB18CEE5D0FD2653F722C289 /* ZJTextElement.h */,
-				8DDF3A51D0910A466ACB6DB7015E97DB /* ZJTextElement.m */,
-			);
-			name = Model;
-			path = ZJAttributedText/Model;
-			sourceTree = "<group>";
-		};
-		A9FD040F39097F4A48542814A9371B53 /* Pods-ZJAttributedText_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C9864C3C52E7BC13AAAA3D4D72E524DB /* Info.plist */,
-				2113798BB10AA7CBB80CFB03CDEBECAF /* Pods-ZJAttributedText_Tests.modulemap */,
-				36DE08E44AC59C28266028397E01BBFE /* Pods-ZJAttributedText_Tests-acknowledgements.markdown */,
-				AC00BE8CEFB92978A912B88CD333786B /* Pods-ZJAttributedText_Tests-acknowledgements.plist */,
-				B01B15C4D24A61AA9D4262AC975BD78D /* Pods-ZJAttributedText_Tests-dummy.m */,
-				F48FE3DE3E3F1CDA1FE8604A43DBA67D /* Pods-ZJAttributedText_Tests-frameworks.sh */,
-				C1E52B193193F3C17F6BE1C723910BF2 /* Pods-ZJAttributedText_Tests-resources.sh */,
-				69B5F11ADB84491BA3E340A67A2662EB /* Pods-ZJAttributedText_Tests-umbrella.h */,
-				15EFA249EE51A6838714535F77185DFF /* Pods-ZJAttributedText_Tests.debug.xcconfig */,
-				B446A693A3FFE8CEF8F9C1B2A3A12952 /* Pods-ZJAttributedText_Tests.release.xcconfig */,
-			);
-			name = "Pods-ZJAttributedText_Tests";
-			path = "Target Support Files/Pods-ZJAttributedText_Tests";
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5E0D919E635D23B70123790B8308F8EF /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BEB201923DC4F08F070FC9DEFF0478E8 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				E6FE64F681B428FBE5201028F951D461 /* Pods-ZJAttributedText_Example */,
-				A9FD040F39097F4A48542814A9371B53 /* Pods-ZJAttributedText_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		CB0C4A43C0C769A8CB9DC8063B803A2A /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				35D670FAD835E61E55ED9C2C04A48762 /* LICENSE */,
-				1513FB5146B3BDD1A9FB92A882E0BDD9 /* README.md */,
-				BF7B638921ACC6D53AC740E5E80B1727 /* ZJAttributedText.podspec */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		D0607DBEE5E86A1ABF6FDD9319D4CAFD /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				589613AAD56F9AEFE63349C2306B1DB1 /* Info.plist */,
-				E1466F2B2C1E5244BB76A761DC4DB85C /* ZJAttributedText.modulemap */,
-				7C57E3F7FFC898BFA0F04E5BE8806C0D /* ZJAttributedText.xcconfig */,
-				6C7FC091DEC0B95FC9F2560F449D14C1 /* ZJAttributedText-dummy.m */,
-				C122E847EC907ED7C006C8FF9885B39C /* ZJAttributedText-prefix.pch */,
-				1B81B5C34832E124991FCE2F5551CD70 /* ZJAttributedText-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/ZJAttributedText";
-			sourceTree = "<group>";
-		};
-		E0EAFB50BE4ADDD6A0C81D06C858C4C0 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				75BF5A33FDCA78E25AE6DAEB16E2570E /* ZJAttributedText */,
+				59CBBCD4DBE8473C5D7C0E2A3D931707 /* ZJAttributedText */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		E67647E5DB1B732495AFE6D3EF90A236 /* Products */ = {
+		9E72094B6AA1410555018F76CB3AE9AA /* Pods-ZJAttributedText_Example */ = {
 			isa = PBXGroup;
 			children = (
-				2E691CD35ADF452F427679BDC9F8D2C0 /* Pods_ZJAttributedText_Example.framework */,
-				A91237529BF4FF4B2B16FC67345AF7B4 /* Pods_ZJAttributedText_Tests.framework */,
-				D5FB621935F5F7CAB883D0732845E7E1 /* ZJAttributedText.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		E6FE64F681B428FBE5201028F951D461 /* Pods-ZJAttributedText_Example */ = {
-			isa = PBXGroup;
-			children = (
-				1BE5A301B5703122C2CB5E87FFED9211 /* Info.plist */,
-				1ED184D32822F39E972252C60E598870 /* Pods-ZJAttributedText_Example.modulemap */,
-				E6901C492BE0F2F79F2886744F3C2A95 /* Pods-ZJAttributedText_Example-acknowledgements.markdown */,
-				A6DB52C493268D069AA931913E4160C4 /* Pods-ZJAttributedText_Example-acknowledgements.plist */,
-				5E66EAFF713752E36E67710806978DA2 /* Pods-ZJAttributedText_Example-dummy.m */,
-				F826E6E6FBB73E69E395D1A9FBB3C791 /* Pods-ZJAttributedText_Example-frameworks.sh */,
-				00EE0244456E307B0C2C1E49CC78132E /* Pods-ZJAttributedText_Example-resources.sh */,
-				2A99FD0E18E3ACF40DDCDB204F1B7F77 /* Pods-ZJAttributedText_Example-umbrella.h */,
-				C103C39EADA499A3175B1E6B5FB69D60 /* Pods-ZJAttributedText_Example.debug.xcconfig */,
-				841055BA10633B156787D0399980714E /* Pods-ZJAttributedText_Example.release.xcconfig */,
+				4A06CC18F88D4DC33918D1C6618E0F50 /* Info.plist */,
+				A5D51304400B2129F74BF0F3DA202F3E /* Pods-ZJAttributedText_Example.modulemap */,
+				3BD56941FB5EED526DB29D859F2CA901 /* Pods-ZJAttributedText_Example-acknowledgements.markdown */,
+				4351DA22B7D7B4CB6C859D9D7BA1E071 /* Pods-ZJAttributedText_Example-acknowledgements.plist */,
+				46BCE465BFF29F239A7BD94106948597 /* Pods-ZJAttributedText_Example-dummy.m */,
+				72F749754C8193F6020891F6AB7BA020 /* Pods-ZJAttributedText_Example-frameworks.sh */,
+				B71523E7BC47634CF80DAA724665A7DA /* Pods-ZJAttributedText_Example-resources.sh */,
+				CA6F87F5882939ADCAC15C9AEA4812B7 /* Pods-ZJAttributedText_Example-umbrella.h */,
+				2D325B4D9C54B95C48DD2081A500A242 /* Pods-ZJAttributedText_Example.debug.xcconfig */,
+				20AF2D3CD67A23AE0B922E8CB80D0AB7 /* Pods-ZJAttributedText_Example.release.xcconfig */,
 			);
 			name = "Pods-ZJAttributedText_Example";
 			path = "Target Support Files/Pods-ZJAttributedText_Example";
 			sourceTree = "<group>";
 		};
+		A835BD1E00D2D6EE51EB6DED09948F80 /* SDWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				11E2A9629E1B858849C6350CF5850535 /* Core */,
+				123372E09B73F63E970BE212920C50F8 /* Support Files */,
+			);
+			name = SDWebImage;
+			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		BEB201923DC4F08F070FC9DEFF0478E8 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9E72094B6AA1410555018F76CB3AE9AA /* Pods-ZJAttributedText_Example */,
+				692F7E307AF93BFAC5E8FBD1FDC64ADD /* Pods-ZJAttributedText_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BF4B13718B20D23D5B220FA33C2583D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A835BD1E00D2D6EE51EB6DED09948F80 /* SDWebImage */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E4392CFB8992EDCB7B39110827330319 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				96CBB7721B672CF45A743A9D22D3B288 /* ZJTextLayer.h */,
+				BF4A9A87DD9D40A99BB3137B70CD8F00 /* ZJTextLayer.m */,
+				8DB90786DC8375AAAFEACC951835070C /* ZJTextView.h */,
+				AB4968632F1A67D037CED910C867197F /* ZJTextView.m */,
+			);
+			name = View;
+			path = ZJAttributedText/View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		40C66B6971AB733D94DFCD2F40AE9ABC /* Headers */ = {
+		6F1CC29ACBFE3EC61D751E6A0773F2BC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35BC59C508080DF47B574E178EF7B435 /* Pods-ZJAttributedText_Example-umbrella.h in Headers */,
+				2F0D8CC8E52A95358CF97A254E6DD071 /* Pods-ZJAttributedText_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F49681F79E58CDD539D88EF9B3D19FE /* Headers */ = {
+		76413DD701CD3EC8E6FBA8DFFD2D23CB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23B8B2092AD4EA8165BF37D684ECE085 /* Pods-ZJAttributedText_Tests-umbrella.h in Headers */,
+				8F5E8C5DE58795B3B98F8C45FFAD072B /* NSString+AttributedText.h in Headers */,
+				FB73220DFEB04161747855B9221EBB96 /* ZJAttributedText-umbrella.h in Headers */,
+				CB26314C482668846578DC0AA36AD514 /* ZJTextAttributes.h in Headers */,
+				65972ED0F34465D93DA946DBC23D371A /* ZJTextElement.h in Headers */,
+				5E02DADD36836C8364EDC3081596D149 /* ZJTextFactory.h in Headers */,
+				0967DA8B12C9919BE21E2FB017B645F4 /* ZJTextLayer.h in Headers */,
+				C256BE2E5F7928E4E3CF29625DAA53A7 /* ZJTextView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F58203DE26E74B3746AC8BA8A372A1A0 /* Headers */ = {
+		7CDD30403F2F0EA4E1379CA60974A7B7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B090F22E7AC8B91B659EE67E4AF537D /* NSString+AttributedText.h in Headers */,
-				804E401A22120C81CE5BF99594971B34 /* ZJAttributedText-umbrella.h in Headers */,
-				CAA7DA2A5B52508E172E405014FFBA82 /* ZJTextAttributes.h in Headers */,
-				4839F325AC6E02558242B6D39FB9F3EC /* ZJTextElement.h in Headers */,
-				716F7A25B6C73198535E24EE13B7C279 /* ZJTextFactory.h in Headers */,
-				B79CCD59307BCE3BB5F9C9B8ABD224EA /* ZJTextLayer.h in Headers */,
-				F01E684771A4860033C5F4D59F15AAF8 /* ZJTextView.h in Headers */,
+				060448817FEE093DD693CB84C4EE5132 /* NSData+ImageContentType.h in Headers */,
+				A2898222B8CF3DA6EFE63A86C1742BAA /* NSImage+WebCache.h in Headers */,
+				01D94578523D2D88FDA65DA9574ABB03 /* SDImageCache.h in Headers */,
+				136EB61F59FEFB9B0B962EFC1C703BD9 /* SDImageCacheConfig.h in Headers */,
+				7E048919D66A47A3E8ECDEB71ADAB7BB /* SDWebImage-umbrella.h in Headers */,
+				AE59B825D22BA86B125ACFE9C413495E /* SDWebImageCompat.h in Headers */,
+				984C5765780E9799E529AB5F7175394E /* SDWebImageDecoder.h in Headers */,
+				487CFD97FE2B51094DB21711313E25D3 /* SDWebImageDownloader.h in Headers */,
+				A4E024B92FC83481B2789EC3BFAF35B6 /* SDWebImageDownloaderOperation.h in Headers */,
+				F8F60E3572DBA1CF30AA7D1121783243 /* SDWebImageManager.h in Headers */,
+				7D1588514C698D02431344108C0E72C1 /* SDWebImageOperation.h in Headers */,
+				57B23CE79F20AB1938EA34C234A40D6F /* SDWebImagePrefetcher.h in Headers */,
+				507C5CFC1FAC5ABEF7411465C7E8C90A /* UIButton+WebCache.h in Headers */,
+				82C56BDFB7C22057FC68D76E09FC229A /* UIImage+GIF.h in Headers */,
+				69ECB714B54391F6800BE66171759BB7 /* UIImage+MultiFormat.h in Headers */,
+				47305CF11245F5983DCF3C06F815B234 /* UIImageView+HighlightedWebCache.h in Headers */,
+				6AA675260B50328E190BB983352368E5 /* UIImageView+WebCache.h in Headers */,
+				0B1B0096649704600A9ABE7BB9804650 /* UIView+WebCache.h in Headers */,
+				F8C5D5264B10C7C1F864C7A5E9D6534A /* UIView+WebCacheOperation.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFA453D0F0823089ADAB8DC9FADDBC42 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD0221A4B00B231DB3BA2EE5678B80E2 /* Pods-ZJAttributedText_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1AF2B16DF57A3865E4BC37FB47F99252 /* ZJAttributedText */ = {
+		460C2662BAFDD1076DBB9C01101DC237 /* Pods-ZJAttributedText_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8F3D22A763EEB6BCAAC638EABD85BF2B /* Build configuration list for PBXNativeTarget "ZJAttributedText" */;
+			buildConfigurationList = 4C4BD57AA1E69E7A4FDFDC470AFF5C79 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Example" */;
 			buildPhases = (
-				51D92F9666A5639290A7164298AC73D0 /* Sources */,
-				0225FA7B3294CEEF68E319D76FF18E30 /* Frameworks */,
-				F58203DE26E74B3746AC8BA8A372A1A0 /* Headers */,
+				83FF7F600BE6457ADE0CC8D37BE24B92 /* Sources */,
+				30D09D594C0CE98A81149117A3D386F6 /* Frameworks */,
+				6F1CC29ACBFE3EC61D751E6A0773F2BC /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = ZJAttributedText;
-			productName = ZJAttributedText;
-			productReference = D5FB621935F5F7CAB883D0732845E7E1 /* ZJAttributedText.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CD6794263B92F81DD208A08EFCA7E230 /* Pods-ZJAttributedText_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D8634046D62D65217D1CAF4900B9F587 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Tests" */;
-			buildPhases = (
-				FF584DA3FF3CFDAC4BCDB0C2C4B30D97 /* Sources */,
-				07464A16097A8379A237DDE7682F77E5 /* Frameworks */,
-				9F49681F79E58CDD539D88EF9B3D19FE /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FD25CFB7FC517A2D97823965E2E78508 /* PBXTargetDependency */,
-			);
-			name = "Pods-ZJAttributedText_Tests";
-			productName = "Pods-ZJAttributedText_Tests";
-			productReference = A91237529BF4FF4B2B16FC67345AF7B4 /* Pods_ZJAttributedText_Tests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D8883E93DA6E6F9DB00C99414E489094 /* Pods-ZJAttributedText_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3A0C793A74DF9CD42580F7E969E96868 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Example" */;
-			buildPhases = (
-				B163FED81A86504B75688E2F5A15A587 /* Sources */,
-				C84B97258A3B3EE6162906F78B643F06 /* Frameworks */,
-				40C66B6971AB733D94DFCD2F40AE9ABC /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E10A1543A486AA0A65B368D375F591EF /* PBXTargetDependency */,
+				76DDB261577B332504100B0EFE2AEB90 /* PBXTargetDependency */,
+				2101E498DE4BCE056B75BA98BA3BF227 /* PBXTargetDependency */,
 			);
 			name = "Pods-ZJAttributedText_Example";
 			productName = "Pods-ZJAttributedText_Example";
-			productReference = 2E691CD35ADF452F427679BDC9F8D2C0 /* Pods_ZJAttributedText_Example.framework */;
+			productReference = 957D22BF36B3FD6B988A917574B7ACCB /* Pods_ZJAttributedText_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7B44F7557DA7B9A8E00DB8EC5615AFE0 /* Pods-ZJAttributedText_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7BFCBEEB7DF1B28FA4BBB0078B9ACE62 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Tests" */;
+			buildPhases = (
+				495B89FD57F1C5CCE97464C5A7CC13C5 /* Sources */,
+				E76906DDC3F9D5E154BCFA499BCD79E5 /* Frameworks */,
+				EFA453D0F0823089ADAB8DC9FADDBC42 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-ZJAttributedText_Tests";
+			productName = "Pods-ZJAttributedText_Tests";
+			productReference = C9B4BFEE82DA3E60DDF635C6E35F6B8E /* Pods_ZJAttributedText_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BA910C5AFEB761CADC09875F98130AE9 /* ZJAttributedText */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CF17A0B35D7FA227A13F8620C93E71C /* Build configuration list for PBXNativeTarget "ZJAttributedText" */;
+			buildPhases = (
+				29A356D0B589B27202015AB817E0A2A3 /* Sources */,
+				7C1296B89A628743746FEABDC67B0879 /* Frameworks */,
+				76413DD701CD3EC8E6FBA8DFFD2D23CB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9122644DC568EC6D1B7D115FC7B5C36E /* PBXTargetDependency */,
+			);
+			name = ZJAttributedText;
+			productName = ZJAttributedText;
+			productReference = 907879013B2CB24B98DDC489E9613D9E /* ZJAttributedText.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F4466457FC1BD797A3DDB06AEDF1D27A /* SDWebImage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D1CD72261661F82C9BF65BCFA34E864 /* Build configuration list for PBXNativeTarget "SDWebImage" */;
+			buildPhases = (
+				F75ACAB14AAF0881AEE4A72E430CB603 /* Sources */,
+				0D4EA8D3568FB6AF00D111801471BE1A /* Frameworks */,
+				7CDD30403F2F0EA4E1379CA60974A7B7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SDWebImage;
+			productName = SDWebImage;
+			productReference = B87A35250FFF76BE355533F62AD2681D /* SDWebImage.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -382,8 +591,8 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -393,91 +602,203 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = E67647E5DB1B732495AFE6D3EF90A236 /* Products */;
+			productRefGroup = 44E6945426B2D5A9566409DB0DCA1D71 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D8883E93DA6E6F9DB00C99414E489094 /* Pods-ZJAttributedText_Example */,
-				CD6794263B92F81DD208A08EFCA7E230 /* Pods-ZJAttributedText_Tests */,
-				1AF2B16DF57A3865E4BC37FB47F99252 /* ZJAttributedText */,
+				460C2662BAFDD1076DBB9C01101DC237 /* Pods-ZJAttributedText_Example */,
+				7B44F7557DA7B9A8E00DB8EC5615AFE0 /* Pods-ZJAttributedText_Tests */,
+				F4466457FC1BD797A3DDB06AEDF1D27A /* SDWebImage */,
+				BA910C5AFEB761CADC09875F98130AE9 /* ZJAttributedText */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		51D92F9666A5639290A7164298AC73D0 /* Sources */ = {
+		29A356D0B589B27202015AB817E0A2A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				348B47436FBC956EE954BF9DCA27311B /* NSString+AttributedText.m in Sources */,
-				09634EEB8E35BE0BD82A1C2153BA901A /* ZJAttributedText-dummy.m in Sources */,
-				3C5BABEC4577C08DB21FC9F1665F53E8 /* ZJTextAttributes.m in Sources */,
-				BB29AF0C0BE866E938D3FE42896C2CDC /* ZJTextElement.m in Sources */,
-				DABF8BBB66F42D02F925AF8D908FC9F0 /* ZJTextFactory.m in Sources */,
-				5FA7B0E2446C92ABD31CC328290D2138 /* ZJTextLayer.m in Sources */,
-				29D7530DBB9E874EF5383B3D37EE833D /* ZJTextView.m in Sources */,
+				1AD59D2BED88ECAF5CCC3DD2025D5A7E /* NSString+AttributedText.m in Sources */,
+				E47053B7C02D7C4304091D5D1EB3DA9B /* ZJAttributedText-dummy.m in Sources */,
+				3DAFBD94F26F848BFF996DBE723C71D3 /* ZJTextAttributes.m in Sources */,
+				8F39278C2F1B0E71545CA5657DE4F85A /* ZJTextElement.m in Sources */,
+				25A5B0960C9D0981465F14715420D5EC /* ZJTextFactory.m in Sources */,
+				DF8AF2C671ABE6540CB8CA2063E96179 /* ZJTextLayer.m in Sources */,
+				CEE2B6831CB69C4C0C5A6BA8A907AD93 /* ZJTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B163FED81A86504B75688E2F5A15A587 /* Sources */ = {
+		495B89FD57F1C5CCE97464C5A7CC13C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46033577FB5AFA64B0372F83212B15E0 /* Pods-ZJAttributedText_Example-dummy.m in Sources */,
+				8A7E649C892A001CADF7A11D86119D33 /* Pods-ZJAttributedText_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF584DA3FF3CFDAC4BCDB0C2C4B30D97 /* Sources */ = {
+		83FF7F600BE6457ADE0CC8D37BE24B92 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E454DBC5BD3B0F1B8A4EE548AEDDDF44 /* Pods-ZJAttributedText_Tests-dummy.m in Sources */,
+				91A9792ECA8882AE826B5963FFD23501 /* Pods-ZJAttributedText_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F75ACAB14AAF0881AEE4A72E430CB603 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				862E56EB6191C17612A36E3F2E30A849 /* NSData+ImageContentType.m in Sources */,
+				9BE7A82051B99A675257FE11A3FCD722 /* NSImage+WebCache.m in Sources */,
+				17A4024B27436F00371D60674B06DB8E /* SDImageCache.m in Sources */,
+				22A2987AA5B748DE6A914F7E22785302 /* SDImageCacheConfig.m in Sources */,
+				F7EC394A117A98B15CE47EA1F65F766F /* SDWebImage-dummy.m in Sources */,
+				D0F67C79C3366993289CEF84750FEEE0 /* SDWebImageCompat.m in Sources */,
+				0869F0620FBD16FD58213DA7CCF456FA /* SDWebImageDecoder.m in Sources */,
+				5F08E526F904EF2748609D563211711A /* SDWebImageDownloader.m in Sources */,
+				A1D589166F200532AE7EFB5427EAAC25 /* SDWebImageDownloaderOperation.m in Sources */,
+				5EFCCDAC91BD6D350A76F2B1BF643AEF /* SDWebImageManager.m in Sources */,
+				507FD63C3E660E80862CEC1163F621F0 /* SDWebImagePrefetcher.m in Sources */,
+				550B753F31DAD1D2EED6C974747BD884 /* UIButton+WebCache.m in Sources */,
+				78E6B661D1722AA02F0B6E0B8CDF7E97 /* UIImage+GIF.m in Sources */,
+				84D705705E447D614C01EE92E2632901 /* UIImage+MultiFormat.m in Sources */,
+				B61EA283D01C927160DDDF53F90B0A9A /* UIImageView+HighlightedWebCache.m in Sources */,
+				04FE1D0D7F289EF59577B8CE14BBFEF8 /* UIImageView+WebCache.m in Sources */,
+				2D2E7B53A3F65690971FA4100E3BBB18 /* UIView+WebCache.m in Sources */,
+				8F2BFA24B546D167A4DB0C6F643614AB /* UIView+WebCacheOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E10A1543A486AA0A65B368D375F591EF /* PBXTargetDependency */ = {
+		2101E498DE4BCE056B75BA98BA3BF227 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ZJAttributedText;
-			target = 1AF2B16DF57A3865E4BC37FB47F99252 /* ZJAttributedText */;
-			targetProxy = 17410625DA848550B539A5119B8E2287 /* PBXContainerItemProxy */;
+			target = BA910C5AFEB761CADC09875F98130AE9 /* ZJAttributedText */;
+			targetProxy = B2D1ECD1DBC2A7A78D8C92634531F4B3 /* PBXContainerItemProxy */;
 		};
-		FD25CFB7FC517A2D97823965E2E78508 /* PBXTargetDependency */ = {
+		76DDB261577B332504100B0EFE2AEB90 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-ZJAttributedText_Example";
-			target = D8883E93DA6E6F9DB00C99414E489094 /* Pods-ZJAttributedText_Example */;
-			targetProxy = D892DC5ACF462EF3EC88ABA7B71CAC0A /* PBXContainerItemProxy */;
+			name = SDWebImage;
+			target = F4466457FC1BD797A3DDB06AEDF1D27A /* SDWebImage */;
+			targetProxy = 3B9AC7A319593C16D1A9CEDEA4BFF6E6 /* PBXContainerItemProxy */;
+		};
+		9122644DC568EC6D1B7D115FC7B5C36E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SDWebImage;
+			target = F4466457FC1BD797A3DDB06AEDF1D27A /* SDWebImage */;
+			targetProxy = 56413A034B43F23F6C97B48D84300F8F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		50310654935079716E659A44316A39A5 /* Debug */ = {
+		157AF0CD5E5AB2A2E74D3B8ECD865185 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15EFA249EE51A6838714535F77185DFF /* Pods-ZJAttributedText_Tests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2E9C9B820ECF86DC9D7BA9D283F20359 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F30768E715A40999ED6646D16FC05FCF /* SDWebImage.xcconfig */;
+			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SDWebImage/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SDWebImage/SDWebImage.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SDWebImage;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		59AB19A247AD1912C660993CC0D92121 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C3532B3EC67D3A4E8623684B7F9163B /* Pods-ZJAttributedText_Tests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Pods-ZJAttributedText_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = Pods_ZJAttributedText_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -486,288 +807,261 @@
 			};
 			name = Debug;
 		};
-		6137AE87A9F66C58C75C9180189576F5 /* Release */ = {
+		68C9F26EC7AC689343BA3719C0A97D31 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B446A693A3FFE8CEF8F9C1B2A3A12952 /* Pods-ZJAttributedText_Tests.release.xcconfig */;
+			baseConfigurationReference = 0AEFE0387AF115E0690380926EFDFE0E /* ZJAttributedText.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ZJAttributedText/ZJAttributedText-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ZJAttributedText/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ZJAttributedText/ZJAttributedText.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ZJAttributedText;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		68E765260580917251F288F3BCDA2515 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AEFE0387AF115E0690380926EFDFE0E /* ZJAttributedText.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ZJAttributedText/ZJAttributedText-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ZJAttributedText/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ZJAttributedText/ZJAttributedText.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ZJAttributedText;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8DA1989889E98C952A3D99D3E54D6E30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20AF2D3CD67A23AE0B922E8CB80D0AB7 /* Pods-ZJAttributedText_Example.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Pods-ZJAttributedText_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_ZJAttributedText_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A73737BA28D4EEDC61EFFFF60A90688B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F30768E715A40999ED6646D16FC05FCF /* SDWebImage.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SDWebImage/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SDWebImage/SDWebImage.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SDWebImage;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B228952B86EB3E7DE9FF13E5DB4BEB5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46269F0BABCF5B6C6175FCF943CC4F1E /* Pods-ZJAttributedText_Tests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Pods-ZJAttributedText_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = Pods_ZJAttributedText_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		8B33C5230DE4A9DFA6D8F46505DD7AF7 /* Debug */ = {
+		C0D4C65DBA91037CDEDAA34FCC65D183 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D325B4D9C54B95C48DD2081A500A242 /* Pods-ZJAttributedText_Example.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Pods-ZJAttributedText_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_ZJAttributedText_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EED546DBB23FC32035C9BDC4E22B30BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
-		};
-		A5E606116BF330DCFCEBD147D932DA5E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 841055BA10633B156787D0399980714E /* Pods-ZJAttributedText_Example.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Pods-ZJAttributedText_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B42B54097A876E8A982CBF5DAA91B1AB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		B7689477EF44AC9C0DADC2A10CBD7912 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C57E3F7FFC898BFA0F04E5BE8806C0D /* ZJAttributedText.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ZJAttributedText/ZJAttributedText-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ZJAttributedText/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ZJAttributedText/ZJAttributedText.modulemap";
-				PRODUCT_MODULE_NAME = ZJAttributedText;
-				PRODUCT_NAME = ZJAttributedText;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C15F9BDEEDB51350845638FA85A3FB9E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C103C39EADA499A3175B1E6B5FB69D60 /* Pods-ZJAttributedText_Example.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Pods-ZJAttributedText_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		FE4F684029BC5D0CB1A519710D0D3E24 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C57E3F7FFC898BFA0F04E5BE8806C0D /* ZJAttributedText.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ZJAttributedText/ZJAttributedText-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ZJAttributedText/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ZJAttributedText/ZJAttributedText.modulemap";
-				PRODUCT_MODULE_NAME = ZJAttributedText;
-				PRODUCT_NAME = ZJAttributedText;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -775,35 +1069,44 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8B33C5230DE4A9DFA6D8F46505DD7AF7 /* Debug */,
-				B42B54097A876E8A982CBF5DAA91B1AB /* Release */,
+				EED546DBB23FC32035C9BDC4E22B30BD /* Debug */,
+				157AF0CD5E5AB2A2E74D3B8ECD865185 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A0C793A74DF9CD42580F7E969E96868 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Example" */ = {
+		3CF17A0B35D7FA227A13F8620C93E71C /* Build configuration list for PBXNativeTarget "ZJAttributedText" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C15F9BDEEDB51350845638FA85A3FB9E /* Debug */,
-				A5E606116BF330DCFCEBD147D932DA5E /* Release */,
+				68C9F26EC7AC689343BA3719C0A97D31 /* Debug */,
+				68E765260580917251F288F3BCDA2515 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8F3D22A763EEB6BCAAC638EABD85BF2B /* Build configuration list for PBXNativeTarget "ZJAttributedText" */ = {
+		4C4BD57AA1E69E7A4FDFDC470AFF5C79 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B7689477EF44AC9C0DADC2A10CBD7912 /* Debug */,
-				FE4F684029BC5D0CB1A519710D0D3E24 /* Release */,
+				C0D4C65DBA91037CDEDAA34FCC65D183 /* Debug */,
+				8DA1989889E98C952A3D99D3E54D6E30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D8634046D62D65217D1CAF4900B9F587 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Tests" */ = {
+		7BFCBEEB7DF1B28FA4BBB0078B9ACE62 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				50310654935079716E659A44316A39A5 /* Debug */,
-				6137AE87A9F66C58C75C9180189576F5 /* Release */,
+				59AB19A247AD1912C660993CC0D92121 /* Debug */,
+				B228952B86EB3E7DE9FF13E5DB4BEB5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D1CD72261661F82C9BF65BCFA34E864 /* Build configuration list for PBXNativeTarget "SDWebImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E9C9B820ECF86DC9D7BA9D283F20359 /* Debug */,
+				A73737BA28D4EEDC61EFFFF60A90688B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -16,4 +16,6 @@ TODO: Add long description of the pod here.
   s.source_files = 'ZJAttributedText/**/*.{h,m}'
   s.resource = 'ZJAttributedText/**/*.png'
 
+  s.dependency 'SDWebImage'
+
 end

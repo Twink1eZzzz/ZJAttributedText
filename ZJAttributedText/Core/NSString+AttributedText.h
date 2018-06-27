@@ -108,7 +108,7 @@ typedef NSString *(^ZJTextDotViewDrawBlock)(ZJTextViewDrawCompletionBlock comple
 /**
  图片尺寸, 默认为图片本身尺寸
  */
-@property (nonatomic, copy) ZJTextDotValueBlock imageSizeValue;
+@property (nonatomic, copy) ZJTextDotValueBlock imageSize;
 
 /**
  图片对齐模式 参看 ZJTextImageAlign
@@ -120,7 +120,7 @@ typedef NSString *(^ZJTextDotViewDrawBlock)(ZJTextViewDrawCompletionBlock comple
 /**
  绘制的约束尺寸, 默认Max
  */
-@property (nonatomic, copy) ZJTextDotValueBlock constraintSizeValue;
+@property (nonatomic, copy) ZJTextDotValueBlock maxSize;
 
 /**
  最小行间距

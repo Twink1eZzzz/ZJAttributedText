@@ -1,16 +1,21 @@
 PODS:
-  - ZJAttributedText (0.1.0)
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
+  - ZJAttributedText (0.1.0):
+    - SDWebImage
 
 DEPENDENCIES:
   - ZJAttributedText (from `../`)
 
 EXTERNAL SOURCES:
   ZJAttributedText:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  ZJAttributedText: 4a89e7802b93e3ec1a753b216bb991243ea0ac88
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  ZJAttributedText: 8cf7eaa055066c619240b663ae10ed1ced46e847
 
 PODFILE CHECKSUM: 78ba630b2e9c0c3c3a7aa5c7dd929e3d5856dc09
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.3.1

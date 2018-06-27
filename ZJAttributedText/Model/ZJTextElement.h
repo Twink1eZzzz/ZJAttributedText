@@ -14,7 +14,7 @@
 #pragma mark - common
 
 /**
- 内容: 文本(NSString)或图片(UIImage)
+ 内容: 文本(NSString)、图片(UIImage)、图片链接(NSURL)(必须指定imageSize属性)
  */
 @property (nonatomic, strong) id content;
 

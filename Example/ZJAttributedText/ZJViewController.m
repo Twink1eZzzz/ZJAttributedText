@@ -59,7 +59,7 @@
     ZJTextElement *element3 = [ZJTextElement new];
     NSString *image3Path = [[NSBundle mainBundle] pathForResource:@"dy008" ofType:@"png"];
     element3.content = [UIImage imageWithContentsOfFile:image3Path];
-//    element3.attributes.imageSizeValue =  [NSValue valueWithCGSize:CGSizeMake(30, 30)];
+//    element3.attributes.imageSize =  [NSValue valueWithCGSize:CGSizeMake(30, 30)];
     element3.attributes.imageAlign = @(ZJTextImageAlignCenterToFont);
     element3.attributes.align = @2;
     element3.attributes.font = [UIFont systemFontOfSize:10];
@@ -111,7 +111,7 @@
     
     //默认属性
     ZJTextAttributes *defaultAttributes = [ZJTextAttributes new];
-    defaultAttributes.constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(325, 550)];
+    defaultAttributes.maxSize = [NSValue valueWithCGSize:CGSizeMake(325, 550)];
     defaultAttributes.letterSpace = @3;
     defaultAttributes.minLineHeight = @20;
     defaultAttributes.maxLineHeight = @20;
@@ -157,13 +157,12 @@
     UIColor *content8Color = [[UIColor grayColor] colorWithAlphaComponent:0.3];
     
     //绘制大小限制
-    NSValue *constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(325, 550)];
+    NSValue *maxSize = [NSValue valueWithCGSize:CGSizeMake(325, 550)];
     
     //内容
     NSString *content1 = @"随笔\n\n";
     NSString *content2 = @"       张嘉佳又出了新书，把书名取成《云边有个小卖部》。他说“时隔五年了，写给离开我们的人，写给陪伴我们的人，写给每个人心中的山和海。\n       《云边有个小卖部》离他上次的一本书，已经过去五年了。\n";
-    NSString *image3Path = [[NSBundle mainBundle] pathForResource:@"dy008" ofType:@"png"];
-    UIImage *content3 = [UIImage imageWithContentsOfFile:image3Path];
+    NSURL *content3 = [NSURL URLWithString:@"http://osnabh9h1.bkt.clouddn.com/18-6-27/92507897.jpg"];
     NSString *content4 = @"-----分界-----";
     NSString *image5Path = [[NSBundle mainBundle] pathForResource:@"dy122" ofType:@"png"];
     UIImage *content5 = [UIImage imageWithContentsOfFile:image5Path];
@@ -177,14 +176,14 @@
     @""
     .append(content1).font(content1Font).color(content1Color).align(@2).onClicked(content1OnClicked).onLayout(content1OnLayout)
     .append(content2).color(content2Color).align(@0)
-    .append(content3).imageAlign(@1).font(content4Font).minLineHeight(@100).align(@2)
+    .append(content3).imageAlign(@1).font(content4Font).minLineHeight(@100).align(@2).imageSize([NSValue valueWithCGSize:CGSizeMake(35, 35)])
     .append(content4).font(content4Font).strokeColor(content4Color).strokeWidth(@-2).align(@2).color([UIColor whiteColor])
     .append(content5).align(@2)
     .append(content6).font(content6Font)
     .append(content7).font(content7Font).color(content7Color).onClicked(bookOnClicked)
     .append(content8).color(content8Color).letterSpace(@0).align(@0).minLineSpace(@8)
     //设置全局默认属性, 优先级低于指定属性
-    .entire().constraintSizeValue(constraintSizeValue).letterSpace(@3).minLineHeight(@20).maxLineHeight(@20).align(@1).imageAlign(@1).onClicked(textOnClicked)
+    .entire().maxSize(maxSize).letterSpace(@3).minLineHeight(@20).maxLineHeight(@20).align(@1).imageAlign(@1).onClicked(textOnClicked)
     //绘制View
     .drawView(^(UIView *drawView) {
         drawView.frame = CGRectMake(27.5, 50, drawView.frame.size.width, drawView.frame.size.height);
@@ -215,7 +214,7 @@
     //    content8.color(content8Color).letterSpace(@0).align(@0).minLineSpace(@8);
     //
     //    content1.append(content2).append(image3).append(content4).append(image5).append(content6).append(content7).append(content8)
-    //    .entire().constraintSizeValue(constraintSizeValue).letterSpace(@3).minLineHeight(@20).maxLineHeight(@20).align(@1).imageAlign(@1).onClicked(textOnClicked)
+    //    .entire().maxSize(maxSize).letterSpace(@3).minLineHeight(@20).maxLineHeight(@20).align(@1).imageAlign(@1).onClicked(textOnClicked)
     //    .drawView(^(UIView *drawView) {
     //        drawView.frame = CGRectMake(27.5, 50, drawView.frame.size.width, drawView.frame.size.height);
     //        drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
@@ -307,7 +306,7 @@
     content.font([UIFont systemFontOfSize:15]).color([[UIColor blueColor] colorWithAlphaComponent:0.5]).minLineSpace(@10).lineBreakMode(@1).onLayout(onLayout)
     .append(image1)
     .append(image2)
-    .entire().constraintSizeValue([NSValue valueWithCGSize:CGSizeMake([UIScreen mainScreen].bounds.size.width, 200)])
+    .entire().maxSize([NSValue valueWithCGSize:CGSizeMake([UIScreen mainScreen].bounds.size.width, 200)])
     .drawView(^(UIView *drawView) {
 
         startTime = [[NSDate date] timeIntervalSince1970] * 1000;
