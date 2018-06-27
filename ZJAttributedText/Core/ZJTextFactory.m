@@ -12,7 +12,8 @@
 #import "ZJTextLayer.h"
 #import "ZJTextElement.h"
 #import "ZJTextAttributes.h"
-#import <SDWebImage/SDWebImageDownloader.h>
+#import <SDWebImage/SDImageCache.h>
+#import <SDWebImage/SDWebImageManager.h>
 
 static NSString *const kZJTextElementAttributeName = @"kZJTextElementAttributeName";
 static NSString *const kZJTextImageAscentAssociateKey = @"kZJTextImageAscentAssociateKey";
@@ -68,20 +69,32 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
                 //生成文字富文本
                 [self appendStringElement:element toEntireAttributedString:entireAttributedString];
                 
-            } else if ([element.content isKindOfClass:[UIImage class]] || [element.content isKindOfClass:[NSURL class]]) {
+            } else if ([element.content isKindOfClass:[UIImage class]]) {
+                
+                //保存图片类的元素
+                [imageElements addObject:element];
                 
                 //生成图片占位富文本
                 [self appendImageElement:element toEntireAttributedString:entireAttributedString];
-            }
-           
-            //保存图片类的元素
-            if ([element.content isKindOfClass:[UIImage class]]) {
-                [imageElements addObject:element];
-            }
-            
-            //保存图片URL类的元素
-            if ([element.content isKindOfClass:[NSURL class]]) {
-                [imageURLElements addObject:element];
+
+            } else if ([element.content isKindOfClass:[NSURL class]]) {
+                
+                //若有缓存则转换为图片元素
+                NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:element.content];
+                UIImage *cachedImage = [[SDImageCache sharedImageCache] imageFromCacheForKey:key];
+                if (cachedImage) {
+                    element.content = cachedImage;
+                    //保存图片类的元素
+                    [imageElements addObject:element];
+                } else {
+                    //保存图片URL类的元素
+                    [imageURLElements addObject:element];
+                }
+                
+                //生成图片占位富文本
+                [self appendImageElement:element toEntireAttributedString:entireAttributedString];
+                
+                
             }
         }
         
@@ -523,8 +536,8 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
     //绘制图片
     for (ZJTextElement *imageURLElement in imageURLElements) {
         
-        [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:imageURLElement.content options:SDWebImageDownloaderLowPriority progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
-            
+        //URL的图片首次会缓存
+        [[SDWebImageManager sharedManager] loadImageWithURL:imageURLElement.content options:SDWebImageRetryFailed progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
             if (!error && image) {
                 NSArray *frameValueArray = imageURLElement.frameValueArray;
                 CGRect imageFrame = [[frameValueArray firstObject] CGRectValue];
