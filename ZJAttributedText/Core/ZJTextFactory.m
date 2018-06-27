@@ -500,14 +500,10 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
     CTFrameDraw(frame, context);
     
     //获取位图
-    CGImageRef drawImageRef = CGBitmapContextCreateImage(context);
-    UIImage *drawImage = [UIImage imageWithCGImage:drawImageRef];
+    UIImage *drawImage = UIGraphicsGetImageFromCurrentImageContext();
     
     //关闭上下文
     UIGraphicsEndImageContext();
-    
-    //内存释放
-    CFRelease(drawImageRef);
     
     return drawImage;
 }

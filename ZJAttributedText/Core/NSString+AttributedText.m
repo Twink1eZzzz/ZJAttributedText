@@ -24,7 +24,6 @@ static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHo
 @dynamic drawView;
 @dynamic append;
 @dynamic entire;
-
 @dynamic verticalOffset;
 @dynamic onClicked;
 @dynamic onLayout;
@@ -52,9 +51,11 @@ static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHo
     return ^(id content) {
         if (!content) return self;
         if ([content isKindOfClass:[NSString class]]) {
+            //将前文字符串关联起来
             objc_setAssociatedObject(content, kZJTextStringContextAssociateKey.UTF8String, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             return (NSString *)content;
         } else if ([content isKindOfClass:[UIImage class]]) {
+            //若是图片, 则生成唯一图片占位
             NSString *placeHolder = [NSString stringWithFormat:@"%@%.0f$", kZJTextStringImagePlaceHolderPrefix, [[NSDate date] timeIntervalSince1970]];
             objc_setAssociatedObject(placeHolder, kZJTextStringImageAssociateKey.UTF8String, content, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             objc_setAssociatedObject(placeHolder, kZJTextStringContextAssociateKey.UTF8String, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -66,6 +67,7 @@ static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHo
 
 - (ZJTextDotEntireBlock)entire {
     return ^(void) {
+        //生成全局属性占位
         NSString *placeHolder = [NSString stringWithFormat:@"%@%.0f$", kZJTextStringDefaultPlaceHolderPrefix, [[NSDate date] timeIntervalSince1970]];
         objc_setAssociatedObject(placeHolder, kZJTextStringContextAssociateKey.UTF8String, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         return placeHolder;
@@ -75,7 +77,7 @@ static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHo
 - (ZJTextDotLayerDrawBlock)drawLayer {
     return ^(ZJTextLayerDrawCompletionBlock completion) {
         [self generateElementsAndDefaultAttributes:^(NSArray *elements, ZJTextAttributes *defaultAttributes) {
-            [ZJTextFactory drawTextLayerWithElements:elements defaultAttributes:nil completion:^(CALayer *drawLayer) {
+            [ZJTextFactory drawTextLayerWithElements:elements defaultAttributes:defaultAttributes completion:^(CALayer *drawLayer) {
                 if (completion) {
                     completion(drawLayer);
                 }
@@ -120,12 +122,17 @@ static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHo
     
     NSMutableArray *elements = [NSMutableArray array];
     ZJTextAttributes *defaultAttributes = nil;
+    
+    //从最后一个字符串往前文字符串遍历
     id content = self;
     while (content) {
+        
         id realContent = nil;
         if ([content hasPrefix:kZJTextStringImagePlaceHolderPrefix]) {
+            //处理图片占位
             realContent = objc_getAssociatedObject(content, kZJTextStringImageAssociateKey.UTF8String);
         } else if ([content hasPrefix:kZJTextStringDefaultPlaceHolderPrefix]) {
+            //处理全局属性占位
             if (!defaultAttributes) {
                 defaultAttributes = [ZJTextAttributes new];
             }
@@ -134,10 +141,12 @@ static NSString *const kZJTextStringDefaultPlaceHolderPrefix = @"$DefaultPlaceHo
                 [defaultAttributes setValue:attibutesDic[key] forKey:key];
             }
         } else {
+            //处理普通文本
             realContent = content;
         }
         
         if (realContent) {
+            //生成对应元素
             ZJTextElement *element = [ZJTextElement new];
             element.content = realContent;
             NSDictionary *attibutesDic = [self getAssociateAttributes:content];

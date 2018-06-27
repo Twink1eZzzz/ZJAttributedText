@@ -11,6 +11,7 @@
 #import "ZJTextElement.h"
 #import "ZJTextAttributes.h"
 #import "NSString+AttributedText.h"
+#import "ZJTestLabel.h"
 #import <objc/runtime.h>
 
 @interface ZJViewController ()
@@ -28,6 +29,9 @@
     
     //链式语法
     [self dotFeature];
+    
+    //性能测试
+    //[self performanceTest];
 }
 
 - (void)baseFeature {
@@ -127,6 +131,7 @@
 
 - (void)dotFeature {
     
+    //回调
     ZJTextZJTextAttributeCommonBlock content1OnLayout = ^(ZJTextElement *element) {
         NSLog(@"已显示: %@", element.content);
     };
@@ -140,6 +145,7 @@
         NSLog(@"书被点击: %@", element.content);
     };
     
+    //字体与颜色
     UIFont *content1Font = [UIFont boldSystemFontOfSize:20];
     UIColor *content1Color = [[UIColor blackColor] colorWithAlphaComponent:0.8];
     UIColor *content2Color = [[UIColor blueColor] colorWithAlphaComponent:0.5];
@@ -150,8 +156,10 @@
     UIColor *content7Color = [[UIColor blueColor] colorWithAlphaComponent:0.5];
     UIColor *content8Color = [[UIColor grayColor] colorWithAlphaComponent:0.3];
     
+    //绘制大小限制
     NSValue *constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(325, 550)];
     
+    //内容
     NSString *content1 = @"随笔\n\n";
     NSString *content2 = @"       张嘉佳又出了新书，把书名取成《云边有个小卖部》。他说“时隔五年了，写给离开我们的人，写给陪伴我们的人，写给每个人心中的山和海。\n       《云边有个小卖部》离他上次的一本书，已经过去五年了。\n";
     NSString *image3Path = [[NSBundle mainBundle] pathForResource:@"dy008" ofType:@"png"];
@@ -163,6 +171,9 @@
     NSString *content7 = @"《云边有个小卖部》";
     NSString *content8 = @"\n\n       --他说，他陆陆续续写了两年，中间写到情绪崩溃，不得已停笔半年。";
     
+    CGFloat startTime = [[NSDate date] timeIntervalSince1970] * 1000;
+    
+    //生成文章
     @""
     .append(content1).font(content1Font).color(content1Color).align(@2).onClicked(content1OnClicked).onLayout(content1OnLayout)
     .append(content2).color(content2Color).align(@0)
@@ -172,17 +183,27 @@
     .append(content6).font(content6Font)
     .append(content7).font(content7Font).color(content7Color).onClicked(bookOnClicked)
     .append(content8).color(content8Color).letterSpace(@0).align(@0).minLineSpace(@8)
+    //设置全局默认属性, 优先级低于指定属性
     .entire().constraintSizeValue(constraintSizeValue).letterSpace(@3).minLineHeight(@20).maxLineHeight(@20).align(@1).imageAlign(@1).onClicked(textOnClicked)
+    //绘制View
     .drawView(^(UIView *drawView) {
         drawView.frame = CGRectMake(27.5, 50, drawView.frame.size.width, drawView.frame.size.height);
         drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
-        for (UIView *subView in self.view.subviews) {
-            [subView removeFromSuperview];
-        }
         [self.view addSubview:drawView];
+        
+        CGFloat endTime = [[NSDate date] timeIntervalSince1970] * 1000;
+        NSLog(@"异步绘制耗时: %f ms", endTime - startTime);
     });
-    
-    
+//绘制Layer
+//    .drawLayer(^(CALayer *drawLayer) {
+//        drawLayer.frame = CGRectMake(27.5, 50, drawLayer.frame.size.width, drawLayer.frame.size.height);
+//        drawLayer.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1].CGColor;
+//        [self.view.layer addSublayer:drawLayer];
+//
+//        CGFloat endTime = [[NSDate date] timeIntervalSince1970] * 1000;
+//        NSLog(@"异步绘制耗时: %f ms", endTime - startTime);
+//    });
+
     //也可以分开设置属性与拼接
     //    content1.font(content1Font).color(content1Color).align(@2).onClicked(content1OnClicked).onLayout(content1OnLayout);
     //    content2.color(content2Color).align(@0);
@@ -200,6 +221,102 @@
     //        drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
     //        [self.view addSubview:drawView];
     //    });
+}
+
+- (void)performanceTest {
+    
+    /*
+     机型: iPhone 6
+     
+     测试结果:
+     
+     常规过程: 创建->显示(绘制)
+     常规分析:
+     1. 主线程代码在 28ms 左右. (主线程代码开始 至 结束耗时)
+     2. UILabel 显示(绘制)耗时在 42ms 左右. (addSubview 至 drawRect 耗时)
+     3. 综合耗时 70ms 左右, 全部在主线程
+     
+     异步绘制过程: 创建->异步绘制->显示
+     异步绘制分析:
+     1. 主线程(创建)代码在 28ms 左右. (主线程代码开始 至 结束耗时)
+     2. 创建(主线程) + 异步绘制耗时 84ms 左右. (主线程代码开始 至 绘制出图片回调)
+     3. 由 1、2 得出子线程绘制耗时 56ms 左右, 另外经过多次试验(大段文字绘制)得出绘制复杂的段落也耗时增长较少
+     4. 显示耗时 0.75 ms 左右. (addSubview 至 drawRect 耗时)
+     5. 综合耗时 85ms 左右, 其中主线程 29ms, 子线程 56ms
+     
+     结论:
+     1. 相较于常规方式降低了主线程压力 70ms -> 29ms
+     2. 越复杂的文本收益越高, (多控件合一, 异步绘制, 耗时增长少).
+     */
+    
+
+//    //1. NSAttributedString + label
+//    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"      陈一发儿了解一下? 冯提莫了解一下? 阿冷了解一下?"];
+//    [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, attributedString.length)];
+//    [attributedString addAttribute:NSForegroundColorAttributeName value:[[UIColor blueColor] colorWithAlphaComponent:0.5] range:NSMakeRange(0, attributedString.length)];
+//    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+//    style.lineSpacing = 10;
+//    style.lineBreakMode = NSLineBreakByCharWrapping;
+//    [attributedString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attributedString.length)];
+//
+//    NSString *image1Path = [[NSBundle mainBundle] pathForResource:@"dy008" ofType:@"png"];
+//    UIImage *image1 = [UIImage imageWithContentsOfFile:image1Path];
+//    NSTextAttachment *attachment1 = [[NSTextAttachment alloc] init];
+//    attachment1.image = image1;
+//    NSAttributedString *attachString1 = [NSAttributedString attributedStringWithAttachment:attachment1];
+//
+//    NSString *image2Path = [[NSBundle mainBundle] pathForResource:@"dy122" ofType:@"png"];
+//    UIImage *image2 = [UIImage imageWithContentsOfFile:image2Path];
+//    NSTextAttachment *attachment2 = [[NSTextAttachment alloc] init];
+//    attachment2.image = image2;
+//    NSAttributedString *attachString2 = [NSAttributedString attributedStringWithAttachment:attachment2];
+//
+//    [attributedString appendAttributedString:attachString1];
+//    [attributedString appendAttributedString:attachString2];
+//
+//    ZJTestLabel *label = [[ZJTestLabel alloc] initWithFrame:CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, 200)];
+//    label.numberOfLines = 0;
+//    label.attributedText = attributedString;
+//
+//    CGFloat startTime = [[NSDate date] timeIntervalSince1970] * 1000;
+//    OnLayoutBlock onLayout = ^{
+//        CGFloat endTime = [[NSDate date] timeIntervalSince1970] * 1000;
+//        NSLog(@"绘制耗时: %f ms", endTime - startTime);
+//        //iphone 6上 绘制耗时: 42.32 ms
+//    };
+//    label.onLayout = onLayout;
+//    [self.view addSubview:label];
+    
+    
+    //2. ZJAttributedText
+    __block CGFloat startTime = 0;
+
+    ZJTextZJTextAttributeCommonBlock onLayout = ^(ZJTextElement *element) {
+        CGFloat endTime = [[NSDate date] timeIntervalSince1970] * 1000;
+        NSLog(@"绘制耗时: %f ms", endTime - startTime);
+        //iphone 6上 绘制耗时: 0.75 ms, (将onLayout放在视图的drawRect中执行的结果)
+    };
+
+    NSString *image1Path = [[NSBundle mainBundle] pathForResource:@"dy008" ofType:@"png"];
+    UIImage *image1 = [UIImage imageWithContentsOfFile:image1Path];
+    NSString *image2Path = [[NSBundle mainBundle] pathForResource:@"dy122" ofType:@"png"];
+    UIImage *image2 = [UIImage imageWithContentsOfFile:image2Path];
+
+    NSString *content =  @"      陈一发儿了解一下? 冯提莫了解一下? 阿冷了解一下?";
+
+    content.font([UIFont systemFontOfSize:15]).color([[UIColor blueColor] colorWithAlphaComponent:0.5]).minLineSpace(@10).lineBreakMode(@1).onLayout(onLayout)
+    .append(image1)
+    .append(image2)
+    .entire().constraintSizeValue([NSValue valueWithCGSize:CGSizeMake([UIScreen mainScreen].bounds.size.width, 200)])
+    .drawView(^(UIView *drawView) {
+
+        startTime = [[NSDate date] timeIntervalSince1970] * 1000;
+
+        CGRect frame = drawView.frame;
+        frame.origin.y = 50;
+        drawView.frame = frame;
+        [self.view addSubview:drawView];
+    });
 }
 
 @end
