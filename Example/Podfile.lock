@@ -6,11 +6,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   ZJAttributedText:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  ZJAttributedText: 4011245667d22ec751e86b554d006757ecebeeca
+  ZJAttributedText: 4a89e7802b93e3ec1a753b216bb991243ea0ac88
 
 PODFILE CHECKSUM: 78ba630b2e9c0c3c3a7aa5c7dd929e3d5856dc09
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3

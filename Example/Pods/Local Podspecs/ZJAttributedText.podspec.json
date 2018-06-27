@@ -19,5 +19,5 @@
     "ios": "8.0"
   },
   "source_files": "ZJAttributedText/**/*.{h,m}",
-  "resources": "ZJAttributedText/test.png"
+  "resources": "ZJAttributedText/**/*.png"
 }

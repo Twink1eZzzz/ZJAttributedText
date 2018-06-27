@@ -7,88 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AD50EE8F1A2A8FB402A39E03DEE79C3 /* ZJTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A63EFF79937F3DF9FA95B75340E52E /* ZJTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		122BFF28CCCE6F78A978AB19C7C6F7C6 /* ZJTextFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F0F24B6C7BF58C064ACE9C4368E3F /* ZJTextFactory.m */; };
-		16D412278535F11F09DC74DFF24F8BD2 /* ZJTextAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 582F33EB4543991860B97CFFBDA31900 /* ZJTextAttributes.m */; };
-		35BC59C508080DF47B574E178EF7B435 /* Pods-ZJAttributedText_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA6F87F5882939ADCAC15C9AEA4812B7 /* Pods-ZJAttributedText_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		382E509720DE84DD00F7C148 /* ZJTextParserProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 382E509620DE84DD00F7C148 /* ZJTextParserProtocol.h */; };
-		382E509A20DE863B00F7C148 /* ZJTextLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 382E509820DE863B00F7C148 /* ZJTextLayer.h */; };
-		382E509B20DE863B00F7C148 /* ZJTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 382E509920DE863B00F7C148 /* ZJTextLayer.m */; };
-		382E509E20DE89B500F7C148 /* NSString+AttributedText.h in Headers */ = {isa = PBXBuildFile; fileRef = 382E509C20DE89B500F7C148 /* NSString+AttributedText.h */; };
-		382E509F20DE89B500F7C148 /* NSString+AttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 382E509D20DE89B500F7C148 /* NSString+AttributedText.m */; };
-		382E50A220DE89F100F7C148 /* ZJTextUBBParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 382E50A020DE89F100F7C148 /* ZJTextUBBParser.h */; };
-		382E50A320DE89F100F7C148 /* ZJTextUBBParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 382E50A120DE89F100F7C148 /* ZJTextUBBParser.m */; };
-		382E50A620DE8A0600F7C148 /* ZJTextRNParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 382E50A420DE8A0600F7C148 /* ZJTextRNParser.h */; };
-		382E50A720DE8A0600F7C148 /* ZJTextRNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 382E50A520DE8A0600F7C148 /* ZJTextRNParser.m */; };
-		46033577FB5AFA64B0372F83212B15E0 /* Pods-ZJAttributedText_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BCE465BFF29F239A7BD94106948597 /* Pods-ZJAttributedText_Example-dummy.m */; };
-		519534A5EA7525BDEA2943921081FA40 /* ZJTextAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = B09529FCE3133FF27A6C69F2D5AC8CF4 /* ZJTextAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		605DE34B20E25DD400AE5889 /* dy009.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31320E25DD400AE5889 /* dy009.png */; };
-		605DE34C20E25DD400AE5889 /* dy008.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31420E25DD400AE5889 /* dy008.png */; };
-		605DE34D20E25DD400AE5889 /* dy136.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31520E25DD400AE5889 /* dy136.png */; };
-		605DE34E20E25DD400AE5889 /* dy122.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31620E25DD400AE5889 /* dy122.png */; };
-		605DE34F20E25DD400AE5889 /* dy123.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31720E25DD400AE5889 /* dy123.png */; };
-		605DE35020E25DD400AE5889 /* dy137.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31820E25DD400AE5889 /* dy137.png */; };
-		605DE35120E25DD400AE5889 /* dy109.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31920E25DD400AE5889 /* dy109.png */; };
-		605DE35220E25DD400AE5889 /* dy121.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31A20E25DD400AE5889 /* dy121.png */; };
-		605DE35320E25DD400AE5889 /* dy135.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31B20E25DD400AE5889 /* dy135.png */; };
-		605DE35420E25DD400AE5889 /* dy134.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31C20E25DD400AE5889 /* dy134.png */; };
-		605DE35520E25DD400AE5889 /* dy120.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31D20E25DD400AE5889 /* dy120.png */; };
-		605DE35620E25DD400AE5889 /* dy108.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31E20E25DD400AE5889 /* dy108.png */; };
-		605DE35720E25DD400AE5889 /* dy124.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE31F20E25DD400AE5889 /* dy124.png */; };
-		605DE35820E25DD400AE5889 /* dy130.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32020E25DD400AE5889 /* dy130.png */; };
-		605DE35920E25DD400AE5889 /* dy118.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32120E25DD400AE5889 /* dy118.png */; };
-		605DE35A20E25DD400AE5889 /* expressionImage_custom.plist in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32220E25DD400AE5889 /* expressionImage_custom.plist */; };
-		605DE35B20E25DD400AE5889 /* dy119.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32320E25DD400AE5889 /* dy119.png */; };
-		605DE35C20E25DD400AE5889 /* dy131.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32420E25DD400AE5889 /* dy131.png */; };
-		605DE35D20E25DD400AE5889 /* dy125.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32520E25DD400AE5889 /* dy125.png */; };
-		605DE35E20E25DD400AE5889 /* dy133.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32620E25DD400AE5889 /* dy133.png */; };
-		605DE35F20E25DD400AE5889 /* dy127.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32720E25DD400AE5889 /* dy127.png */; };
-		605DE36020E25DD400AE5889 /* dy126.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32820E25DD400AE5889 /* dy126.png */; };
-		605DE36120E25DD400AE5889 /* dy132.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32920E25DD400AE5889 /* dy132.png */; };
-		605DE36220E25DD400AE5889 /* dy117.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32A20E25DD400AE5889 /* dy117.png */; };
-		605DE36320E25DD400AE5889 /* dy103.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32B20E25DD400AE5889 /* dy103.png */; };
-		605DE36420E25DD400AE5889 /* dy102.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32C20E25DD400AE5889 /* dy102.png */; };
-		605DE36520E25DD400AE5889 /* dy116.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32D20E25DD400AE5889 /* dy116.png */; };
-		605DE36620E25DD400AE5889 /* dy128.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32E20E25DD400AE5889 /* dy128.png */; };
-		605DE36720E25DD400AE5889 /* dy114.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE32F20E25DD400AE5889 /* dy114.png */; };
-		605DE36820E25DD400AE5889 /* emotion_del_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33020E25DD400AE5889 /* emotion_del_normal.png */; };
-		605DE36920E25DD400AE5889 /* dy115.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33120E25DD400AE5889 /* dy115.png */; };
-		605DE36A20E25DD400AE5889 /* dy101.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33220E25DD400AE5889 /* dy101.png */; };
-		605DE36B20E25DD400AE5889 /* dy129.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33320E25DD400AE5889 /* dy129.png */; };
-		605DE36C20E25DD400AE5889 /* dy105.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33420E25DD400AE5889 /* dy105.png */; };
-		605DE36D20E25DD400AE5889 /* dy111.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33520E25DD400AE5889 /* dy111.png */; };
-		605DE36E20E25DD400AE5889 /* dy110.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33620E25DD400AE5889 /* dy110.png */; };
-		605DE36F20E25DD400AE5889 /* dy104.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33720E25DD400AE5889 /* dy104.png */; };
-		605DE37020E25DD400AE5889 /* dy112.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33820E25DD400AE5889 /* dy112.png */; };
-		605DE37120E25DD400AE5889 /* dy106.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33920E25DD400AE5889 /* dy106.png */; };
-		605DE37220E25DD400AE5889 /* dy107.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33A20E25DD400AE5889 /* dy107.png */; };
-		605DE37320E25DD400AE5889 /* dy113.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33B20E25DD400AE5889 /* dy113.png */; };
-		605DE37420E25DD400AE5889 /* dy014.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33C20E25DD400AE5889 /* dy014.png */; };
-		605DE37520E25DD400AE5889 /* dy015.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33D20E25DD400AE5889 /* dy015.png */; };
-		605DE37620E25DD400AE5889 /* dy001.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33E20E25DD400AE5889 /* dy001.png */; };
-		605DE37720E25DD400AE5889 /* dy017.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE33F20E25DD400AE5889 /* dy017.png */; };
-		605DE37820E25DD400AE5889 /* dy003.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE34020E25DD400AE5889 /* dy003.png */; };
-		605DE37920E25DD400AE5889 /* dy002.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE34120E25DD400AE5889 /* dy002.png */; };
-		605DE37A20E25DD400AE5889 /* dy016.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE34220E25DD400AE5889 /* dy016.png */; };
-		605DE37B20E25DD400AE5889 /* dy012.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE34320E25DD400AE5889 /* dy012.png */; };
-		605DE37C20E25DD400AE5889 /* dy006.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE34420E25DD400AE5889 /* dy006.png */; };
-		605DE37D20E25DD400AE5889 /* dy007.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE34520E25DD400AE5889 /* dy007.png */; };
-		605DE37E20E25DD400AE5889 /* dy013.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE34620E25DD400AE5889 /* dy013.png */; };
-		605DE37F20E25DD400AE5889 /* dy005.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE34720E25DD400AE5889 /* dy005.png */; };
-		605DE38020E25DD400AE5889 /* dy011.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE34820E25DD400AE5889 /* dy011.png */; };
-		605DE38120E25DD400AE5889 /* dy010.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE34920E25DD400AE5889 /* dy010.png */; };
-		605DE38220E25DD400AE5889 /* dy004.png in Resources */ = {isa = PBXBuildFile; fileRef = 605DE34A20E25DD400AE5889 /* dy004.png */; };
-		72C1B0AE6A82E91F09D6417A44F976F0 /* ZJTextFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 35E214943F8D52E0EC2873E28D650622 /* ZJTextFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7BFED28B7FBC3A59CF89301A187C90BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		83AE5D2009BE8E3D6B1982D34F11D8F0 /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6D054EC434B867FCC3829438EF957C /* ZJTextView.m */; };
-		8A7E649C892A001CADF7A11D86119D33 /* Pods-ZJAttributedText_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79539763720BC7379E79CD84D4B7ADA1 /* Pods-ZJAttributedText_Tests-dummy.m */; };
-		940D70E9D78C54AE11469D855E39CB19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		AAC5A2453729A9252CDCEB5483612ADF /* ZJTextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 812F3F4AB499531A4C20DA7E24BC8D7E /* ZJTextElement.m */; };
-		AD0221A4B00B231DB3BA2EE5678B80E2 /* Pods-ZJAttributedText_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 447F374E9D387D65EB19CCA5A14DE9C1 /* Pods-ZJAttributedText_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B144233AC01EEBCB08A95610748881CA /* ZJAttributedText-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BBE5CD3CE113A90AE3F45794B1BBC62E /* ZJAttributedText-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D78EA8D648A5336E3B8DFA1852B34EFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		E7A67E813F7310178AF33845294BF693 /* ZJTextElement.h in Headers */ = {isa = PBXBuildFile; fileRef = B407B88F458AB61978AB424D0AA3C3AF /* ZJTextElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E9FB38194DEED35B59A267FE11B02DB8 /* ZJAttributedText-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE9CCD648476F013DAA0B2985D4F652 /* ZJAttributedText-dummy.m */; };
+		09634EEB8E35BE0BD82A1C2153BA901A /* ZJAttributedText-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7FC091DEC0B95FC9F2560F449D14C1 /* ZJAttributedText-dummy.m */; };
+		23B8B2092AD4EA8165BF37D684ECE085 /* Pods-ZJAttributedText_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 69B5F11ADB84491BA3E340A67A2662EB /* Pods-ZJAttributedText_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29D7530DBB9E874EF5383B3D37EE833D /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 837B7CD1495279B8956BBA4014EC0CA6 /* ZJTextView.m */; };
+		2ED4BE7D380EDCFB85960FC7E09AE948 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		348B47436FBC956EE954BF9DCA27311B /* NSString+AttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = A612F98273EF8D01AFAF95636C75D663 /* NSString+AttributedText.m */; };
+		35BC59C508080DF47B574E178EF7B435 /* Pods-ZJAttributedText_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A99FD0E18E3ACF40DDCDB204F1B7F77 /* Pods-ZJAttributedText_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B090F22E7AC8B91B659EE67E4AF537D /* NSString+AttributedText.h in Headers */ = {isa = PBXBuildFile; fileRef = E18E1C1AAEBB5686F89D5B49915E432A /* NSString+AttributedText.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C5BABEC4577C08DB21FC9F1665F53E8 /* ZJTextAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 636461E8EC4D47F8BEBB2DD30F64A3FF /* ZJTextAttributes.m */; };
+		46033577FB5AFA64B0372F83212B15E0 /* Pods-ZJAttributedText_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E66EAFF713752E36E67710806978DA2 /* Pods-ZJAttributedText_Example-dummy.m */; };
+		4839F325AC6E02558242B6D39FB9F3EC /* ZJTextElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 00BDAFC3EB18CEE5D0FD2653F722C289 /* ZJTextElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FA7B0E2446C92ABD31CC328290D2138 /* ZJTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F481BF0B6E1BB0998C98A8EA6AD419B4 /* ZJTextLayer.m */; };
+		716F7A25B6C73198535E24EE13B7C279 /* ZJTextFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = B4142F97B6F2233B76AC2B36DD0007AB /* ZJTextFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		804E401A22120C81CE5BF99594971B34 /* ZJAttributedText-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B81B5C34832E124991FCE2F5551CD70 /* ZJAttributedText-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		80BA263186749DF5FF8F72706721D1AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		B79CCD59307BCE3BB5F9C9B8ABD224EA /* ZJTextLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D64ED672AADCDE774CADA961514A813A /* ZJTextLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB29AF0C0BE866E938D3FE42896C2CDC /* ZJTextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDF3A51D0910A466ACB6DB7015E97DB /* ZJTextElement.m */; };
+		CAA7DA2A5B52508E172E405014FFBA82 /* ZJTextAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 95079B84A4E67CF58D912B7F42FB81E4 /* ZJTextAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DABF8BBB66F42D02F925AF8D908FC9F0 /* ZJTextFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E81357F4D41375A26FED13E543ADA6 /* ZJTextFactory.m */; };
+		E454DBC5BD3B0F1B8A4EE548AEDDDF44 /* Pods-ZJAttributedText_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B01B15C4D24A61AA9D4262AC975BD78D /* Pods-ZJAttributedText_Tests-dummy.m */; };
+		E5414D6A5206DEE7C348DF77CB5397C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		F01E684771A4860033C5F4D59F15AAF8 /* ZJTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 650728F7B677A383F8A19A35EE9D61B4 /* ZJTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,113 +38,62 @@
 			remoteGlobalIDString = 1AF2B16DF57A3865E4BC37FB47F99252;
 			remoteInfo = ZJAttributedText;
 		};
+		D892DC5ACF462EF3EC88ABA7B71CAC0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8883E93DA6E6F9DB00C99414E489094;
+			remoteInfo = "Pods-ZJAttributedText_Example";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05AC94D76935A9BDA5EAC6C4C13B7002 /* ZJAttributedText-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZJAttributedText-prefix.pch"; sourceTree = "<group>"; };
-		0FBB0477945945B93D717DC8936A8F77 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14A63EFF79937F3DF9FA95B75340E52E /* ZJTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
-		20AF2D3CD67A23AE0B922E8CB80D0AB7 /* Pods-ZJAttributedText_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Example.release.xcconfig"; sourceTree = "<group>"; };
-		273DC19652AD711C27D02CDF88D19B0D /* Pods-ZJAttributedText_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZJAttributedText_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		2D325B4D9C54B95C48DD2081A500A242 /* Pods-ZJAttributedText_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		2E691CD35ADF452F427679BDC9F8D2C0 /* Pods_ZJAttributedText_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZJAttributedText_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35E214943F8D52E0EC2873E28D650622 /* ZJTextFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextFactory.h; sourceTree = "<group>"; };
-		382E509620DE84DD00F7C148 /* ZJTextParserProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTextParserProtocol.h; sourceTree = "<group>"; };
-		382E509820DE863B00F7C148 /* ZJTextLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTextLayer.h; sourceTree = "<group>"; };
-		382E509920DE863B00F7C148 /* ZJTextLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTextLayer.m; sourceTree = "<group>"; };
-		382E509C20DE89B500F7C148 /* NSString+AttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+AttributedText.h"; sourceTree = "<group>"; };
-		382E509D20DE89B500F7C148 /* NSString+AttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+AttributedText.m"; sourceTree = "<group>"; };
-		382E50A020DE89F100F7C148 /* ZJTextUBBParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTextUBBParser.h; sourceTree = "<group>"; };
-		382E50A120DE89F100F7C148 /* ZJTextUBBParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTextUBBParser.m; sourceTree = "<group>"; };
-		382E50A420DE8A0600F7C148 /* ZJTextRNParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTextRNParser.h; sourceTree = "<group>"; };
-		382E50A520DE8A0600F7C148 /* ZJTextRNParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTextRNParser.m; sourceTree = "<group>"; };
-		3BD56941FB5EED526DB29D859F2CA901 /* Pods-ZJAttributedText_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZJAttributedText_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3D3F0F24B6C7BF58C064ACE9C4368E3F /* ZJTextFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextFactory.m; sourceTree = "<group>"; };
-		4351DA22B7D7B4CB6C859D9D7BA1E071 /* Pods-ZJAttributedText_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZJAttributedText_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		447F374E9D387D65EB19CCA5A14DE9C1 /* Pods-ZJAttributedText_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZJAttributedText_Tests-umbrella.h"; sourceTree = "<group>"; };
-		46269F0BABCF5B6C6175FCF943CC4F1E /* Pods-ZJAttributedText_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		46BCE465BFF29F239A7BD94106948597 /* Pods-ZJAttributedText_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZJAttributedText_Example-dummy.m"; sourceTree = "<group>"; };
-		46E71C82E6CA45B9CB35CF1FAC478F7D /* Pods-ZJAttributedText_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Tests-resources.sh"; sourceTree = "<group>"; };
-		4A06CC18F88D4DC33918D1C6618E0F50 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		582F33EB4543991860B97CFFBDA31900 /* ZJTextAttributes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextAttributes.m; sourceTree = "<group>"; };
-		605DE31320E25DD400AE5889 /* dy009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy009.png; sourceTree = "<group>"; };
-		605DE31420E25DD400AE5889 /* dy008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy008.png; sourceTree = "<group>"; };
-		605DE31520E25DD400AE5889 /* dy136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy136.png; sourceTree = "<group>"; };
-		605DE31620E25DD400AE5889 /* dy122.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy122.png; sourceTree = "<group>"; };
-		605DE31720E25DD400AE5889 /* dy123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy123.png; sourceTree = "<group>"; };
-		605DE31820E25DD400AE5889 /* dy137.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy137.png; sourceTree = "<group>"; };
-		605DE31920E25DD400AE5889 /* dy109.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy109.png; sourceTree = "<group>"; };
-		605DE31A20E25DD400AE5889 /* dy121.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy121.png; sourceTree = "<group>"; };
-		605DE31B20E25DD400AE5889 /* dy135.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy135.png; sourceTree = "<group>"; };
-		605DE31C20E25DD400AE5889 /* dy134.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy134.png; sourceTree = "<group>"; };
-		605DE31D20E25DD400AE5889 /* dy120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy120.png; sourceTree = "<group>"; };
-		605DE31E20E25DD400AE5889 /* dy108.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy108.png; sourceTree = "<group>"; };
-		605DE31F20E25DD400AE5889 /* dy124.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy124.png; sourceTree = "<group>"; };
-		605DE32020E25DD400AE5889 /* dy130.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy130.png; sourceTree = "<group>"; };
-		605DE32120E25DD400AE5889 /* dy118.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy118.png; sourceTree = "<group>"; };
-		605DE32220E25DD400AE5889 /* expressionImage_custom.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = expressionImage_custom.plist; sourceTree = "<group>"; };
-		605DE32320E25DD400AE5889 /* dy119.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy119.png; sourceTree = "<group>"; };
-		605DE32420E25DD400AE5889 /* dy131.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy131.png; sourceTree = "<group>"; };
-		605DE32520E25DD400AE5889 /* dy125.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy125.png; sourceTree = "<group>"; };
-		605DE32620E25DD400AE5889 /* dy133.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy133.png; sourceTree = "<group>"; };
-		605DE32720E25DD400AE5889 /* dy127.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy127.png; sourceTree = "<group>"; };
-		605DE32820E25DD400AE5889 /* dy126.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy126.png; sourceTree = "<group>"; };
-		605DE32920E25DD400AE5889 /* dy132.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy132.png; sourceTree = "<group>"; };
-		605DE32A20E25DD400AE5889 /* dy117.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy117.png; sourceTree = "<group>"; };
-		605DE32B20E25DD400AE5889 /* dy103.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy103.png; sourceTree = "<group>"; };
-		605DE32C20E25DD400AE5889 /* dy102.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy102.png; sourceTree = "<group>"; };
-		605DE32D20E25DD400AE5889 /* dy116.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy116.png; sourceTree = "<group>"; };
-		605DE32E20E25DD400AE5889 /* dy128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy128.png; sourceTree = "<group>"; };
-		605DE32F20E25DD400AE5889 /* dy114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy114.png; sourceTree = "<group>"; };
-		605DE33020E25DD400AE5889 /* emotion_del_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emotion_del_normal.png; sourceTree = "<group>"; };
-		605DE33120E25DD400AE5889 /* dy115.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy115.png; sourceTree = "<group>"; };
-		605DE33220E25DD400AE5889 /* dy101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy101.png; sourceTree = "<group>"; };
-		605DE33320E25DD400AE5889 /* dy129.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy129.png; sourceTree = "<group>"; };
-		605DE33420E25DD400AE5889 /* dy105.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy105.png; sourceTree = "<group>"; };
-		605DE33520E25DD400AE5889 /* dy111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy111.png; sourceTree = "<group>"; };
-		605DE33620E25DD400AE5889 /* dy110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy110.png; sourceTree = "<group>"; };
-		605DE33720E25DD400AE5889 /* dy104.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy104.png; sourceTree = "<group>"; };
-		605DE33820E25DD400AE5889 /* dy112.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy112.png; sourceTree = "<group>"; };
-		605DE33920E25DD400AE5889 /* dy106.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy106.png; sourceTree = "<group>"; };
-		605DE33A20E25DD400AE5889 /* dy107.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy107.png; sourceTree = "<group>"; };
-		605DE33B20E25DD400AE5889 /* dy113.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy113.png; sourceTree = "<group>"; };
-		605DE33C20E25DD400AE5889 /* dy014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy014.png; sourceTree = "<group>"; };
-		605DE33D20E25DD400AE5889 /* dy015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy015.png; sourceTree = "<group>"; };
-		605DE33E20E25DD400AE5889 /* dy001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy001.png; sourceTree = "<group>"; };
-		605DE33F20E25DD400AE5889 /* dy017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy017.png; sourceTree = "<group>"; };
-		605DE34020E25DD400AE5889 /* dy003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy003.png; sourceTree = "<group>"; };
-		605DE34120E25DD400AE5889 /* dy002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy002.png; sourceTree = "<group>"; };
-		605DE34220E25DD400AE5889 /* dy016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy016.png; sourceTree = "<group>"; };
-		605DE34320E25DD400AE5889 /* dy012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy012.png; sourceTree = "<group>"; };
-		605DE34420E25DD400AE5889 /* dy006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy006.png; sourceTree = "<group>"; };
-		605DE34520E25DD400AE5889 /* dy007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy007.png; sourceTree = "<group>"; };
-		605DE34620E25DD400AE5889 /* dy013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy013.png; sourceTree = "<group>"; };
-		605DE34720E25DD400AE5889 /* dy005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy005.png; sourceTree = "<group>"; };
-		605DE34820E25DD400AE5889 /* dy011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy011.png; sourceTree = "<group>"; };
-		605DE34920E25DD400AE5889 /* dy010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy010.png; sourceTree = "<group>"; };
-		605DE34A20E25DD400AE5889 /* dy004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dy004.png; sourceTree = "<group>"; };
-		640D11ED6B13175CB531EA629B2FE71B /* Pods-ZJAttributedText_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZJAttributedText_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		72F749754C8193F6020891F6AB7BA020 /* Pods-ZJAttributedText_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Example-frameworks.sh"; sourceTree = "<group>"; };
-		79539763720BC7379E79CD84D4B7ADA1 /* Pods-ZJAttributedText_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZJAttributedText_Tests-dummy.m"; sourceTree = "<group>"; };
-		812F3F4AB499531A4C20DA7E24BC8D7E /* ZJTextElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextElement.m; sourceTree = "<group>"; };
-		83CD6FF5D2B99B0104E8D1980E454910 /* Pods-ZJAttributedText_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		8F01F47B51E4466BB0BF33B1F44F2D0E /* Pods-ZJAttributedText_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ZJAttributedText_Tests.modulemap"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9C3532B3EC67D3A4E8623684B7F9163B /* Pods-ZJAttributedText_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		A5D51304400B2129F74BF0F3DA202F3E /* Pods-ZJAttributedText_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ZJAttributedText_Example.modulemap"; sourceTree = "<group>"; };
-		A91237529BF4FF4B2B16FC67345AF7B4 /* Pods_ZJAttributedText_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZJAttributedText_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B09529FCE3133FF27A6C69F2D5AC8CF4 /* ZJTextAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextAttributes.h; sourceTree = "<group>"; };
-		B407B88F458AB61978AB424D0AA3C3AF /* ZJTextElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextElement.h; sourceTree = "<group>"; };
-		B71523E7BC47634CF80DAA724665A7DA /* Pods-ZJAttributedText_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Example-resources.sh"; sourceTree = "<group>"; };
-		BBE5CD3CE113A90AE3F45794B1BBC62E /* ZJAttributedText-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZJAttributedText-umbrella.h"; sourceTree = "<group>"; };
-		BE6D054EC434B867FCC3829438EF957C /* ZJTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextView.m; sourceTree = "<group>"; };
-		CA6F87F5882939ADCAC15C9AEA4812B7 /* Pods-ZJAttributedText_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZJAttributedText_Example-umbrella.h"; sourceTree = "<group>"; };
-		D5FB621935F5F7CAB883D0732845E7E1 /* ZJAttributedText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZJAttributedText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD4246602CED6DCC4CBBA8997E226EC6 /* ZJAttributedText.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZJAttributedText.xcconfig; sourceTree = "<group>"; };
-		E79B6A50304612DB06E5B302519F5123 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EDE9CCD648476F013DAA0B2985D4F652 /* ZJAttributedText-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZJAttributedText-dummy.m"; sourceTree = "<group>"; };
-		FB53C968F567E504CE29A7D677DD31FD /* ZJAttributedText.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ZJAttributedText.modulemap; sourceTree = "<group>"; };
+		00BDAFC3EB18CEE5D0FD2653F722C289 /* ZJTextElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextElement.h; sourceTree = "<group>"; };
+		00EE0244456E307B0C2C1E49CC78132E /* Pods-ZJAttributedText_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Example-resources.sh"; sourceTree = "<group>"; };
+		1513FB5146B3BDD1A9FB92A882E0BDD9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		15EFA249EE51A6838714535F77185DFF /* Pods-ZJAttributedText_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		1B81B5C34832E124991FCE2F5551CD70 /* ZJAttributedText-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZJAttributedText-umbrella.h"; sourceTree = "<group>"; };
+		1BE5A301B5703122C2CB5E87FFED9211 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1ED184D32822F39E972252C60E598870 /* Pods-ZJAttributedText_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZJAttributedText_Example.modulemap"; sourceTree = "<group>"; };
+		2113798BB10AA7CBB80CFB03CDEBECAF /* Pods-ZJAttributedText_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZJAttributedText_Tests.modulemap"; sourceTree = "<group>"; };
+		2A99FD0E18E3ACF40DDCDB204F1B7F77 /* Pods-ZJAttributedText_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZJAttributedText_Example-umbrella.h"; sourceTree = "<group>"; };
+		2E691CD35ADF452F427679BDC9F8D2C0 /* Pods_ZJAttributedText_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZJAttributedText_Example.framework; path = "Pods-ZJAttributedText_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35D670FAD835E61E55ED9C2C04A48762 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		36DE08E44AC59C28266028397E01BBFE /* Pods-ZJAttributedText_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZJAttributedText_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		589613AAD56F9AEFE63349C2306B1DB1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5E66EAFF713752E36E67710806978DA2 /* Pods-ZJAttributedText_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZJAttributedText_Example-dummy.m"; sourceTree = "<group>"; };
+		636461E8EC4D47F8BEBB2DD30F64A3FF /* ZJTextAttributes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextAttributes.m; sourceTree = "<group>"; };
+		650728F7B677A383F8A19A35EE9D61B4 /* ZJTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
+		69B5F11ADB84491BA3E340A67A2662EB /* Pods-ZJAttributedText_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZJAttributedText_Tests-umbrella.h"; sourceTree = "<group>"; };
+		6C7FC091DEC0B95FC9F2560F449D14C1 /* ZJAttributedText-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZJAttributedText-dummy.m"; sourceTree = "<group>"; };
+		7C57E3F7FFC898BFA0F04E5BE8806C0D /* ZJAttributedText.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZJAttributedText.xcconfig; sourceTree = "<group>"; };
+		837B7CD1495279B8956BBA4014EC0CA6 /* ZJTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextView.m; sourceTree = "<group>"; };
+		841055BA10633B156787D0399980714E /* Pods-ZJAttributedText_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Example.release.xcconfig"; sourceTree = "<group>"; };
+		8DDF3A51D0910A466ACB6DB7015E97DB /* ZJTextElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextElement.m; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		95079B84A4E67CF58D912B7F42FB81E4 /* ZJTextAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextAttributes.h; sourceTree = "<group>"; };
+		98E81357F4D41375A26FED13E543ADA6 /* ZJTextFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextFactory.m; sourceTree = "<group>"; };
+		A612F98273EF8D01AFAF95636C75D663 /* NSString+AttributedText.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+AttributedText.m"; sourceTree = "<group>"; };
+		A6DB52C493268D069AA931913E4160C4 /* Pods-ZJAttributedText_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZJAttributedText_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		A91237529BF4FF4B2B16FC67345AF7B4 /* Pods_ZJAttributedText_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZJAttributedText_Tests.framework; path = "Pods-ZJAttributedText_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC00BE8CEFB92978A912B88CD333786B /* Pods-ZJAttributedText_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZJAttributedText_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		B01B15C4D24A61AA9D4262AC975BD78D /* Pods-ZJAttributedText_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZJAttributedText_Tests-dummy.m"; sourceTree = "<group>"; };
+		B4142F97B6F2233B76AC2B36DD0007AB /* ZJTextFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextFactory.h; sourceTree = "<group>"; };
+		B446A693A3FFE8CEF8F9C1B2A3A12952 /* Pods-ZJAttributedText_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		BF7B638921ACC6D53AC740E5E80B1727 /* ZJAttributedText.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = ZJAttributedText.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C103C39EADA499A3175B1E6B5FB69D60 /* Pods-ZJAttributedText_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZJAttributedText_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C122E847EC907ED7C006C8FF9885B39C /* ZJAttributedText-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZJAttributedText-prefix.pch"; sourceTree = "<group>"; };
+		C1E52B193193F3C17F6BE1C723910BF2 /* Pods-ZJAttributedText_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Tests-resources.sh"; sourceTree = "<group>"; };
+		C9864C3C52E7BC13AAAA3D4D72E524DB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5FB621935F5F7CAB883D0732845E7E1 /* ZJAttributedText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZJAttributedText.framework; path = ZJAttributedText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D64ED672AADCDE774CADA961514A813A /* ZJTextLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ZJTextLayer.h; sourceTree = "<group>"; };
+		E1466F2B2C1E5244BB76A761DC4DB85C /* ZJAttributedText.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZJAttributedText.modulemap; sourceTree = "<group>"; };
+		E18E1C1AAEBB5686F89D5B49915E432A /* NSString+AttributedText.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString+AttributedText.h"; sourceTree = "<group>"; };
+		E6901C492BE0F2F79F2886744F3C2A95 /* Pods-ZJAttributedText_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZJAttributedText_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F481BF0B6E1BB0998C98A8EA6AD419B4 /* ZJTextLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ZJTextLayer.m; sourceTree = "<group>"; };
+		F48FE3DE3E3F1CDA1FE8604A43DBA67D /* Pods-ZJAttributedText_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		F826E6E6FBB73E69E395D1A9FBB3C791 /* Pods-ZJAttributedText_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZJAttributedText_Example-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,7 +101,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BFED28B7FBC3A59CF89301A187C90BE /* Foundation.framework in Frameworks */,
+				E5414D6A5206DEE7C348DF77CB5397C6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07464A16097A8379A237DDE7682F77E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80BA263186749DF5FF8F72706721D1AA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,152 +117,56 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				940D70E9D78C54AE11469D855E39CB19 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E76906DDC3F9D5E154BCFA499BCD79E5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D78EA8D648A5336E3B8DFA1852B34EFF /* Foundation.framework in Frameworks */,
+				2ED4BE7D380EDCFB85960FC7E09AE948 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0528ED2AB908F1B83474B80A872F8E73 /* Resources */ = {
+		14331A50924961B2FDFE04443327BAEC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				605DE31220E25DD400AE5889 /* Expression */,
+				D64ED672AADCDE774CADA961514A813A /* ZJTextLayer.h */,
+				F481BF0B6E1BB0998C98A8EA6AD419B4 /* ZJTextLayer.m */,
+				650728F7B677A383F8A19A35EE9D61B4 /* ZJTextView.h */,
+				837B7CD1495279B8956BBA4014EC0CA6 /* ZJTextView.m */,
 			);
-			name = Resources;
+			name = View;
+			path = ZJAttributedText/View;
 			sourceTree = "<group>";
 		};
-		1F26F9F36FA804B1EDF5CEF8AF199883 /* Core */ = {
+		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				35E214943F8D52E0EC2873E28D650622 /* ZJTextFactory.h */,
-				3D3F0F24B6C7BF58C064ACE9C4368E3F /* ZJTextFactory.m */,
-				382E509620DE84DD00F7C148 /* ZJTextParserProtocol.h */,
-				382E509C20DE89B500F7C148 /* NSString+AttributedText.h */,
-				382E509D20DE89B500F7C148 /* NSString+AttributedText.m */,
-				382E50A020DE89F100F7C148 /* ZJTextUBBParser.h */,
-				382E50A120DE89F100F7C148 /* ZJTextUBBParser.m */,
-				382E50A420DE8A0600F7C148 /* ZJTextRNParser.h */,
-				382E50A520DE8A0600F7C148 /* ZJTextRNParser.m */,
+				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		72FF25E08C234686863F5CAFE52F9E4E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E18E1C1AAEBB5686F89D5B49915E432A /* NSString+AttributedText.h */,
+				A612F98273EF8D01AFAF95636C75D663 /* NSString+AttributedText.m */,
+				B4142F97B6F2233B76AC2B36DD0007AB /* ZJTextFactory.h */,
+				98E81357F4D41375A26FED13E543ADA6 /* ZJTextFactory.m */,
 			);
 			name = Core;
 			path = ZJAttributedText/Core;
 			sourceTree = "<group>";
 		};
-		5FA08866A6E202E13813E36A177B0412 /* Support Files */ = {
+		75BF5A33FDCA78E25AE6DAEB16E2570E /* ZJAttributedText */ = {
 			isa = PBXGroup;
 			children = (
-				0FBB0477945945B93D717DC8936A8F77 /* Info.plist */,
-				FB53C968F567E504CE29A7D677DD31FD /* ZJAttributedText.modulemap */,
-				DD4246602CED6DCC4CBBA8997E226EC6 /* ZJAttributedText.xcconfig */,
-				EDE9CCD648476F013DAA0B2985D4F652 /* ZJAttributedText-dummy.m */,
-				05AC94D76935A9BDA5EAC6C4C13B7002 /* ZJAttributedText-prefix.pch */,
-				BBE5CD3CE113A90AE3F45794B1BBC62E /* ZJAttributedText-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/ZJAttributedText";
-			sourceTree = "<group>";
-		};
-		605DE31220E25DD400AE5889 /* Expression */ = {
-			isa = PBXGroup;
-			children = (
-				605DE31320E25DD400AE5889 /* dy009.png */,
-				605DE31420E25DD400AE5889 /* dy008.png */,
-				605DE31520E25DD400AE5889 /* dy136.png */,
-				605DE31620E25DD400AE5889 /* dy122.png */,
-				605DE31720E25DD400AE5889 /* dy123.png */,
-				605DE31820E25DD400AE5889 /* dy137.png */,
-				605DE31920E25DD400AE5889 /* dy109.png */,
-				605DE31A20E25DD400AE5889 /* dy121.png */,
-				605DE31B20E25DD400AE5889 /* dy135.png */,
-				605DE31C20E25DD400AE5889 /* dy134.png */,
-				605DE31D20E25DD400AE5889 /* dy120.png */,
-				605DE31E20E25DD400AE5889 /* dy108.png */,
-				605DE31F20E25DD400AE5889 /* dy124.png */,
-				605DE32020E25DD400AE5889 /* dy130.png */,
-				605DE32120E25DD400AE5889 /* dy118.png */,
-				605DE32220E25DD400AE5889 /* expressionImage_custom.plist */,
-				605DE32320E25DD400AE5889 /* dy119.png */,
-				605DE32420E25DD400AE5889 /* dy131.png */,
-				605DE32520E25DD400AE5889 /* dy125.png */,
-				605DE32620E25DD400AE5889 /* dy133.png */,
-				605DE32720E25DD400AE5889 /* dy127.png */,
-				605DE32820E25DD400AE5889 /* dy126.png */,
-				605DE32920E25DD400AE5889 /* dy132.png */,
-				605DE32A20E25DD400AE5889 /* dy117.png */,
-				605DE32B20E25DD400AE5889 /* dy103.png */,
-				605DE32C20E25DD400AE5889 /* dy102.png */,
-				605DE32D20E25DD400AE5889 /* dy116.png */,
-				605DE32E20E25DD400AE5889 /* dy128.png */,
-				605DE32F20E25DD400AE5889 /* dy114.png */,
-				605DE33020E25DD400AE5889 /* emotion_del_normal.png */,
-				605DE33120E25DD400AE5889 /* dy115.png */,
-				605DE33220E25DD400AE5889 /* dy101.png */,
-				605DE33320E25DD400AE5889 /* dy129.png */,
-				605DE33420E25DD400AE5889 /* dy105.png */,
-				605DE33520E25DD400AE5889 /* dy111.png */,
-				605DE33620E25DD400AE5889 /* dy110.png */,
-				605DE33720E25DD400AE5889 /* dy104.png */,
-				605DE33820E25DD400AE5889 /* dy112.png */,
-				605DE33920E25DD400AE5889 /* dy106.png */,
-				605DE33A20E25DD400AE5889 /* dy107.png */,
-				605DE33B20E25DD400AE5889 /* dy113.png */,
-				605DE33C20E25DD400AE5889 /* dy014.png */,
-				605DE33D20E25DD400AE5889 /* dy015.png */,
-				605DE33E20E25DD400AE5889 /* dy001.png */,
-				605DE33F20E25DD400AE5889 /* dy017.png */,
-				605DE34020E25DD400AE5889 /* dy003.png */,
-				605DE34120E25DD400AE5889 /* dy002.png */,
-				605DE34220E25DD400AE5889 /* dy016.png */,
-				605DE34320E25DD400AE5889 /* dy012.png */,
-				605DE34420E25DD400AE5889 /* dy006.png */,
-				605DE34520E25DD400AE5889 /* dy007.png */,
-				605DE34620E25DD400AE5889 /* dy013.png */,
-				605DE34720E25DD400AE5889 /* dy005.png */,
-				605DE34820E25DD400AE5889 /* dy011.png */,
-				605DE34920E25DD400AE5889 /* dy010.png */,
-				605DE34A20E25DD400AE5889 /* dy004.png */,
-			);
-			path = Expression;
-			sourceTree = "<group>";
-		};
-		64E0919584B8A03240C087FE0D519BD9 /* ZJAttributedText */ = {
-			isa = PBXGroup;
-			children = (
-				1F26F9F36FA804B1EDF5CEF8AF199883 /* Core */,
-				9FAC2D499FA358B613CB07DFDA7E183D /* Model */,
-				0528ED2AB908F1B83474B80A872F8E73 /* Resources */,
-				5FA08866A6E202E13813E36A177B0412 /* Support Files */,
-				7F921813C0CD01C94A42254B1491A2BC /* View */,
+				72FF25E08C234686863F5CAFE52F9E4E /* Core */,
+				A455CEE5D977475D5950C663D1697E94 /* Model */,
+				CB0C4A43C0C769A8CB9DC8063B803A2A /* Pod */,
+				D0607DBEE5E86A1ABF6FDD9319D4CAFD /* Support Files */,
+				14331A50924961B2FDFE04443327BAEC /* View */,
 			);
 			name = ZJAttributedText;
 			path = ../..;
-			sourceTree = "<group>";
-		};
-		692F7E307AF93BFAC5E8FBD1FDC64ADD /* Pods-ZJAttributedText_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				E79B6A50304612DB06E5B302519F5123 /* Info.plist */,
-				8F01F47B51E4466BB0BF33B1F44F2D0E /* Pods-ZJAttributedText_Tests.modulemap */,
-				640D11ED6B13175CB531EA629B2FE71B /* Pods-ZJAttributedText_Tests-acknowledgements.markdown */,
-				273DC19652AD711C27D02CDF88D19B0D /* Pods-ZJAttributedText_Tests-acknowledgements.plist */,
-				79539763720BC7379E79CD84D4B7ADA1 /* Pods-ZJAttributedText_Tests-dummy.m */,
-				83CD6FF5D2B99B0104E8D1980E454910 /* Pods-ZJAttributedText_Tests-frameworks.sh */,
-				46E71C82E6CA45B9CB35CF1FAC478F7D /* Pods-ZJAttributedText_Tests-resources.sh */,
-				447F374E9D387D65EB19CCA5A14DE9C1 /* Pods-ZJAttributedText_Tests-umbrella.h */,
-				9C3532B3EC67D3A4E8623684B7F9163B /* Pods-ZJAttributedText_Tests.debug.xcconfig */,
-				46269F0BABCF5B6C6175FCF943CC4F1E /* Pods-ZJAttributedText_Tests.release.xcconfig */,
-			);
-			name = "Pods-ZJAttributedText_Tests";
-			path = "Target Support Files/Pods-ZJAttributedText_Tests";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -380,52 +180,40 @@
 			);
 			sourceTree = "<group>";
 		};
-		7F921813C0CD01C94A42254B1491A2BC /* View */ = {
+		A455CEE5D977475D5950C663D1697E94 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				14A63EFF79937F3DF9FA95B75340E52E /* ZJTextView.h */,
-				BE6D054EC434B867FCC3829438EF957C /* ZJTextView.m */,
-				382E509820DE863B00F7C148 /* ZJTextLayer.h */,
-				382E509920DE863B00F7C148 /* ZJTextLayer.m */,
-			);
-			name = View;
-			path = ZJAttributedText/View;
-			sourceTree = "<group>";
-		};
-		9E72094B6AA1410555018F76CB3AE9AA /* Pods-ZJAttributedText_Example */ = {
-			isa = PBXGroup;
-			children = (
-				4A06CC18F88D4DC33918D1C6618E0F50 /* Info.plist */,
-				A5D51304400B2129F74BF0F3DA202F3E /* Pods-ZJAttributedText_Example.modulemap */,
-				3BD56941FB5EED526DB29D859F2CA901 /* Pods-ZJAttributedText_Example-acknowledgements.markdown */,
-				4351DA22B7D7B4CB6C859D9D7BA1E071 /* Pods-ZJAttributedText_Example-acknowledgements.plist */,
-				46BCE465BFF29F239A7BD94106948597 /* Pods-ZJAttributedText_Example-dummy.m */,
-				72F749754C8193F6020891F6AB7BA020 /* Pods-ZJAttributedText_Example-frameworks.sh */,
-				B71523E7BC47634CF80DAA724665A7DA /* Pods-ZJAttributedText_Example-resources.sh */,
-				CA6F87F5882939ADCAC15C9AEA4812B7 /* Pods-ZJAttributedText_Example-umbrella.h */,
-				2D325B4D9C54B95C48DD2081A500A242 /* Pods-ZJAttributedText_Example.debug.xcconfig */,
-				20AF2D3CD67A23AE0B922E8CB80D0AB7 /* Pods-ZJAttributedText_Example.release.xcconfig */,
-			);
-			name = "Pods-ZJAttributedText_Example";
-			path = "Target Support Files/Pods-ZJAttributedText_Example";
-			sourceTree = "<group>";
-		};
-		9FAC2D499FA358B613CB07DFDA7E183D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B09529FCE3133FF27A6C69F2D5AC8CF4 /* ZJTextAttributes.h */,
-				582F33EB4543991860B97CFFBDA31900 /* ZJTextAttributes.m */,
-				B407B88F458AB61978AB424D0AA3C3AF /* ZJTextElement.h */,
-				812F3F4AB499531A4C20DA7E24BC8D7E /* ZJTextElement.m */,
+				95079B84A4E67CF58D912B7F42FB81E4 /* ZJTextAttributes.h */,
+				636461E8EC4D47F8BEBB2DD30F64A3FF /* ZJTextAttributes.m */,
+				00BDAFC3EB18CEE5D0FD2653F722C289 /* ZJTextElement.h */,
+				8DDF3A51D0910A466ACB6DB7015E97DB /* ZJTextElement.m */,
 			);
 			name = Model;
 			path = ZJAttributedText/Model;
 			sourceTree = "<group>";
 		};
+		A9FD040F39097F4A48542814A9371B53 /* Pods-ZJAttributedText_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C9864C3C52E7BC13AAAA3D4D72E524DB /* Info.plist */,
+				2113798BB10AA7CBB80CFB03CDEBECAF /* Pods-ZJAttributedText_Tests.modulemap */,
+				36DE08E44AC59C28266028397E01BBFE /* Pods-ZJAttributedText_Tests-acknowledgements.markdown */,
+				AC00BE8CEFB92978A912B88CD333786B /* Pods-ZJAttributedText_Tests-acknowledgements.plist */,
+				B01B15C4D24A61AA9D4262AC975BD78D /* Pods-ZJAttributedText_Tests-dummy.m */,
+				F48FE3DE3E3F1CDA1FE8604A43DBA67D /* Pods-ZJAttributedText_Tests-frameworks.sh */,
+				C1E52B193193F3C17F6BE1C723910BF2 /* Pods-ZJAttributedText_Tests-resources.sh */,
+				69B5F11ADB84491BA3E340A67A2662EB /* Pods-ZJAttributedText_Tests-umbrella.h */,
+				15EFA249EE51A6838714535F77185DFF /* Pods-ZJAttributedText_Tests.debug.xcconfig */,
+				B446A693A3FFE8CEF8F9C1B2A3A12952 /* Pods-ZJAttributedText_Tests.release.xcconfig */,
+			);
+			name = "Pods-ZJAttributedText_Tests";
+			path = "Target Support Files/Pods-ZJAttributedText_Tests";
+			sourceTree = "<group>";
+		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+				5E0D919E635D23B70123790B8308F8EF /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -433,24 +221,40 @@
 		BEB201923DC4F08F070FC9DEFF0478E8 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9E72094B6AA1410555018F76CB3AE9AA /* Pods-ZJAttributedText_Example */,
-				692F7E307AF93BFAC5E8FBD1FDC64ADD /* Pods-ZJAttributedText_Tests */,
+				E6FE64F681B428FBE5201028F951D461 /* Pods-ZJAttributedText_Example */,
+				A9FD040F39097F4A48542814A9371B53 /* Pods-ZJAttributedText_Tests */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+		CB0C4A43C0C769A8CB9DC8063B803A2A /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+				35D670FAD835E61E55ED9C2C04A48762 /* LICENSE */,
+				1513FB5146B3BDD1A9FB92A882E0BDD9 /* README.md */,
+				BF7B638921ACC6D53AC740E5E80B1727 /* ZJAttributedText.podspec */,
 			);
-			name = iOS;
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		D0607DBEE5E86A1ABF6FDD9319D4CAFD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				589613AAD56F9AEFE63349C2306B1DB1 /* Info.plist */,
+				E1466F2B2C1E5244BB76A761DC4DB85C /* ZJAttributedText.modulemap */,
+				7C57E3F7FFC898BFA0F04E5BE8806C0D /* ZJAttributedText.xcconfig */,
+				6C7FC091DEC0B95FC9F2560F449D14C1 /* ZJAttributedText-dummy.m */,
+				C122E847EC907ED7C006C8FF9885B39C /* ZJAttributedText-prefix.pch */,
+				1B81B5C34832E124991FCE2F5551CD70 /* ZJAttributedText-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/ZJAttributedText";
 			sourceTree = "<group>";
 		};
 		E0EAFB50BE4ADDD6A0C81D06C858C4C0 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				64E0919584B8A03240C087FE0D519BD9 /* ZJAttributedText */,
+				75BF5A33FDCA78E25AE6DAEB16E2570E /* ZJAttributedText */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -465,6 +269,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E6FE64F681B428FBE5201028F951D461 /* Pods-ZJAttributedText_Example */ = {
+			isa = PBXGroup;
+			children = (
+				1BE5A301B5703122C2CB5E87FFED9211 /* Info.plist */,
+				1ED184D32822F39E972252C60E598870 /* Pods-ZJAttributedText_Example.modulemap */,
+				E6901C492BE0F2F79F2886744F3C2A95 /* Pods-ZJAttributedText_Example-acknowledgements.markdown */,
+				A6DB52C493268D069AA931913E4160C4 /* Pods-ZJAttributedText_Example-acknowledgements.plist */,
+				5E66EAFF713752E36E67710806978DA2 /* Pods-ZJAttributedText_Example-dummy.m */,
+				F826E6E6FBB73E69E395D1A9FBB3C791 /* Pods-ZJAttributedText_Example-frameworks.sh */,
+				00EE0244456E307B0C2C1E49CC78132E /* Pods-ZJAttributedText_Example-resources.sh */,
+				2A99FD0E18E3ACF40DDCDB204F1B7F77 /* Pods-ZJAttributedText_Example-umbrella.h */,
+				C103C39EADA499A3175B1E6B5FB69D60 /* Pods-ZJAttributedText_Example.debug.xcconfig */,
+				841055BA10633B156787D0399980714E /* Pods-ZJAttributedText_Example.release.xcconfig */,
+			);
+			name = "Pods-ZJAttributedText_Example";
+			path = "Target Support Files/Pods-ZJAttributedText_Example";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -476,28 +298,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4ACC00B2520272012CA61BACE5EF9C86 /* Headers */ = {
+		9F49681F79E58CDD539D88EF9B3D19FE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				382E509720DE84DD00F7C148 /* ZJTextParserProtocol.h in Headers */,
-				382E50A220DE89F100F7C148 /* ZJTextUBBParser.h in Headers */,
-				B144233AC01EEBCB08A95610748881CA /* ZJAttributedText-umbrella.h in Headers */,
-				519534A5EA7525BDEA2943921081FA40 /* ZJTextAttributes.h in Headers */,
-				E7A67E813F7310178AF33845294BF693 /* ZJTextElement.h in Headers */,
-				382E509A20DE863B00F7C148 /* ZJTextLayer.h in Headers */,
-				72C1B0AE6A82E91F09D6417A44F976F0 /* ZJTextFactory.h in Headers */,
-				0AD50EE8F1A2A8FB402A39E03DEE79C3 /* ZJTextView.h in Headers */,
-				382E50A620DE8A0600F7C148 /* ZJTextRNParser.h in Headers */,
-				382E509E20DE89B500F7C148 /* NSString+AttributedText.h in Headers */,
+				23B8B2092AD4EA8165BF37D684ECE085 /* Pods-ZJAttributedText_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EFA453D0F0823089ADAB8DC9FADDBC42 /* Headers */ = {
+		F58203DE26E74B3746AC8BA8A372A1A0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD0221A4B00B231DB3BA2EE5678B80E2 /* Pods-ZJAttributedText_Tests-umbrella.h in Headers */,
+				3B090F22E7AC8B91B659EE67E4AF537D /* NSString+AttributedText.h in Headers */,
+				804E401A22120C81CE5BF99594971B34 /* ZJAttributedText-umbrella.h in Headers */,
+				CAA7DA2A5B52508E172E405014FFBA82 /* ZJTextAttributes.h in Headers */,
+				4839F325AC6E02558242B6D39FB9F3EC /* ZJTextElement.h in Headers */,
+				716F7A25B6C73198535E24EE13B7C279 /* ZJTextFactory.h in Headers */,
+				B79CCD59307BCE3BB5F9C9B8ABD224EA /* ZJTextLayer.h in Headers */,
+				F01E684771A4860033C5F4D59F15AAF8 /* ZJTextView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,10 +327,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F3D22A763EEB6BCAAC638EABD85BF2B /* Build configuration list for PBXNativeTarget "ZJAttributedText" */;
 			buildPhases = (
-				AFD9025721DF66A54E45D10B6B528A5F /* Sources */,
+				51D92F9666A5639290A7164298AC73D0 /* Sources */,
 				0225FA7B3294CEEF68E319D76FF18E30 /* Frameworks */,
-				4ACC00B2520272012CA61BACE5EF9C86 /* Headers */,
-				9E72D30232F07C17716F4964B47A22F6 /* Resources */,
+				F58203DE26E74B3746AC8BA8A372A1A0 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -522,17 +340,18 @@
 			productReference = D5FB621935F5F7CAB883D0732845E7E1 /* ZJAttributedText.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7B44F7557DA7B9A8E00DB8EC5615AFE0 /* Pods-ZJAttributedText_Tests */ = {
+		CD6794263B92F81DD208A08EFCA7E230 /* Pods-ZJAttributedText_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7BFCBEEB7DF1B28FA4BBB0078B9ACE62 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Tests" */;
+			buildConfigurationList = D8634046D62D65217D1CAF4900B9F587 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Tests" */;
 			buildPhases = (
-				495B89FD57F1C5CCE97464C5A7CC13C5 /* Sources */,
-				E76906DDC3F9D5E154BCFA499BCD79E5 /* Frameworks */,
-				EFA453D0F0823089ADAB8DC9FADDBC42 /* Headers */,
+				FF584DA3FF3CFDAC4BCDB0C2C4B30D97 /* Sources */,
+				07464A16097A8379A237DDE7682F77E5 /* Frameworks */,
+				9F49681F79E58CDD539D88EF9B3D19FE /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FD25CFB7FC517A2D97823965E2E78508 /* PBXTargetDependency */,
 			);
 			name = "Pods-ZJAttributedText_Tests";
 			productName = "Pods-ZJAttributedText_Tests";
@@ -563,8 +382,8 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -579,100 +398,24 @@
 			projectRoot = "";
 			targets = (
 				D8883E93DA6E6F9DB00C99414E489094 /* Pods-ZJAttributedText_Example */,
-				7B44F7557DA7B9A8E00DB8EC5615AFE0 /* Pods-ZJAttributedText_Tests */,
+				CD6794263B92F81DD208A08EFCA7E230 /* Pods-ZJAttributedText_Tests */,
 				1AF2B16DF57A3865E4BC37FB47F99252 /* ZJAttributedText */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		9E72D30232F07C17716F4964B47A22F6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				605DE37B20E25DD400AE5889 /* dy012.png in Resources */,
-				605DE35E20E25DD400AE5889 /* dy133.png in Resources */,
-				605DE35520E25DD400AE5889 /* dy120.png in Resources */,
-				605DE37620E25DD400AE5889 /* dy001.png in Resources */,
-				605DE36720E25DD400AE5889 /* dy114.png in Resources */,
-				605DE36120E25DD400AE5889 /* dy132.png in Resources */,
-				605DE34F20E25DD400AE5889 /* dy123.png in Resources */,
-				605DE37D20E25DD400AE5889 /* dy007.png in Resources */,
-				605DE34B20E25DD400AE5889 /* dy009.png in Resources */,
-				605DE37720E25DD400AE5889 /* dy017.png in Resources */,
-				605DE37C20E25DD400AE5889 /* dy006.png in Resources */,
-				605DE36320E25DD400AE5889 /* dy103.png in Resources */,
-				605DE37020E25DD400AE5889 /* dy112.png in Resources */,
-				605DE37E20E25DD400AE5889 /* dy013.png in Resources */,
-				605DE36E20E25DD400AE5889 /* dy110.png in Resources */,
-				605DE35A20E25DD400AE5889 /* expressionImage_custom.plist in Resources */,
-				605DE36820E25DD400AE5889 /* emotion_del_normal.png in Resources */,
-				605DE34D20E25DD400AE5889 /* dy136.png in Resources */,
-				605DE35420E25DD400AE5889 /* dy134.png in Resources */,
-				605DE37520E25DD400AE5889 /* dy015.png in Resources */,
-				605DE37A20E25DD400AE5889 /* dy016.png in Resources */,
-				605DE38220E25DD400AE5889 /* dy004.png in Resources */,
-				605DE37820E25DD400AE5889 /* dy003.png in Resources */,
-				605DE36A20E25DD400AE5889 /* dy101.png in Resources */,
-				605DE34E20E25DD400AE5889 /* dy122.png in Resources */,
-				605DE36B20E25DD400AE5889 /* dy129.png in Resources */,
-				605DE35D20E25DD400AE5889 /* dy125.png in Resources */,
-				605DE37320E25DD400AE5889 /* dy113.png in Resources */,
-				605DE37920E25DD400AE5889 /* dy002.png in Resources */,
-				605DE37220E25DD400AE5889 /* dy107.png in Resources */,
-				605DE36220E25DD400AE5889 /* dy117.png in Resources */,
-				605DE35120E25DD400AE5889 /* dy109.png in Resources */,
-				605DE35220E25DD400AE5889 /* dy121.png in Resources */,
-				605DE37420E25DD400AE5889 /* dy014.png in Resources */,
-				605DE35020E25DD400AE5889 /* dy137.png in Resources */,
-				605DE37F20E25DD400AE5889 /* dy005.png in Resources */,
-				605DE36920E25DD400AE5889 /* dy115.png in Resources */,
-				605DE35320E25DD400AE5889 /* dy135.png in Resources */,
-				605DE36620E25DD400AE5889 /* dy128.png in Resources */,
-				605DE36520E25DD400AE5889 /* dy116.png in Resources */,
-				605DE37120E25DD400AE5889 /* dy106.png in Resources */,
-				605DE36C20E25DD400AE5889 /* dy105.png in Resources */,
-				605DE38120E25DD400AE5889 /* dy010.png in Resources */,
-				605DE35920E25DD400AE5889 /* dy118.png in Resources */,
-				605DE36F20E25DD400AE5889 /* dy104.png in Resources */,
-				605DE38020E25DD400AE5889 /* dy011.png in Resources */,
-				605DE35720E25DD400AE5889 /* dy124.png in Resources */,
-				605DE36420E25DD400AE5889 /* dy102.png in Resources */,
-				605DE35620E25DD400AE5889 /* dy108.png in Resources */,
-				605DE36020E25DD400AE5889 /* dy126.png in Resources */,
-				605DE36D20E25DD400AE5889 /* dy111.png in Resources */,
-				605DE34C20E25DD400AE5889 /* dy008.png in Resources */,
-				605DE35820E25DD400AE5889 /* dy130.png in Resources */,
-				605DE35C20E25DD400AE5889 /* dy131.png in Resources */,
-				605DE35F20E25DD400AE5889 /* dy127.png in Resources */,
-				605DE35B20E25DD400AE5889 /* dy119.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		495B89FD57F1C5CCE97464C5A7CC13C5 /* Sources */ = {
+		51D92F9666A5639290A7164298AC73D0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A7E649C892A001CADF7A11D86119D33 /* Pods-ZJAttributedText_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AFD9025721DF66A54E45D10B6B528A5F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E9FB38194DEED35B59A267FE11B02DB8 /* ZJAttributedText-dummy.m in Sources */,
-				16D412278535F11F09DC74DFF24F8BD2 /* ZJTextAttributes.m in Sources */,
-				382E509B20DE863B00F7C148 /* ZJTextLayer.m in Sources */,
-				382E50A320DE89F100F7C148 /* ZJTextUBBParser.m in Sources */,
-				AAC5A2453729A9252CDCEB5483612ADF /* ZJTextElement.m in Sources */,
-				382E50A720DE8A0600F7C148 /* ZJTextRNParser.m in Sources */,
-				122BFF28CCCE6F78A978AB19C7C6F7C6 /* ZJTextFactory.m in Sources */,
-				83AE5D2009BE8E3D6B1982D34F11D8F0 /* ZJTextView.m in Sources */,
-				382E509F20DE89B500F7C148 /* NSString+AttributedText.m in Sources */,
+				348B47436FBC956EE954BF9DCA27311B /* NSString+AttributedText.m in Sources */,
+				09634EEB8E35BE0BD82A1C2153BA901A /* ZJAttributedText-dummy.m in Sources */,
+				3C5BABEC4577C08DB21FC9F1665F53E8 /* ZJTextAttributes.m in Sources */,
+				BB29AF0C0BE866E938D3FE42896C2CDC /* ZJTextElement.m in Sources */,
+				DABF8BBB66F42D02F925AF8D908FC9F0 /* ZJTextFactory.m in Sources */,
+				5FA7B0E2446C92ABD31CC328290D2138 /* ZJTextLayer.m in Sources */,
+				29D7530DBB9E874EF5383B3D37EE833D /* ZJTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +424,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				46033577FB5AFA64B0372F83212B15E0 /* Pods-ZJAttributedText_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF584DA3FF3CFDAC4BCDB0C2C4B30D97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E454DBC5BD3B0F1B8A4EE548AEDDDF44 /* Pods-ZJAttributedText_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,302 +444,257 @@
 			target = 1AF2B16DF57A3865E4BC37FB47F99252 /* ZJAttributedText */;
 			targetProxy = 17410625DA848550B539A5119B8E2287 /* PBXContainerItemProxy */;
 		};
+		FD25CFB7FC517A2D97823965E2E78508 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-ZJAttributedText_Example";
+			target = D8883E93DA6E6F9DB00C99414E489094 /* Pods-ZJAttributedText_Example */;
+			targetProxy = D892DC5ACF462EF3EC88ABA7B71CAC0A /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		157AF0CD5E5AB2A2E74D3B8ECD865185 /* Release */ = {
+		50310654935079716E659A44316A39A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15EFA249EE51A6838714535F77185DFF /* Pods-ZJAttributedText_Tests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Pods-ZJAttributedText_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6137AE87A9F66C58C75C9180189576F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B446A693A3FFE8CEF8F9C1B2A3A12952 /* Pods-ZJAttributedText_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Pods-ZJAttributedText_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		21F081D5A81DCD0C5360327B63FBEE1A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20AF2D3CD67A23AE0B922E8CB80D0AB7 /* Pods-ZJAttributedText_Example.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Pods-ZJAttributedText_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ZJAttributedText_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		59AB19A247AD1912C660993CC0D92121 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C3532B3EC67D3A4E8623684B7F9163B /* Pods-ZJAttributedText_Tests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Pods-ZJAttributedText_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ZJAttributedText_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		6C520B3235393F70C18A2F941F6055F4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D325B4D9C54B95C48DD2081A500A242 /* Pods-ZJAttributedText_Example.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Pods-ZJAttributedText_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ZJAttributedText_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7187929C610E7EB4489292F8B4EB6B5A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD4246602CED6DCC4CBBA8997E226EC6 /* ZJAttributedText.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ZJAttributedText/ZJAttributedText-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ZJAttributedText/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ZJAttributedText/ZJAttributedText.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = ZJAttributedText;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B228952B86EB3E7DE9FF13E5DB4BEB5E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46269F0BABCF5B6C6175FCF943CC4F1E /* Pods-ZJAttributedText_Tests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Tests/Pods-ZJAttributedText_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ZJAttributedText_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		EED546DBB23FC32035C9BDC4E22B30BD /* Debug */ = {
+		8B33C5230DE4A9DFA6D8F46505DD7AF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		F296B935BC54C314FD6EE0D223F42AD8 /* Debug */ = {
+		A5E606116BF330DCFCEBD147D932DA5E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD4246602CED6DCC4CBBA8997E226EC6 /* ZJAttributedText.xcconfig */;
+			baseConfigurationReference = 841055BA10633B156787D0399980714E /* Pods-ZJAttributedText_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Pods-ZJAttributedText_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B42B54097A876E8A982CBF5DAA91B1AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		B7689477EF44AC9C0DADC2A10CBD7912 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C57E3F7FFC898BFA0F04E5BE8806C0D /* ZJAttributedText.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/ZJAttributedText/ZJAttributedText-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/ZJAttributedText/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ZJAttributedText/ZJAttributedText.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_MODULE_NAME = ZJAttributedText;
 				PRODUCT_NAME = ZJAttributedText;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -998,6 +704,70 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		C15F9BDEEDB51350845638FA85A3FB9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C103C39EADA499A3175B1E6B5FB69D60 /* Pods-ZJAttributedText_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZJAttributedText_Example/Pods-ZJAttributedText_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FE4F684029BC5D0CB1A519710D0D3E24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C57E3F7FFC898BFA0F04E5BE8806C0D /* ZJAttributedText.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ZJAttributedText/ZJAttributedText-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ZJAttributedText/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ZJAttributedText/ZJAttributedText.modulemap";
+				PRODUCT_MODULE_NAME = ZJAttributedText;
+				PRODUCT_NAME = ZJAttributedText;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1005,8 +775,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EED546DBB23FC32035C9BDC4E22B30BD /* Debug */,
-				157AF0CD5E5AB2A2E74D3B8ECD865185 /* Release */,
+				8B33C5230DE4A9DFA6D8F46505DD7AF7 /* Debug */,
+				B42B54097A876E8A982CBF5DAA91B1AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1014,17 +784,8 @@
 		3A0C793A74DF9CD42580F7E969E96868 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6C520B3235393F70C18A2F941F6055F4 /* Debug */,
-				21F081D5A81DCD0C5360327B63FBEE1A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7BFCBEEB7DF1B28FA4BBB0078B9ACE62 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				59AB19A247AD1912C660993CC0D92121 /* Debug */,
-				B228952B86EB3E7DE9FF13E5DB4BEB5E /* Release */,
+				C15F9BDEEDB51350845638FA85A3FB9E /* Debug */,
+				A5E606116BF330DCFCEBD147D932DA5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1032,8 +793,17 @@
 		8F3D22A763EEB6BCAAC638EABD85BF2B /* Build configuration list for PBXNativeTarget "ZJAttributedText" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F296B935BC54C314FD6EE0D223F42AD8 /* Debug */,
-				7187929C610E7EB4489292F8B4EB6B5A /* Release */,
+				B7689477EF44AC9C0DADC2A10CBD7912 /* Debug */,
+				FE4F684029BC5D0CB1A519710D0D3E24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8634046D62D65217D1CAF4900B9F587 /* Build configuration list for PBXNativeTarget "Pods-ZJAttributedText_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50310654935079716E659A44316A39A5 /* Debug */,
+				6137AE87A9F66C58C75C9180189576F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

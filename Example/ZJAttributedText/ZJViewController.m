@@ -10,6 +10,7 @@
 #import "ZJTextFactory.h"
 #import "ZJTextElement.h"
 #import "ZJTextAttributes.h"
+#import "NSString+AttributedText.h"
 #import <objc/runtime.h>
 
 @interface ZJViewController ()
@@ -21,12 +22,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 
     //最基础用法
-    [self baseFeature];
+    //[self baseFeature];
     
-    
+    //链式语法
+    [self dotFeature];
 }
 
 - (void)baseFeature {
@@ -48,12 +49,11 @@
     ZJTextElement *element2 = [ZJTextElement new];
     element2.content = @"       张嘉佳又出了新书，把书名取成《云边有个小卖部》。他说“时隔五年了，写给离开我们的人，写给陪伴我们的人，写给每个人心中的山和海。\n       《云边有个小卖部》离他上次的一本书，已经过去五年了。\n";
     element2.attributes.color = [[UIColor blueColor] colorWithAlphaComponent:0.5];
-    element2.attributes.imageSizeValue = [NSValue valueWithCGSize:CGSizeMake(40, 40)];
     element2.attributes.align = @0;
     
     //元素3
     ZJTextElement *element3 = [ZJTextElement new];
-    NSString *image3Path = [[NSBundle bundleForClass:[ZJTextElement class]] pathForResource:@"dy008" ofType:@"png"];
+    NSString *image3Path = [[NSBundle mainBundle] pathForResource:@"dy008" ofType:@"png"];
     element3.content = [UIImage imageWithContentsOfFile:image3Path];
 //    element3.attributes.imageSizeValue =  [NSValue valueWithCGSize:CGSizeMake(30, 30)];
     element3.attributes.imageAlign = @(ZJTextImageAlignCenterToFont);
@@ -73,7 +73,7 @@
     
     //元素5
     ZJTextElement *element5 = [ZJTextElement new];
-    NSString *image5Path = [[NSBundle bundleForClass:[ZJTextElement class]] pathForResource:@"dy122" ofType:@"png"];
+    NSString *image5Path = [[NSBundle mainBundle] pathForResource:@"dy122" ofType:@"png"];
     element5.content = [UIImage imageWithContentsOfFile:image5Path];
     element5.attributes.imageAlign = @(ZJTextImageAlignCenterToFont);
     element5.attributes.align = @2;
@@ -118,17 +118,85 @@
         NSLog(@"其他文本: %@", element.content);
     };
     
-    [ZJTextFactory drawTextViewWithElements:elements defaultAttributes:defaultAttributes completion:^(UIView *draw) {
-        draw.frame = CGRectMake(27.5, 50, draw.frame.size.width, draw.frame.size.height);
-        draw.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
-        [self.view addSubview:draw];
+    [ZJTextFactory drawTextViewWithElements:elements defaultAttributes:defaultAttributes completion:^(UIView *drawView) {
+        drawView.frame = CGRectMake(27.5, 50, drawView.frame.size.width, drawView.frame.size.height);
+        drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
+        [self.view addSubview:drawView];
     }];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)dotFeature {
+    
+    ZJTextZJTextAttributeCommonBlock content1OnLayout = ^(ZJTextElement *element) {
+        NSLog(@"已显示: %@", element.content);
+    };
+    ZJTextZJTextAttributeCommonBlock content1OnClicked = ^(ZJTextElement *element) {
+        NSLog(@"标题被点击: %@", element.content);
+    };
+    ZJTextZJTextAttributeCommonBlock textOnClicked = ^(ZJTextElement *element) {
+        NSLog(@"文字被点击: %@", element.content);
+    };
+    ZJTextZJTextAttributeCommonBlock bookOnClicked = ^(ZJTextElement *element) {
+        NSLog(@"书被点击: %@", element.content);
+    };
+    
+    UIFont *content1Font = [UIFont boldSystemFontOfSize:20];
+    UIColor *content1Color = [[UIColor blackColor] colorWithAlphaComponent:0.8];
+    UIColor *content2Color = [[UIColor blueColor] colorWithAlphaComponent:0.5];
+    UIFont *content4Font =[UIFont systemFontOfSize:15];
+    UIColor *content4Color = [[UIColor darkGrayColor] colorWithAlphaComponent:0.7];
+    UIFont *content6Font = [UIFont systemFontOfSize:16 weight:UIFontWeightLight];
+    UIFont *content7Font = [UIFont boldSystemFontOfSize:22];
+    UIColor *content7Color = [[UIColor blueColor] colorWithAlphaComponent:0.5];
+    UIColor *content8Color = [[UIColor grayColor] colorWithAlphaComponent:0.3];
+    
+    NSValue *constraintSizeValue = [NSValue valueWithCGSize:CGSizeMake(325, 550)];
+    
+    NSString *content1 = @"随笔\n\n";
+    NSString *content2 = @"       张嘉佳又出了新书，把书名取成《云边有个小卖部》。他说“时隔五年了，写给离开我们的人，写给陪伴我们的人，写给每个人心中的山和海。\n       《云边有个小卖部》离他上次的一本书，已经过去五年了。\n";
+    NSString *image3Path = [[NSBundle mainBundle] pathForResource:@"dy008" ofType:@"png"];
+    UIImage *content3 = [UIImage imageWithContentsOfFile:image3Path];
+    NSString *content4 = @"-----分界-----";
+    NSString *image5Path = [[NSBundle mainBundle] pathForResource:@"dy122" ofType:@"png"];
+    UIImage *content5 = [UIImage imageWithContentsOfFile:image5Path];
+    NSString *content6 = @"\n我从来没想过时间会过的这么快，\n快的这五年我好像还没有认真生活，\n时间就没有了。\n没有认识新朋友，\n没有去过新景点，\n也没有吃过更新奇的食物，\n五年里没有任何值得留念的回忆。\n这本";
+    NSString *content7 = @"《云边有个小卖部》";
+    NSString *content8 = @"\n\n       --他说，他陆陆续续写了两年，中间写到情绪崩溃，不得已停笔半年。";
+    
+    @""
+    .append(content1).font(content1Font).color(content1Color).align(@2).onClicked(content1OnClicked).onLayout(content1OnLayout)
+    .append(content2).color(content2Color).align(@0)
+    .append(content3).imageAlign(@1).font(content4Font).minLineHeight(@100).align(@2)
+    .append(content4).font(content4Font).strokeColor(content4Color).strokeWidth(@-2).align(@2).color([UIColor whiteColor])
+    .append(content5).align(@2)
+    .append(content6).font(content6Font)
+    .append(content7).font(content7Font).color(content7Color).onClicked(bookOnClicked)
+    .append(content8).color(content8Color).letterSpace(@0).align(@0).minLineSpace(@8)
+    .entire().constraintSizeValue(constraintSizeValue).letterSpace(@3).minLineHeight(@20).maxLineHeight(@20).align(@1).imageAlign(@1).onClicked(textOnClicked)
+    .drawView(^(UIView *drawView) {
+        drawView.frame = CGRectMake(27.5, 50, drawView.frame.size.width, drawView.frame.size.height);
+        drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
+        [self.view addSubview:drawView];
+    });
+    
+    
+    //也可以分开设置属性与拼接
+    //    content1.font(content1Font).color(content1Color).align(@2).onClicked(content1OnClicked).onLayout(content1OnLayout);
+    //    content2.color(content2Color).align(@0);
+    //    NSString *image3 = @"".append(content3).imageAlign(@1).font(content4Font).minLineHeight(@100).align(@2);
+    //    content4.font(content4Font).strokeColor(content4Color).strokeWidth(@-2).align(@2).color([UIColor whiteColor]);
+    //    NSString *image5 = @"".append(content5).align(@2);
+    //    content6.font(content6Font);
+    //    content7.font(content7Font).color(content7Color).onClicked(bookOnClicked);
+    //    content8.color(content8Color).letterSpace(@0).align(@0).minLineSpace(@8);
+    //
+    //    content1.append(content2).append(image3).append(content4).append(image5).append(content6).append(content7).append(content8)
+    //    .entire().constraintSizeValue(constraintSizeValue).letterSpace(@3).minLineHeight(@20).maxLineHeight(@20).align(@1).imageAlign(@1).onClicked(textOnClicked)
+    //    .drawView(^(UIView *drawView) {
+    //        drawView.frame = CGRectMake(27.5, 50, drawView.frame.size.width, drawView.frame.size.height);
+    //        drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
+    //        [self.view addSubview:drawView];
+    //    });
 }
 
 @end

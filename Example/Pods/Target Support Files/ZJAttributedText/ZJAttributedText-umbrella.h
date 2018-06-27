@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "NSString+AttributedText.h"
 #import "ZJTextFactory.h"
 #import "ZJTextAttributes.h"
 #import "ZJTextElement.h"
