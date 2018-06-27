@@ -3,7 +3,7 @@
 //  ZJAttributedText_Example
 //
 //  Created by zhangjun on 2018/6/27.
-//  Copyright © 2018年 281925019@qq.com. All rights reserved.
+//  Copyright © 2018年 Jsoul1227@hotmail.com. All rights reserved.
 //
 
 #import "ZJTestLabel.h"
