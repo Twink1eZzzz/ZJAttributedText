@@ -18,4 +18,8 @@
     return self;
 }
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    NSLog(@"ZJTextAttributes: setValue: %@ forUndefinedKey: %@", value, key);
+}
+
 @end

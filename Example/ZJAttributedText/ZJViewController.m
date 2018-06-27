@@ -176,6 +176,9 @@
     .drawView(^(UIView *drawView) {
         drawView.frame = CGRectMake(27.5, 50, drawView.frame.size.width, drawView.frame.size.height);
         drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
+        for (UIView *subView in self.view.subviews) {
+            [subView removeFromSuperview];
+        }
         [self.view addSubview:drawView];
     });
     

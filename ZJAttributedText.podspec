@@ -14,6 +14,6 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'ZJAttributedText/**/*.{h,m}'
-  s.resource = 'ZJAttributedText/test.png'
+  s.resource = 'ZJAttributedText/**/*.png'
 
 end

@@ -11,7 +11,7 @@
 #import "ZJTextLayer.h"
 #import "ZJTextElement.h"
 #import "ZJTextAttributes.h"
-#import <Objc/runtime.h>
+#import <objc/runtime.h>
 
 static NSString *const kZJTextElementAttributeName = @"kZJTextElementAttributeName";
 static NSString *const kZJTextImageAscentAssociateKey = @"kZJTextImageAscentAssociateKey";
@@ -135,6 +135,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
             }
         }
     }
+    free(ivars);
     return combineAttributes;
 }
 
@@ -163,6 +164,9 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
     //拼接
     CFAttributedStringReplaceAttributedString(entireAttributedString, CFRangeMake(location, 0), mutableAttributedString);
     CFRelease(mutableAttributedString);
+    if (attributesDic) {
+        CFRelease(attributesDic);
+    }
 }
 
 + (CFDictionaryRef)generateattributesDicWithElement:(ZJTextElement *)element {
@@ -180,6 +184,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
     if (attributes.font) {
         CTFontRef font = CTFontCreateWithName((CFStringRef)attributes.font.fontName, attributes.font.pointSize, NULL);
         CFDictionaryAddValue(attributesDic, kCTFontAttributeName, font);
+        CFRelease(font);
     }
     
     if (attributes.color) {
@@ -293,6 +298,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         [settingValue getValue:&setting];
         settings[i] = setting;
     }
+    CFRelease(settingsArray);
     
     CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, settingsCount);
     if (paragraphStyle) {
@@ -363,6 +369,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
     if (delegate) {
         
         CFDictionaryRef placeHolderAttributesDic = [self generateattributesDicWithElement:element];
+        if (!placeHolderAttributesDic) return;
         CFMutableDictionaryRef attributesDic = CFDictionaryCreateMutableCopy(CFAllocatorGetDefault(), CFDictionaryGetCount(placeHolderAttributesDic), placeHolderAttributesDic);
         CFDictionaryAddValue(attributesDic, kCTRunDelegateAttributeName, delegate);
         CFDictionaryAddValue(attributesDic, (CFStringRef)kZJTextElementAttributeName, (__bridge const void *)element);
@@ -380,6 +387,8 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         CFAttributedStringReplaceAttributedString(entireAttributedString, CFRangeMake(location, 0), attributedString);
         
         //内存释放
+        CFRelease(placeHolderAttributesDic);
+        CFRelease(attributesDic);
         CFRelease(delegate);
         CFRelease(placeHolderString);
         CFRelease(attributedString);
