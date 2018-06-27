@@ -23,6 +23,7 @@ typedef NSString *(^ZJTextDotViewDrawBlock)(ZJTextViewDrawCompletionBlock comple
 @interface NSString (AttributedText)
 
 #pragma mark - core method
+
 /**
  拼接字符串
  */
