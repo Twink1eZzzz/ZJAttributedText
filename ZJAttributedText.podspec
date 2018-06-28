@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name             = 'ZJAttributedText'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of ZJAttributedText.'
+  s.summary          = 'CoreText + Asynchronous drawing + chain syntax'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+    A high performance framework for rendering rich text!
                        DESC
 
   s.homepage         = 'https://github.com/syik/ZJAttributedText'
@@ -14,7 +14,6 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'ZJAttributedText/**/*.{h,m}'
-  s.resource = 'ZJAttributedText/**/*.png'
 
   s.dependency 'SDWebImage'
 
