@@ -8,10 +8,9 @@
 [![Platform](https://img.shields.io/cocoapods/p/ZJAttributedText.svg?style=flat)](https://cocoapods.org/pods/ZJAttributedText)
 
 ## 示例说明
+![](http://osnabh9h1.bkt.clouddn.com/18-6-28/77389949.jpg)
 
-![](http://osnabh9h1.bkt.clouddn.com/18-6-28/45572732.jpg)
-
-如图所示一片图文混排, 涉及到字体, 颜色, 字间距, 行间距, 图片对齐, 文字对齐, 描边等等属性, 还有网络图片与本地图片混排, 手势响应等需求, 使用本框架可以下面这样实现:
+如图所示一篇图文混排, 涉及到字体, 颜色, 字间距, 行间距, 图片对齐, 文字对齐, 描边等等属性, 还有网络图片与本地图片混排, 手势响应等需求, 使用本框架可以下面这样实现:
 
 ```C
 //...省略常量声明
