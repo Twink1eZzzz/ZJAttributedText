@@ -16,6 +16,7 @@
 #import <SDWebImage/SDWebImageManager.h>
 
 static NSString *const kZJTextElementAttributeName = @"kZJTextElementAttributeName";
+static NSString *const kZJTextDrawFrameAssociateKey = @"kZJTextDrawFrameAssociateKey";
 static NSString *const kZJTextImageAscentAssociateKey = @"kZJTextImageAscentAssociateKey";
 static NSString *const kZJTextImageDescentAssociateKey = @"kZJTextImageDescentAssociateKey";
 static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssociateKey";
@@ -118,13 +119,13 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
         //主线程生成Layer
         dispatch_async(dispatch_get_main_queue(), ^{
             ZJTextLayer *layer = [ZJTextLayer layer];
+            [self drawURLImageOnLayer:layer imageURLElements:imageURLElements];
             layer.elements = elements;
             layer.frame = CGRectMake(0, 0, size.width, size.height);
             layer.contents = (__bridge id)drawImage.CGImage;
             if (completion) {
                 completion(layer);
             }
-            [self drawURLImageOnLayer:layer imageURLElements:imageURLElements];
         });
         
         //释放内存
@@ -464,13 +465,13 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
                 CGRect bounds = CGRectOffset(runBounds, boxRect.origin.x, boxRect.origin.y);
                 NSValue *frameValue = [NSValue valueWithCGRect:bounds];
                 
-                NSArray *drawFrameValueArray = element.drawFrameValueArray;
+                NSArray *drawFrameValueArray = objc_getAssociatedObject(element, kZJTextDrawFrameAssociateKey.UTF8String);
                 if (!drawFrameValueArray) {
                     drawFrameValueArray = @[frameValue];
                 } else {
                     drawFrameValueArray = [drawFrameValueArray arrayByAddingObject:frameValue];
                 }
-                [element setValue:drawFrameValueArray forKey:@"drawFrameValueArray"];
+                objc_setAssociatedObject(element, kZJTextDrawFrameAssociateKey.UTF8String, drawFrameValueArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
                 //显示的frame: 由绘制的基础frame->翻转得到
                 CGFloat overY = bounds.origin.y;
@@ -510,7 +511,7 @@ static NSString *const kZJTextImageWidthAssociateKey = @"kZJTextImageWidthAssoci
     //绘制图片
     for (ZJTextElement *imageElement in imageElements) {
         
-        NSArray *frameValueArray = imageElement.drawFrameValueArray;
+        NSArray *frameValueArray = objc_getAssociatedObject(imageElement, kZJTextDrawFrameAssociateKey.UTF8String);
         CGRect imageFrame = [[frameValueArray firstObject] CGRectValue];
         
         UIImage *image = imageElement.content;

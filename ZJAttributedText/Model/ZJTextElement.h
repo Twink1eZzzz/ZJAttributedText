@@ -33,9 +33,4 @@
  */
 @property (nonatomic, strong, readonly) NSArray<NSValue *> *frameValueArray;
 
-/**
- 在富文本中的绘制frame的数组, 此属性需要二次计算
- */
-@property (nonatomic, strong, readonly) NSArray<NSValue *> *drawFrameValueArray;
-
 @end

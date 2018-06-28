@@ -20,18 +20,118 @@
 
 @implementation ZJViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
-    //最基础用法
-    //[self baseFeature];
-    
     //链式语法
     [self dotFeature];
     
+    //最基础用法
+    //[self baseFeature];
+    
     //性能测试
     //[self performanceTest];
+}
+
+- (void)dotFeature {
+    
+    /************常量生成************/
+    
+    //回调
+    ZJTextZJTextAttributeCommonBlock titleOnLayout = ^(ZJTextElement *element) {
+        NSLog(@"已显示: %@", element.content);
+    };
+    ZJTextZJTextAttributeCommonBlock titleOnClicked = ^(ZJTextElement *element) {
+        NSLog(@"标题被点击: %@", element.content);
+    };
+    ZJTextZJTextAttributeCommonBlock textOnClicked = ^(ZJTextElement *element) {
+        NSLog(@"其他被点击: %@", element.content);
+    };
+    ZJTextZJTextAttributeCommonBlock bookOnClicked = ^(ZJTextElement *element) {
+        NSLog(@"书被点击: %@", element.content);
+    };
+    
+    //字体与颜色
+    UIFont *titleFont = [UIFont boldSystemFontOfSize:20];
+    UIColor *titleColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
+    UIColor *firstParaColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
+    UIFont *separateLineFont =[UIFont systemFontOfSize:15];
+    UIColor *separateLineColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.7];
+    UIFont *lastParaFont = [UIFont systemFontOfSize:16 weight:UIFontWeightLight];
+    UIFont *bookNameFont = [UIFont boldSystemFontOfSize:22];
+    UIColor *bookNameColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
+    UIColor *quoteColor = [[UIColor grayColor] colorWithAlphaComponent:0.3];
+    
+    //绘制大小限制
+    NSValue *maxSize = [NSValue valueWithCGSize:CGSizeMake(325, 550)];
+    NSValue *imageSize = [NSValue valueWithCGSize:CGSizeMake(35, 35)];
+    
+    //内容
+    NSString *title = @"随笔\n\n";
+    NSString *firstPara = @"       张嘉佳又出了新书，把书名取成《云边有个小卖部》。他说“时隔五年了，写给离开我们的人，写给陪伴我们的人，写给每个人心中的山和海。\n       《云边有个小卖部》离他上次的一本书，已经过去五年了。\n";
+    NSURL *webImage = [NSURL URLWithString:@"http://osnabh9h1.bkt.clouddn.com/18-6-27/92507897.jpg"];
+    NSString *separateLine = @"-----分界-----";
+    NSString *localImagePath = [[NSBundle mainBundle] pathForResource:@"dy122" ofType:@"png"];
+    UIImage *locolImage = [UIImage imageWithContentsOfFile:localImagePath];
+    NSString *lastPara = @"\n我从来没想过时间会过的这么快，\n快的这五年我好像还没有认真生活，\n时间就没有了。\n没有认识新朋友，\n没有去过新景点，\n也没有吃过更新奇的食物，\n五年里没有任何值得留念的回忆。\n这本";
+    NSString *bookName = @"《云边有个小卖部》";
+    NSString *quote = @"\n\n       --他说，他陆陆续续写了两年，中间写到情绪崩溃，不得已停笔半年。";
+    
+    /************核心使用************/
+    
+    //1. 拼接文章
+    
+    //标题
+    title.font(titleFont).color(titleColor).onClicked(titleOnClicked).onLayout(titleOnLayout);
+    //首段
+    firstPara.color(firstParaColor).align(@0);
+    //图片需要用一个空字符串起头
+    NSString *webImageString = @"".append(webImage).font(separateLineFont).minLineHeight(@100);
+    //分割线
+    separateLine.font(separateLineFont).strokeColor(separateLineColor).strokeWidth(@1);
+    //本地图片
+    NSString *locolImageString = @"".append(locolImage);
+    //最后一段
+    lastPara.font(lastParaFont).align(@1);
+    //书名
+    bookName.font(bookNameFont).color(bookNameColor).onClicked(bookOnClicked).align(@1);
+    //引用
+    quote.color(quoteColor).letterSpace(@0).minLineSpace(@8).align(@0);
+    
+    //设置全局默认属性, 优先级低于指定属性
+    NSString *defaultAttributes = @"".entire()
+    .maxSize(maxSize).align(@2).letterSpace(@3).minLineHeight(@20).maxLineHeight(@20).imageAlign(@1).onClicked(textOnClicked).imageSize(imageSize);
+    
+    //拼接
+    title.append(firstPara).append(webImageString).append(separateLine).append(locolImageString).append(lastPara).append(bookName).append(quote)
+    //设置默认属性
+    .append(defaultAttributes)
+    //绘制View
+    .drawView(^(UIView *drawView) {
+        drawView.frame = CGRectMake(27.5, 50, drawView.frame.size.width, drawView.frame.size.height);
+        drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
+        [self.view addSubview:drawView];
+    });
+    
+//        //2 .一次性生成文章
+//
+//        @""
+//        .append(title).font(titleFont).color(titleColor).onClicked(titleOnClicked).onLayout(titleOnLayout)
+//        .append(firstPara).color(firstParaColor).align(@0)
+//        .append(webImage).font(separateLineFont).minLineHeight(@100)
+//        .append(separateLine).font(separateLineFont).strokeColor(separateLineColor).strokeWidth(@1)
+//        .append(locolImage)
+//        .append(lastPara).font(lastParaFont).align(@1)
+//        .append(bookName).font(bookNameFont).color(bookNameColor).onClicked(bookOnClicked).align(@1)
+//        .append(quote).color(quoteColor).letterSpace(@0).minLineSpace(@8).align(@0)
+//        //设置全局默认属性, 优先级低于指定属性
+//        .entire().maxSize(maxSize).align(@2).letterSpace(@3).minLineHeight(@20).maxLineHeight(@20).imageAlign(@1).onClicked(textOnClicked).imageSize(imageSize)
+//        //绘制View
+//        .drawView(^(UIView *drawView) {
+//            drawView.frame = CGRectMake(27.5, 50, drawView.frame.size.width, drawView.frame.size.height);
+//            drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
+//            [self.view addSubview:drawView];
+//        });
 }
 
 - (void)baseFeature {
@@ -77,8 +177,8 @@
     
     //元素5
     ZJTextElement *element5 = [ZJTextElement new];
-    NSString *image5Path = [[NSBundle mainBundle] pathForResource:@"dy122" ofType:@"png"];
-    element5.content = [UIImage imageWithContentsOfFile:image5Path];
+    NSString *localImagePath = [[NSBundle mainBundle] pathForResource:@"dy122" ofType:@"png"];
+    element5.content = [UIImage imageWithContentsOfFile:localImagePath];
     element5.attributes.imageAlign = @(ZJTextImageAlignCenterToFont);
     element5.attributes.align = @2;
     element5.attributes.font = [UIFont systemFontOfSize:10];
@@ -127,99 +227,6 @@
         drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
         [self.view addSubview:drawView];
     }];
-}
-
-- (void)dotFeature {
-    
-    //回调
-    ZJTextZJTextAttributeCommonBlock content1OnLayout = ^(ZJTextElement *element) {
-        NSLog(@"已显示: %@", element.content);
-    };
-    ZJTextZJTextAttributeCommonBlock content1OnClicked = ^(ZJTextElement *element) {
-        NSLog(@"标题被点击: %@", element.content);
-    };
-    ZJTextZJTextAttributeCommonBlock textOnClicked = ^(ZJTextElement *element) {
-        NSLog(@"文字被点击: %@", element.content);
-    };
-    ZJTextZJTextAttributeCommonBlock bookOnClicked = ^(ZJTextElement *element) {
-        NSLog(@"书被点击: %@", element.content);
-    };
-    
-    //字体与颜色
-    UIFont *content1Font = [UIFont boldSystemFontOfSize:20];
-    UIColor *content1Color = [[UIColor blackColor] colorWithAlphaComponent:0.8];
-    UIColor *content2Color = [[UIColor blueColor] colorWithAlphaComponent:0.5];
-    UIFont *content4Font =[UIFont systemFontOfSize:15];
-    UIColor *content4Color = [[UIColor darkGrayColor] colorWithAlphaComponent:0.7];
-    UIFont *content6Font = [UIFont systemFontOfSize:16 weight:UIFontWeightLight];
-    UIFont *content7Font = [UIFont boldSystemFontOfSize:22];
-    UIColor *content7Color = [[UIColor blueColor] colorWithAlphaComponent:0.5];
-    UIColor *content8Color = [[UIColor grayColor] colorWithAlphaComponent:0.3];
-    
-    //绘制大小限制
-    NSValue *maxSize = [NSValue valueWithCGSize:CGSizeMake(325, 550)];
-    
-    //内容
-    NSString *content1 = @"随笔\n\n";
-    NSString *content2 = @"       张嘉佳又出了新书，把书名取成《云边有个小卖部》。他说“时隔五年了，写给离开我们的人，写给陪伴我们的人，写给每个人心中的山和海。\n       《云边有个小卖部》离他上次的一本书，已经过去五年了。\n";
-    NSURL *content3 = [NSURL URLWithString:@"http://osnabh9h1.bkt.clouddn.com/18-6-27/92507897.jpg"];
-    NSString *content4 = @"-----分界-----";
-    NSString *image5Path = [[NSBundle mainBundle] pathForResource:@"dy122" ofType:@"png"];
-    UIImage *content5 = [UIImage imageWithContentsOfFile:image5Path];
-    NSString *content6 = @"\n我从来没想过时间会过的这么快，\n快的这五年我好像还没有认真生活，\n时间就没有了。\n没有认识新朋友，\n没有去过新景点，\n也没有吃过更新奇的食物，\n五年里没有任何值得留念的回忆。\n这本";
-    NSString *content7 = @"《云边有个小卖部》";
-    NSString *content8 = @"\n\n       --他说，他陆陆续续写了两年，中间写到情绪崩溃，不得已停笔半年。";
-    
-    CGFloat startTime = [[NSDate date] timeIntervalSince1970] * 1000;
-    
-    //生成文章
-    @""
-    .append(content1).font(content1Font).color(content1Color).align(@2).onClicked(content1OnClicked).onLayout(content1OnLayout)
-    .append(content2).color(content2Color).align(@0)
-    .append(content3).imageAlign(@1).font(content4Font).minLineHeight(@100).align(@2).imageSize([NSValue valueWithCGSize:CGSizeMake(35, 35)])
-    .append(content4).font(content4Font).strokeColor(content4Color).strokeWidth(@-2).align(@2).color([UIColor whiteColor])
-    .append(content5).align(@2)
-    .append(content6).font(content6Font)
-    .append(content7).font(content7Font).color(content7Color).onClicked(bookOnClicked)
-    .append(content8).color(content8Color).letterSpace(@0).align(@0).minLineSpace(@8)
-    //设置全局默认属性, 优先级低于指定属性
-    .entire().maxSize(maxSize).letterSpace(@3).minLineHeight(@20).maxLineHeight(@20).align(@1).imageAlign(@1).onClicked(textOnClicked)
-    //绘制View
-    .drawView(^(UIView *drawView) {
-        drawView.frame = CGRectMake(27.5, 50, drawView.frame.size.width, drawView.frame.size.height);
-        drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
-        [self.view addSubview:drawView];
-        
-        CGFloat endTime = [[NSDate date] timeIntervalSince1970] * 1000;
-        NSLog(@"异步绘制耗时: %f ms", endTime - startTime);
-    });
-//绘制Layer
-//    .drawLayer(^(CALayer *drawLayer) {
-//        drawLayer.frame = CGRectMake(27.5, 50, drawLayer.frame.size.width, drawLayer.frame.size.height);
-//        drawLayer.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1].CGColor;
-//        [self.view.layer addSublayer:drawLayer];
-//
-//        CGFloat endTime = [[NSDate date] timeIntervalSince1970] * 1000;
-//        NSLog(@"异步绘制耗时: %f ms", endTime - startTime);
-//    });
-
-    //也可以分开设置属性与拼接
-    //    content1.font(content1Font).color(content1Color).align(@2).onClicked(content1OnClicked).onLayout(content1OnLayout);
-    //    content2.color(content2Color).align(@0);
-    //    NSString *image3 = @"".append(content3).imageAlign(@1).font(content4Font).minLineHeight(@100).align(@2);
-    //    content4.font(content4Font).strokeColor(content4Color).strokeWidth(@-2).align(@2).color([UIColor whiteColor]);
-    //    NSString *image5 = @"".append(content5).align(@2);
-    //    content6.font(content6Font);
-    //    content7.font(content7Font).color(content7Color).onClicked(bookOnClicked);
-    //    content8.color(content8Color).letterSpace(@0).align(@0).minLineSpace(@8);
-    //
-    //    content1.append(content2).append(image3).append(content4).append(image5).append(content6).append(content7).append(content8)
-    //    .entire().maxSize(maxSize).letterSpace(@3).minLineHeight(@20).maxLineHeight(@20).align(@1).imageAlign(@1).onClicked(textOnClicked)
-    //    .drawView(^(UIView *drawView) {
-    //        drawView.frame = CGRectMake(27.5, 50, drawView.frame.size.width, drawView.frame.size.height);
-    //        drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
-    //        [self.view addSubview:drawView];
-    //    });
 }
 
 - (void)performanceTest {
