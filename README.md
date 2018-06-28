@@ -255,10 +255,10 @@ drawView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1
 pod 'ZJAttributedText'
 ```
 
-## Author
+## 作者
 
 Jsoul1227@hotmail.com
 
-## License
+## 许可证
 
 ZJAttributedText is available under the MIT license. See the LICENSE file for more info.
